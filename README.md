@@ -3,7 +3,7 @@
 Accuracy, latency and memory benchmarks for [Cactus Compute's Needle 3](https://github.com/cactus-compute/needle)
 tool-calling model on a Raspberry Pi 5 (16 GB), using hand-written test sets.
 
-**Full results, findings and run log (Korean): [RESULTS.md](RESULTS.md)**. The charted report is
+**Full results, findings and run log (Korean): [RESULTS.md](RESULTS.md)**. Korean fine-tuning plan for the GPU server: [FINETUNE.md](FINETUNE.md). The charted report is
 `report.html`; download it and open it in a browser, since GitHub shows HTML as source.
 
 ## Key results

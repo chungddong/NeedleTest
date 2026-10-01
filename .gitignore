@@ -11,3 +11,6 @@ checkpoints/
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# Fine-tune outputs (adapters, built archives)
+ko/out/
