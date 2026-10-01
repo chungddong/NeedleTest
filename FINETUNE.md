@@ -35,7 +35,7 @@
 
 저장소 루트에서 실행합니다.
 
-**0. Pod 준비**: NVIDIA GPU 16GB 이상이면 충분합니다(RTX 4090, A5000, L4 등). 모델이 1.21억 파라미터라 큰 GPU는 필요 없습니다.
+**0. Pod 준비**: NVIDIA GPU 16GB 이상이면 충분합니다(RTX 4090, A5000, L4 등). 모델이 1.21억 파라미터라 큰 GPU는 필요 없습니다. 계정 생성부터 접속, 결과 회수, 종료까지는 [RUNPOD.md](RUNPOD.md)를 보세요.
 
 ```bash
 git clone https://github.com/chungddong/NeedleTest.git
