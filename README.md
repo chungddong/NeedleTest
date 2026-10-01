@@ -2,7 +2,26 @@
 
 Accuracy, latency and memory benchmarks for [Cactus Compute's Needle 3](https://github.com/cactus-compute/needle)
 tool-calling model on a Raspberry Pi 5 (16 GB), using hand-written test sets.
-Results are in `report.html` (rendered from `results/`).
+
+**Full results, findings and run log (Korean): [RESULTS.md](RESULTS.md)**. The charted report is
+`report.html`; download it and open it in a browser, since GitHub shows HTML as source.
+
+## Key results
+
+Official 2-bit, 20-layer `needle3.cact` (35.3 MB), measured 2026-10-01:
+
+| | |
+|---|---|
+| English tool-call accuracy | 90% (80 queries, confidence >= 0.4) |
+| Korean tool-call accuracy | 17% (12 queries) |
+| Latency | p50 361 ms, p90 627 ms, worst 4.7 s |
+| Peak memory | 74 MB (C runtime), 112 MB (Python SDK) |
+| Structured extraction | 98% of fields |
+
+- The advertised ~4,000 tok/s on a Pi 5 matches prefill at `--depth 2`, where accuracy is near zero. Depth 18-20 is the usable range.
+- `--depth` does not reduce memory; the whole archive stays loaded.
+- Accuracy drops from 91% to about 65% once more than 30 tools are registered.
+- The SDK's grounding check rejects correct conversions such as "2 hours" -> `minutes=120`.
 
 ## Test sets (`testsets.py`)
 
