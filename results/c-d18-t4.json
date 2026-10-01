@@ -1,0 +1,4318 @@
+{
+ "label": "c-d18-t4",
+ "runtime": "c",
+ "depth": 18,
+ "threads": 4,
+ "temp_start": "temp=59.8'C",
+ "cold_start": {
+  "ready_s": 1.3266240819939412,
+  "first_query_s": 0.3932366840308532
+ },
+ "mem_after_load_mb": {
+  "VmHWM": 73.59375,
+  "VmRSS": 63.25
+ },
+ "toolcall_wall_s": 147.82433528400725,
+ "server_mem_mb": {
+  "VmHWM": 73.59375,
+  "VmRSS": 64.359375
+ },
+ "toolcalls": [
+  {
+   "suite": "basic",
+   "query": "What's the weather in Tokyo?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Tokyo"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Tokyo"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 352.3667890112847,
+   "latency_all_ms": [
+    1138.0704669863917,
+    352.3667890112847,
+    285.6563169625588
+   ],
+   "prefill_tps": 424.8,
+   "decode_tps": 155.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8638,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "get_weather with city 'Tokyo' from query.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Is it raining in London right now?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "London"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "London"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 220.03888798644766,
+   "latency_all_ms": [
+    206.97341405320913,
+    267.06061098957434,
+    220.03888798644766
+   ],
+   "prefill_tps": 523.8,
+   "decode_tps": 202.9,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8299,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "Current weather for London. get_weather with city 'London'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "How's the weather in Paris",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Paris"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Paris"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 188.17348399898037,
+   "latency_all_ms": [
+    173.65700204391032,
+    188.17348399898037,
+    194.51168301748112
+   ],
+   "prefill_tps": 697.8,
+   "decode_tps": 196.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8321,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "get_weather with city 'Paris' from query.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Set a timer for 15 minutes",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 15
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 15
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 146.71560504939407,
+   "latency_all_ms": [
+    146.71560504939407,
+    138.5860070004128,
+    172.28254996007308
+   ],
+   "prefill_tps": 707.9,
+   "decode_tps": 182.3,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9485,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'15 minutes' -> minutes 15.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Start a 5 minute timer",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 5
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 5
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 241.68233200907707,
+   "latency_all_ms": [
+    271.6738199815154,
+    241.68233200907707,
+    221.85271204216406
+   ],
+   "prefill_tps": 475.8,
+   "decode_tps": 157.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9116,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'5 minute' -> minutes 5. set_timer tool.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Wake me up at 6:30 am",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:30"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:30"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 336.2545210402459,
+   "latency_all_ms": [
+    369.62521099485457,
+    336.2545210402459,
+    238.31303702900186
+   ],
+   "prefill_tps": 625.1,
+   "decode_tps": 207.3,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7342,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'6:30 am' -> time '06:30'. set_alarm chosen for time-based alarm.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "Set an alarm for 7 pm",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "19:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "19:00"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 195.15581597806886,
+   "latency_all_ms": [
+    344.19309900840744,
+    171.55634297523648,
+    195.15581597806886
+   ],
+   "prefill_tps": 607.1,
+   "decode_tps": 185.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7833,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'7 pm' -> time '19:00'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "Text Mom that I'll be late",
+   "want": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": "Mom",
+      "message": {
+       "text~": "I'll be late"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": "Mom",
+      "message": "I'll be late"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 585.9193209907971,
+   "latency_all_ms": [
+    538.0839090212248,
+    934.6439620130695,
+    585.9193209907971
+   ],
+   "prefill_tps": 418.6,
+   "decode_tps": 102.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6291,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'Mom' -> recipient 'Mom'; 'I'll be late' -> message 'I'll be late'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Call Sarah",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Sarah"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Sarah"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 233.88466303003952,
+   "latency_all_ms": [
+    166.3300390355289,
+    255.71792398113757,
+    233.88466303003952
+   ],
+   "prefill_tps": 187.8,
+   "decode_tps": 189.9,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7419,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'Sarah' -> name 'Sarah'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Phone Dad",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Dad"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "Phone Dad"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 216.0392379737459,
+   "latency_all_ms": [
+    216.0392379737459,
+    232.23500698804855,
+    179.3497169855982
+   ],
+   "prefill_tps": 544.0,
+   "decode_tps": 222.9,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3197,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'Phone Dad' -> name 'Phone Dad'.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "Play some jazz",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "jazz"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "jazz"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 273.55282998178154,
+   "latency_all_ms": [
+    173.68800198892131,
+    273.55282998178154,
+    355.15232296893373
+   ],
+   "prefill_tps": 309.4,
+   "decode_tps": 105.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7955,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'jazz' is a genre query for play_music.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Play Bohemian Rhapsody by Queen",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "Bohemian Rhapsody"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "Bohemian Rhapsody by Queen"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 420.40408396860585,
+   "latency_all_ms": [
+    787.1277059894055,
+    295.8801289787516,
+    420.40408396860585
+   ],
+   "prefill_tps": 264.7,
+   "decode_tps": 174.9,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7749,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'Bohemian Rhapsody by Queen' -> query 'Bohemian Rhapsody by Queen'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Take me to the airport",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "text~": "airport"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "airport"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 247.11136100813746,
+   "latency_all_ms": [
+    236.24956398271024,
+    247.11136100813746,
+    626.0822869953699
+   ],
+   "prefill_tps": 285.3,
+   "decode_tps": 65.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6817,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'airport' -> destination 'airport'. No mode specified, omit optional.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Navigate to Central Park",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "Central Park"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "Central Park"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 350.8292270125821,
+   "latency_all_ms": [
+    785.2457709959708,
+    350.8292270125821,
+    235.26026296894997
+   ],
+   "prefill_tps": 292.2,
+   "decode_tps": 216.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7913,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "destination 'Central Park' from query; mode omitted as not specified.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Turn on the kitchen lights",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "on"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 285.36159405484796,
+   "latency_all_ms": [
+    285.36159405484796,
+    230.38914502831176,
+    311.2470419728197
+   ],
+   "prefill_tps": 703.7,
+   "decode_tps": 140.0,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9027,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "room 'kitchen' from query; action 'on' from 'on'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Turn off the bedroom light",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "off"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 265.3594170114957,
+   "latency_all_ms": [
+    265.3594170114957,
+    230.81840702798218,
+    520.2139480388723
+   ],
+   "prefill_tps": 664.7,
+   "decode_tps": 82.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9211,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "room 'bedroom' from query; action 'off' from 'off'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Lights on in the living room",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "on"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 453.14808597322553,
+   "latency_all_ms": [
+    576.0349199990742,
+    453.14808597322553,
+    359.1759919654578
+   ],
+   "prefill_tps": 593.5,
+   "decode_tps": 169.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7506,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'Lights on' -> action 'on'; 'living room' -> room 'living_room'; 'on' -> action 'on'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Set the thermostat to 22 degrees",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 22
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 22
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 201.83573896065354,
+   "latency_all_ms": [
+    201.83573896065354,
+    167.856362008024,
+    255.45034802053124
+   ],
+   "prefill_tps": 604.6,
+   "decode_tps": 150.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9608,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "temperature 22 from '22 degrees'; set_thermostat tool selected.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Set the volume to 40",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 40
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 40
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 241.18331202771515,
+   "latency_all_ms": [
+    231.58913297811523,
+    241.18331202771515,
+    960.0317620206624
+   ],
+   "prefill_tps": 156.2,
+   "decode_tps": 36.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9454,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'40' -> level 40. set_volume tool.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "Add a dentist appointment on 2026-10-14",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "dentist"
+      },
+      "date": "2026-10-14"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": "Dentist appointment",
+      "date": "2026-10-14"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 357.9440970206633,
+   "latency_all_ms": [
+    457.7522950130515,
+    286.089708970394,
+    357.9440970206633
+   ],
+   "prefill_tps": 677.0,
+   "decode_tps": 162.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7776,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "title 'dentist appointment' from query; date '2026-10-14' from query; time omitted as not stated.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "What's the weather in Chicago in fahrenheit?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Chicago",
+      "unit": "fahrenheit"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Chicago",
+      "unit": "fahrenheit"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 399.4442730327137,
+   "latency_all_ms": [
+    399.4442730327137,
+    455.4372080019675,
+    323.0435290024616
+   ],
+   "prefill_tps": 633.8,
+   "decode_tps": 159.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8971,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "get_weather with city 'Chicago' and unit 'fahrenheit' from query.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Berlin weather in celsius please",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Berlin",
+      "unit": "celsius"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Berlin",
+      "unit": "celsius"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 399.6552180033177,
+   "latency_all_ms": [
+    538.7245069723576,
+    399.6552180033177,
+    348.0723990360275
+   ],
+   "prefill_tps": 354.4,
+   "decode_tps": 149.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8499,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "get_weather with city 'Berlin' and unit 'celsius' from query.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Set a timer for 2 hours",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 120
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 120
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 216.68996399967,
+   "latency_all_ms": [
+    312.2757700039074,
+    216.68996399967,
+    135.4736770153977
+   ],
+   "prefill_tps": 654.3,
+   "decode_tps": 241.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8947,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_timer.minutes"
+    ],
+    "negation": false
+   },
+   "reasoning": "'2 hours' -> minutes 120.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "Timer for an hour and a half",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 90
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 90
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 641.4402759983204,
+   "latency_all_ms": [
+    641.4402759983204,
+    376.5454520471394,
+    967.9127859999426
+   ],
+   "prefill_tps": 134.8,
+   "decode_tps": 43.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8846,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_timer.minutes"
+    ],
+    "negation": false
+   },
+   "reasoning": "'an hour and a half' -> 90 minutes. set_timer with minutes 90.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "Set a 45-minute timer",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 45
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 45
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 257.41173001006246,
+   "latency_all_ms": [
+    370.0959200505167,
+    209.5201499760151,
+    257.41173001006246
+   ],
+   "prefill_tps": 277.0,
+   "decode_tps": 167.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9418,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'45-minute' -> minutes 45; set_timer tool.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Dim the living room lights to 30%",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "dim",
+      "brightness_percent": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "dim",
+      "brightness_percent": 30
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 504.1984600247815,
+   "latency_all_ms": [
+    456.8182529765181,
+    504.1984600247815,
+    525.7294219918549
+   ],
+   "prefill_tps": 223.6,
+   "decode_tps": 129.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8041,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "room 'living_room' from query; action 'dim' from 'dim'; brightness_percent 30 from '30%'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Dim the bedroom lights to 10 percent",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "dim",
+      "brightness_percent": 10
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "dim",
+      "brightness_percent": 10
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 507.21510499715805,
+   "latency_all_ms": [
+    511.68473897268996,
+    507.21510499715805,
+    343.81185902748257
+   ],
+   "prefill_tps": 676.1,
+   "decode_tps": 171.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7768,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "room 'bedroom' from query; action 'dim' from 'dim'; brightness_percent 10 from '10 percent'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Bathroom lights off",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "off"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 292.11220500292256,
+   "latency_all_ms": [
+    284.6442220034078,
+    292.11220500292256,
+    296.949896030128
+   ],
+   "prefill_tps": 610.9,
+   "decode_tps": 172.9,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8752,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "room 'bathroom' from query; action 'off' from query; control_lights tool",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Set the alarm for 5:45",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "05:45"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "05:45"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 1204.7435410204343,
+   "latency_all_ms": [
+    254.56810399191454,
+    1307.652143004816,
+    1204.7435410204343
+   ],
+   "prefill_tps": 57.3,
+   "decode_tps": 38.3,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8783,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'5:45' -> time '05:45'. set_alarm chosen.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "Alarm at 11:15 pm",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "23:15"
+     }
+    }
+   ],
+   "got": [],
+   "error": "tool call truncated: token budget exhausted",
+   "distinct_outputs": 1,
+   "latency_ms": 4228.350288991351,
+   "latency_all_ms": [
+    3639.591515006032,
+    4875.676908006426,
+    4228.350288991351
+   ],
+   "prefill_tps": 283.2,
+   "decode_tps": 122.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.0925,
+   "type": "call",
+   "validation": null,
+   "reasoning": "'11:15 pm' -> time '11:15 PM' converted to 24-hour HH:MM.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "Walk me to the train station",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "text~": "train station"
+      },
+      "mode": "walking"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "train station",
+      "mode": "walking"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 429.61732001276687,
+   "latency_all_ms": [
+    484.8954929620959,
+    429.61732001276687,
+    353.2425560406409
+   ],
+   "prefill_tps": 395.6,
+   "decode_tps": 153.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7252,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'train station' -> destination 'train station'; 'walk' -> mode 'walking'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Directions to Seattle by car",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "Seattle",
+      "mode": "driving"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "Seattle",
+      "mode": "driving"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 256.2990030273795,
+   "latency_all_ms": [
+    240.6601450056769,
+    267.0854849857278,
+    256.2990030273795
+   ],
+   "prefill_tps": 648.9,
+   "decode_tps": 184.3,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6532,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "destination 'Seattle' from query; mode 'driving' from 'car'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "How do I get to the museum by bus",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "text~": "museum"
+      },
+      "mode": "transit"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "museum",
+      "mode": "transit"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 319.9572750017978,
+   "latency_all_ms": [
+    310.34313200507313,
+    319.9572750017978,
+    384.0781599865295
+   ],
+   "prefill_tps": 261.8,
+   "decode_tps": 138.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5936,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "destination 'museum' from query; mode 'transit' from 'bus'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Bike route to the beach",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "text~": "beach"
+      },
+      "mode": "cycling"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "the beach",
+      "mode": "cycling"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 631.4909500069916,
+   "latency_all_ms": [
+    631.4909500069916,
+    736.3988049910404,
+    314.638098992873
+   ],
+   "prefill_tps": 609.8,
+   "decode_tps": 161.0,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5489,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "destination 'the beach' from query; mode 'cycling' from 'bike route'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Make it 19 degrees in here",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 19
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 19
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 255.3579059895128,
+   "latency_all_ms": [
+    191.4396689971909,
+    255.3579059895128,
+    255.39986899821088
+   ],
+   "prefill_tps": 466.4,
+   "decode_tps": 175.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8232,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'19 degrees' -> temperature 19. set_thermostat is the only thermostat tool.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Set volume to zero",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 0
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 0
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 235.78867502510548,
+   "latency_all_ms": [
+    156.05206100735813,
+    235.78867502510548,
+    277.57135301362723
+   ],
+   "prefill_tps": 283.9,
+   "decode_tps": 131.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8657,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'zero' -> level 0. set_volume tool.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Set the volume to 75 percent",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 75
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 75
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 281.9670799653977,
+   "latency_all_ms": [
+    281.9670799653977,
+    205.1028140122071,
+    300.9620669763535
+   ],
+   "prefill_tps": 180.2,
+   "decode_tps": 123.0,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9632,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "level 75 from '75 percent'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Add lunch with Alex on October 20 2026 at 12:30",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "lunch with Alex"
+      },
+      "date": "2026-10-20",
+      "time": "12:30"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": "Lunch with Alex",
+      "date": "2026-10-20",
+      "time": "12:30"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 678.9742130204104,
+   "latency_all_ms": [
+    678.9742130204104,
+    376.8045490141958,
+    990.3074260219
+   ],
+   "prefill_tps": 528.3,
+   "decode_tps": 71.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.739,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "title 'lunch with Alex' from query; date '2026-10-20' from 'October 20 2026'; time '12:30' from '12:30'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "args",
+   "query": "Put team meeting on the calendar for 2026-11-03 at 9am",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "team meeting"
+      },
+      "date": "2026-11-03",
+      "time": "09:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": "Team meeting",
+      "date": "2026-11-03",
+      "time": "09:00"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 413.17945800255984,
+   "latency_all_ms": [
+    1416.8319170130417,
+    413.17945800255984,
+    407.10081602446735
+   ],
+   "prefill_tps": 652.5,
+   "decode_tps": 155.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.4048,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "create_event.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "title 'team meeting' from query; date '2026-11-03' from query; time '9am' -> 09:00",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "Schedule a haircut tomorrow at 3pm",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "haircut"
+      },
+      "date": "2026-10-02",
+      "time": "15:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": "Haircut",
+      "date": "2026-10-02",
+      "time": "15:00"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 390.72502800263464,
+   "latency_all_ms": [
+    390.72502800263464,
+    381.2335529946722,
+    530.3222829825245
+   ],
+   "prefill_tps": 365.0,
+   "decode_tps": 122.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5117,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "create_event.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'tomorrow' -> 2026-10-02; '3pm' -> 15:00; 'haircut' -> title; create_event tool",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "whats the wether like in madrid",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Madrid"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Madrid"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 412.6284379744902,
+   "latency_all_ms": [
+    412.6284379744902,
+    358.60832600155845,
+    427.2397159948014
+   ],
+   "prefill_tps": 711.4,
+   "decode_tps": 126.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5484,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'wether' -> get_weather; 'madrid' -> city 'Madrid'; unit defaults to celsius.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "how cold is it in oslo",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Oslo"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "oslo",
+      "unit": "celsius"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 258.05758696515113,
+   "latency_all_ms": [
+    215.4927750234492,
+    258.05758696515113,
+    320.0283129699528
+   ],
+   "prefill_tps": 652.5,
+   "decode_tps": 151.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.4324,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'oslo' -> city 'oslo'; 'cold' -> unit 'celsius'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "yo can u ping jake and say running 10 min late",
+   "want": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": "Jake",
+      "message": {
+       "text~": "running 10 min late"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": "jake",
+      "message": "Running 10 min late"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 423.12732501886785,
+   "latency_all_ms": [
+    312.9118320066482,
+    423.12732501886785,
+    1156.3546520192176
+   ],
+   "prefill_tps": 515.4,
+   "decode_tps": 47.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5584,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'jake' -> recipient 'jake'; 'running 10 min late' -> message 'running 10 min late'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "tell emma dinner is ready",
+   "want": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": "Emma",
+      "message": {
+       "text~": "dinner is ready"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": "emma",
+      "message": "Dinner is ready"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 350.5563219659962,
+   "latency_all_ms": [
+    350.5563219659962,
+    255.3099799552001,
+    377.34953401377425
+   ],
+   "prefill_tps": 602.0,
+   "decode_tps": 152.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.4362,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'tell emma dinner is ready' -> send_message with recipient 'emma' and message 'dinner is ready'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "give john a call",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "John"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "john"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 211.86001598834991,
+   "latency_all_ms": [
+    190.97187195438892,
+    211.86001598834991,
+    227.8223199537024
+   ],
+   "prefill_tps": 383.1,
+   "decode_tps": 159.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7099,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'john' -> name 'john'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "i need a timer, like 20 mins",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 20
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 20
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 316.3877759943716,
+   "latency_all_ms": [
+    316.3877759943716,
+    311.9145870441571,
+    378.2094829948619
+   ],
+   "prefill_tps": 410.2,
+   "decode_tps": 111.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9091,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'20 mins' -> minutes 20. set_timer chosen for countdown timer.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "its freezing, bump the heat to 24",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 24
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 24
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 300.66095397341996,
+   "latency_all_ms": [
+    315.36106701241806,
+    300.66095397341996,
+    240.29451404931024
+   ],
+   "prefill_tps": 528.8,
+   "decode_tps": 220.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5606,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'bump the heat to 24' -> set_thermostat temperature 24; no unit specified so default to celsius.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "kill the lights in the kitchen",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "off"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 301.75614496693015,
+   "latency_all_ms": [
+    302.08910995861515,
+    271.1769689922221,
+    301.75614496693015
+   ],
+   "prefill_tps": 645.9,
+   "decode_tps": 158.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6866,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'kill the lights' -> action 'off'. 'kitchen' -> room 'kitchen'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "can you turn off the lights in the bathroom",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "off"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 425.55948602966964,
+   "latency_all_ms": [
+    425.55948602966964,
+    1047.976096975617,
+    361.07080202782527
+   ],
+   "prefill_tps": 246.4,
+   "decode_tps": 158.3,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9201,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "room 'bathroom' from query; action 'off' from 'turn off'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "crank the volume up to 80",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 80
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 80
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 192.99630803288892,
+   "latency_all_ms": [
+    223.81744801532477,
+    159.66263704467565,
+    192.99630803288892
+   ],
+   "prefill_tps": 636.8,
+   "decode_tps": 188.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.905,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'80' -> level 80. set_volume tool.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "get me directions to the nearest gas station",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "text~": "gas station"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "nearest gas station"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 318.1789339869283,
+   "latency_all_ms": [
+    306.97269103256986,
+    318.1789339869283,
+    678.1027120305225
+   ],
+   "prefill_tps": 150.2,
+   "decode_tps": 90.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.536,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'directions to the nearest gas station' -> destination 'nearest gas station'. No mode specified, omit optional.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "throw on some taylor swift",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "taylor swift"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "taylor swift"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 395.0971079757437,
+   "latency_all_ms": [
+    424.486258008983,
+    356.7740030121058,
+    395.0971079757437
+   ],
+   "prefill_tps": 656.5,
+   "decode_tps": 148.3,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3131,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'taylor swift' is a song/artist/album/genre -> play_music with query 'taylor swift'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "lemme hear some lo-fi beats",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "lo-fi"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "lo-fi beats"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 261.8552000494674,
+   "latency_all_ms": [
+    247.7495160419494,
+    261.8552000494674,
+    348.20880996994674
+   ],
+   "prefill_tps": 635.4,
+   "decode_tps": 143.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7969,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'lo-fi beats' -> play_music query 'lo-fi beats'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "need to be up at 5 am tmrw",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "05:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "05:00"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 449.7085559996776,
+   "latency_all_ms": [
+    291.1502399947494,
+    449.7085559996776,
+    1041.339137009345
+   ],
+   "prefill_tps": 223.2,
+   "decode_tps": 48.0,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3089,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'5 am' -> time '05:00'; 'tmrw' -> time '05:00'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "plz set alarm 8:00",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "08:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "08:00"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 263.7110979994759,
+   "latency_all_ms": [
+    263.7110979994759,
+    264.6026959992014,
+    197.1464779926464
+   ],
+   "prefill_tps": 679.2,
+   "decode_tps": 231.0,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9095,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'8:00' -> time '08:00'. set_alarm chosen for time-based alarm.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "Turn off the kitchen lights and set the thermostat to 20",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "off"
+     }
+    },
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 20
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "off"
+     }
+    },
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 20
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 596.5474409749731,
+   "latency_all_ms": [
+    464.24266701797023,
+    689.158215012867,
+    596.5474409749731
+   ],
+   "prefill_tps": 411.9,
+   "decode_tps": 136.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7877,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'turn off the kitchen lights' -> control_lights room 'kitchen' action 'off'; 'set the thermostat to 20' -> set_thermostat temperature 20.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "multi",
+   "query": "Set a timer for 10 minutes and play some classical music",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 10
+     }
+    },
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "classical"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 10
+     }
+    },
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "classical music"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 409.161365008913,
+   "latency_all_ms": [
+    409.161365008913,
+    273.17403501365334,
+    428.0501849716529
+   ],
+   "prefill_tps": 161.8,
+   "decode_tps": 168.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6898,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'10 minutes' -> minutes 10. 'classical music' -> query 'classical music'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "multi",
+   "query": "What's the weather in Rome and in Milan?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Rome"
+     }
+    },
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Milan"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Rome"
+     }
+    },
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Milan"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 338.4433909668587,
+   "latency_all_ms": [
+    319.0848649828695,
+    338.4433909668587,
+    380.49519999185577
+   ],
+   "prefill_tps": 686.0,
+   "decode_tps": 165.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6935,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "Two cities: 'Rome' and 'Milan'. get_weather with city values.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "multi",
+   "query": "Turn on the bedroom lights and the bathroom lights",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "on"
+     }
+    },
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "on"
+     }
+    },
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "on"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 640.1674820226617,
+   "latency_all_ms": [
+    1439.0855209785514,
+    633.992079005111,
+    640.1674820226617
+   ],
+   "prefill_tps": 255.2,
+   "decode_tps": 149.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6299,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "Two calls: room 'bedroom' action 'on' from 'turn on the bedroom lights'; room 'bathroom' action 'on' from 'the bathroom lights'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "multi",
+   "query": "Call Mike and set the volume to 20",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Mike"
+     }
+    },
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 20
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Mike"
+     }
+    },
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 20
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 423.87477500597015,
+   "latency_all_ms": [
+    353.0691700289026,
+    459.29429098032415,
+    423.87477500597015
+   ],
+   "prefill_tps": 436.8,
+   "decode_tps": 126.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5402,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'Mike' -> name 'Mike'; '20' -> level 20",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "multi",
+   "query": "Set an alarm for 6:00 and a timer for 30 minutes",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:00"
+     }
+    },
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:00"
+     }
+    },
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 30
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 324.0913720219396,
+   "latency_all_ms": [
+    392.29916798649356,
+    320.9748929948546,
+    324.0913720219396
+   ],
+   "prefill_tps": 468.1,
+   "decode_tps": 179.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8861,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'6:00' -> time '06:00'; '30 minutes' -> minutes 30",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "Dim the living room lights to 40 percent and play some jazz",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "dim",
+      "brightness_percent": 40
+     }
+    },
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "jazz"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "dim",
+      "brightness_percent": 40
+     }
+    },
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "jazz"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 622.7752630366012,
+   "latency_all_ms": [
+    560.2919589728117,
+    622.7752630366012,
+    1743.1584949954413
+   ],
+   "prefill_tps": 372.7,
+   "decode_tps": 53.9,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6876,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'dim the living room lights to 40 percent' -> control_lights room 'living_room' action 'dim' brightness_percent 40; 'play some jazz' -> play_music query 'jazz'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "multi",
+   "query": "Set the thermostat to 21 and turn off the bedroom lights",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 21
+     }
+    },
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 21
+     }
+    },
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "off"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 474.8537600389682,
+   "latency_all_ms": [
+    474.8537600389682,
+    338.8446900062263,
+    624.1479369928129
+   ],
+   "prefill_tps": 693.6,
+   "decode_tps": 105.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6929,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'21' -> temperature 21; 'turn off' -> action 'off'; 'bedroom' -> room 'bedroom'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "multi",
+   "query": "Check the weather in Seoul and navigate to Gangnam Station",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Seoul"
+     }
+    },
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "text~": "Gangnam Station"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "Seoul"
+     }
+    },
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "Gangnam Station"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 430.49151299055666,
+   "latency_all_ms": [
+    618.8664460205473,
+    430.49151299055666,
+    423.264549986925
+   ],
+   "prefill_tps": 652.9,
+   "decode_tps": 175.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3791,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "get_weather with city 'Seoul' from query. destination 'Gangnam Station' from query. mode omitted.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "Text Lisa see you soon and call Tom",
+   "want": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": "Lisa",
+      "message": {
+       "text~": "see you soon"
+      }
+     }
+    },
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Tom"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 622.9504680377431,
+   "latency_all_ms": [
+    622.9504680377431,
+    558.5638399934396,
+    1518.838083022274
+   ],
+   "prefill_tps": 420.7,
+   "decode_tps": 66.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.0975,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "create_event.title",
+     "create_event.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'Text Lisa' -> send_message recipient 'Lisa'; 'see you soon' -> message 'see you soon'; 'call Tom' -> make_contact name 'Tom'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Order me a large pepperoni pizza",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 195.3795250155963,
+   "latency_all_ms": [
+    198.00779700744897,
+    130.55235700448975,
+    195.3795250155963
+   ],
+   "prefill_tps": 722.8,
+   "decode_tps": 119.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8436,
+   "type": "call",
+   "validation": null,
+   "reasoning": "No shopping or ordering tool exists in the available tools.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Book a flight to New York",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 141.92291698418558,
+   "latency_all_ms": [
+    133.12816701363772,
+    153.63825496751815,
+    141.92291698418558
+   ],
+   "prefill_tps": 373.5,
+   "decode_tps": 174.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8118,
+   "type": "call",
+   "validation": null,
+   "reasoning": "No flight booking tool available. Cannot book flight.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "What's the capital of France?",
+   "want": [],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "France",
+      "unit": "fahrenheit"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 380.077310022898,
+   "latency_all_ms": [
+    243.15604899311438,
+    380.077310022898,
+    580.3352489601821
+   ],
+   "prefill_tps": 302.5,
+   "decode_tps": 94.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.6674,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'capital of France' -> city 'France', unit 'fahrenheit'. get_weather tool.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Turn on the fan in the bedroom",
+   "want": [],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "on"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 457.4182080104947,
+   "latency_all_ms": [
+    459.40651500131935,
+    296.0732660139911,
+    457.4182080104947
+   ],
+   "prefill_tps": 643.7,
+   "decode_tps": 117.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5034,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'bedroom' -> room 'bedroom'; 'on' -> action 'on'; 'fan' -> action 'on'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Lock the front door",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 124.35514002572745,
+   "latency_all_ms": [
+    124.35514002572745,
+    148.55130203068256,
+    119.89374703262001
+   ],
+   "prefill_tps": 582.7,
+   "decode_tps": 210.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8439,
+   "type": "call",
+   "validation": null,
+   "reasoning": "No tool for lock/security control exists in the available tools.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Translate hello into Spanish",
+   "want": [],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "hello",
+      "mode": "transit"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 495.2578850206919,
+   "latency_all_ms": [
+    411.07848804676905,
+    495.2578850206919,
+    1372.0241620321758
+   ],
+   "prefill_tps": 190.4,
+   "decode_tps": 47.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.2214,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "No translation tool available. 'translate' maps to navigate_to. 'hello' is the destination. 'Spanish' is the mode.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Take a photo",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 135.83781104534864,
+   "latency_all_ms": [
+    142.92736601782963,
+    135.83781104534864,
+    105.49389594234526
+   ],
+   "prefill_tps": 571.9,
+   "decode_tps": 236.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.879,
+   "type": "call",
+   "validation": null,
+   "reasoning": "No camera or photo capture tool exists in the available tools.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "What's 15 times 23?",
+   "want": [],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 23
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 229.81983295176178,
+   "latency_all_ms": [
+    229.81983295176178,
+    228.35715900873765,
+    243.94949799170718
+   ],
+   "prefill_tps": 574.3,
+   "decode_tps": 168.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5317,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'15 times 23' -> minutes 23; set_timer with minutes=33.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Tell me a joke",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 450.6187289953232,
+   "latency_all_ms": [
+    439.7818029974587,
+    478.4926509601064,
+    450.6187289953232
+   ],
+   "prefill_tps": 443.3,
+   "decode_tps": 144.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.0808,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'joke' means message content. send_message with recipient 'Joke' and message 'Tell me a joke'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Start the dishwasher",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 312.5247210264206,
+   "latency_all_ms": [
+    468.7835829681717,
+    312.5247210264206,
+    222.62866597156972
+   ],
+   "prefill_tps": 572.2,
+   "decode_tps": 196.3,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.0824,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_timer.minutes"
+    ],
+    "negation": false
+   },
+   "reasoning": "No tool for dishwasher control. 'dishwasher' is a generic dishwasher tool.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Open the garage door",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 156.927012023516,
+   "latency_all_ms": [
+    161.67386999586597,
+    156.927012023516,
+    144.70444904873148
+   ],
+   "prefill_tps": 317.5,
+   "decode_tps": 211.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.9064,
+   "type": "call",
+   "validation": null,
+   "reasoning": "No tool for opening doors or controlling smart home devices.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Transfer $50 to John",
+   "want": [],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "John"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 521.047204034403,
+   "latency_all_ms": [
+    233.02557202987373,
+    521.047204034403,
+    938.5272440267727
+   ],
+   "prefill_tps": 257.8,
+   "decode_tps": 49.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5738,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'$50' -> amount 50; 'John' -> contact name 'John'; call_contact tool",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Turn on the TV",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 276.4700730331242,
+   "latency_all_ms": [
+    422.68138303188607,
+    275.351993041113,
+    276.4700730331242
+   ],
+   "prefill_tps": 578.0,
+   "decode_tps": 190.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.4893,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'TV' -> room 'living_room', action 'on'. control_lights controls lights.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Read my latest email",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 122.86661501275375,
+   "latency_all_ms": [
+    134.82106605079025,
+    122.86661501275375,
+    100.22373899118975
+   ],
+   "prefill_tps": 557.2,
+   "decode_tps": 221.8,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.8521,
+   "type": "call",
+   "validation": null,
+   "reasoning": "No email reading tool exists in the available tools.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "Don't turn on the kitchen lights",
+   "want": [],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "on"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 378.9871759945527,
+   "latency_all_ms": [
+    269.28725896868855,
+    511.9884349987842,
+    378.9871759945527
+   ],
+   "prefill_tps": 394.0,
+   "decode_tps": 135.5,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.7502,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": true
+   },
+   "reasoning": "'turn on the kitchen lights' -> control_lights room 'kitchen', action 'on'.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "korean",
+   "query": "서울 날씨 어때?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "서울",
+        "Seoul"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "uc11cuc6b8 ub0a0uc528 uc5b4ub54c"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 616.1132690031081,
+   "latency_all_ms": [
+    616.1132690031081,
+    607.37376002362,
+    649.5664039975964
+   ],
+   "prefill_tps": 748.1,
+   "decode_tps": 148.7,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3101,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'uc11cuc6b8 uc5b4c' -> name 'uc11cuc6b8 uc5b4c'; 'ub0a0uc528 uc5b4c' -> contact_id verbatim; call_contact tool",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "부산 날씨 알려줘",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "부산",
+        "Busan"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": "tool call truncated: token budget exhausted",
+   "distinct_outputs": 1,
+   "latency_ms": 4390.403004013933,
+   "latency_all_ms": [
+    4390.403004013933,
+    4733.531889040023,
+    3932.5660769827664
+   ],
+   "prefill_tps": 588.0,
+   "decode_tps": 132.1,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.1174,
+   "type": "call",
+   "validation": null,
+   "reasoning": "'ubd80uc0b0' -> set_alarm time 'ubd80uc0b0'; 'ub0a0uc528' -> set_alarm time 'ub0a0uc528'; 'ub0a0uc528' -> set_alarm time 'ub0a0uc528'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "10분 타이머 맞춰줘",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 10
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "10ubd84 ud0c0uc774uba38"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 854.5506669906899,
+   "latency_all_ms": [
+    1271.678521996364,
+    659.5546430326067,
+    854.5506669906899
+   ],
+   "prefill_tps": 652.0,
+   "decode_tps": 128.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5321,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'10ubd84 ud0c0uc774uba38 ub9deucb0uc918' -> name '10ubd84 ud0c0uc774uba38', contact_id 'ub9deucdb0uc918' verbatim.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "아침 7시에 알람 맞춰줘",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "07:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "uc544uce68",
+      "mode": "driving"
+     }
+    },
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "ub9deucdb0uc918",
+      "mode": "driving"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 1231.445351964794,
+   "latency_all_ms": [
+    1231.445351964794,
+    931.0236729797907,
+    2003.698632994201
+   ],
+   "prefill_tps": 647.0,
+   "decode_tps": 78.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.189,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'uc544uce68 7uc2dcuc5d0 uc54cub78c' -> name 'uc544uce68', '7uc2dcuc5d0 uc54cub78c' -> name 'uc54cub78c', 'ub9deucdb0uc918' -> name 'ub9deucdb0uc918'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "거실 불 켜줘",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "ubd88 ucf1cuc918",
+      "mode": "driving"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 555.3361420170404,
+   "latency_all_ms": [
+    555.3361420170404,
+    505.66603400511667,
+    631.1214219895191
+   ],
+   "prefill_tps": 664.9,
+   "decode_tps": 142.0,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.4666,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'uac70uc2e4' -> name 'uac70uc2e4'; 'ubd88 ucf1cuc918' -> name 'ubd88 ucf1cuc918'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "침실 불 꺼",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "uce68uc2e4"
+     }
+    },
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "ubd88 uaebc"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 679.9656940274872,
+   "latency_all_ms": [
+    864.1260879812762,
+    543.6688050394878,
+    679.9656940274872
+   ],
+   "prefill_tps": 489.8,
+   "decode_tps": 148.4,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3759,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'uce68uc2e4' -> name 'uce68uc2e4'; 'ubd88 uaebc' -> name 'ubd88 uaebc'; two calls to call_contact.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "부엌 조명 30%로 어둡게 해줘",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "dim",
+      "brightness_percent": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 100
+     }
+    },
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 18
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 614.8793390020728,
+   "latency_all_ms": [
+    463.7342630303465,
+    614.8793390020728,
+    1293.1698019965552
+   ],
+   "prefill_tps": 243.6,
+   "decode_tps": 59.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.1066,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_volume.level",
+     "set_thermostat.temperature"
+    ],
+    "negation": false
+   },
+   "reasoning": "'ubd80uc5cc' -> set_volume level=100; 'ubd80uc5cc' -> set_thermostat temperature=180",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "온도 23도로 맞춰줘",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 23
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "uc628ub3c4 23ub3c4ub85c",
+      "mode": "driving"
+     }
+    },
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "ub9deucdb0uc918",
+      "mode": "driving"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 883.4886330296285,
+   "latency_all_ms": [
+    717.3671830096282,
+    1026.404648029711,
+    883.4886330296285
+   ],
+   "prefill_tps": 455.9,
+   "decode_tps": 153.2,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.2321,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'uc628ub3c4 23ub3c4ub85c' -> name 'uc628ub3c4'; 'ub9deucdb0uc918' -> name 'ub9deucdb0uc918'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "볼륨 50으로 해줘",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 50
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "ubcfcub968"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 527.2090910002589,
+   "latency_all_ms": [
+    520.1887220027857,
+    527.2090910002589,
+    573.3369770459831
+   ],
+   "prefill_tps": 685.5,
+   "decode_tps": 166.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3822,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'ubcfcub968 50uc73cub85c ud574uc918' -> name 'ubcfcub968', phone number '50uc73cub85c' -> phone number '5074uc918'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "엄마한테 전화해줘",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": {
+       "one_of": [
+        "엄마",
+        "Mom"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "uc5c4ub9c8ud55cud14c uc804ud654ud574uc918"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 849.9669799930416,
+   "latency_all_ms": [
+    1623.6159349791706,
+    608.2597870263271,
+    849.9669799930416
+   ],
+   "prefill_tps": 301.0,
+   "decode_tps": 151.0,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.5212,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'uc5c4ub9c8ud55cud14c uc804ud654ud574uc918' -> name 'uc5c4ub9c8ud55cud14c uc804ud654ud574uc918'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "재즈 틀어줘",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "one_of": [
+        "재즈",
+        "jazz"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "uc7acuc988",
+      "mode": "driving"
+     }
+    },
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "ud2c0uc5b4uc918",
+      "mode": "driving"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 730.8335319976322,
+   "latency_all_ms": [
+    855.1566359819844,
+    730.8335319976322,
+    540.644105989486
+   ],
+   "prefill_tps": 614.9,
+   "decode_tps": 209.9,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.3212,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'uc7acuc988' -> name 'uc7acuc988'; 'ud2c0uc5b4uc918' -> name 'ud2c0uc5b4uc918'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "korean",
+   "query": "피자 주문해줘",
+   "want": [],
+   "got": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "ud53cuc790",
+      "mode": "driving"
+     }
+    },
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": "uc8fcubb38ud574uc918",
+      "mode": "driving"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 1331.17752103135,
+   "latency_all_ms": [
+    842.0722360024229,
+    1776.5664859907702,
+    1331.17752103135
+   ],
+   "prefill_tps": 147.3,
+   "decode_tps": 108.6,
+   "peak_ram_mb": 73.6,
+   "confidence": 0.2382,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'ud53cuc790' -> name 'ud53cuc790'; 'uc8fcubb38ud574uc918' -> name 'uc8fcubb38ud574uc918'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  }
+ ],
+ "scores": {
+  "basic": {
+   "n": 20,
+   "raw_tool_acc": 0.95,
+   "raw_exact_acc": 0.95,
+   "conf_tool_acc": 0.95,
+   "conf_exact_acc": 0.95,
+   "gated_tool_acc": 0.85,
+   "gated_exact_acc": 0.85,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 20,
+    "mean": 290.64802020438947,
+    "p50": 256.2353890098166,
+    "p90": 423.6784841690679,
+    "p99": 560.6927863374583,
+    "min": 146.71560504939407,
+    "max": 585.9193209907971
+   }
+  },
+  "args": {
+   "n": 20,
+   "raw_tool_acc": 0.95,
+   "raw_exact_acc": 0.95,
+   "conf_tool_acc": 0.95,
+   "conf_exact_acc": 0.95,
+   "gated_tool_acc": 0.7,
+   "gated_exact_acc": 0.7,
+   "unstable": 0,
+   "errors": 1,
+   "latency": {
+    "n": 20,
+    "mean": 627.2308984567644,
+    "p50": 399.5497455180157,
+    "p90": 731.5511458204136,
+    "p99": 3653.8650068768725,
+    "min": 216.68996399967,
+    "max": 4228.350288991351
+   }
+  },
+  "casual": {
+   "n": 15,
+   "raw_tool_acc": 1.0,
+   "raw_exact_acc": 0.9333333333333333,
+   "conf_tool_acc": 0.8666666666666667,
+   "conf_exact_acc": 0.8,
+   "gated_tool_acc": 0.8,
+   "gated_exact_acc": 0.7333333333333333,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 15,
+    "mean": 325.4760835280952,
+    "p50": 316.3877759943716,
+    "p90": 424.5866216253489,
+    "p99": 446.3276862038765,
+    "min": 192.99630803288892,
+    "max": 449.7085559996776
+   }
+  },
+  "multi": {
+   "n": 10,
+   "raw_tool_acc": 0.9,
+   "raw_exact_acc": 0.9,
+   "conf_tool_acc": 0.8,
+   "conf_exact_acc": 0.8,
+   "gated_tool_acc": 0.7,
+   "gated_exact_acc": 0.7,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 10,
+    "mean": 488.33568301051855,
+    "p50": 452.6726365147624,
+    "p90": 624.672169436235,
+    "p99": 638.617950764019,
+    "min": 324.0913720219396,
+    "max": 640.1674820226617
+   }
+  },
+  "refusal": {
+   "n": 15,
+   "raw_tool_acc": 0.6,
+   "raw_exact_acc": 0.6,
+   "conf_tool_acc": 0.6666666666666666,
+   "conf_exact_acc": 0.6666666666666666,
+   "gated_tool_acc": 0.7333333333333333,
+   "gated_exact_acc": 0.7333333333333333,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 15,
+    "mean": 291.9673439464532,
+    "p50": 276.4700730331242,
+    "p90": 480.122014216613,
+    "p99": 517.4366993724834,
+    "min": 122.86661501275375,
+    "max": 521.047204034403
+   }
+  },
+  "korean": {
+   "n": 12,
+   "raw_tool_acc": 0.0,
+   "raw_exact_acc": 0.0,
+   "conf_tool_acc": 0.08333333333333333,
+   "conf_exact_acc": 0.08333333333333333,
+   "gated_tool_acc": 0.08333333333333333,
+   "gated_exact_acc": 0.08333333333333333,
+   "unstable": 0,
+   "errors": 1,
+   "latency": {
+    "n": 12,
+    "mean": 1105.4474353392532,
+    "p50": 790.4002559953369,
+    "p90": 1321.2043041246943,
+    "p99": 4053.888200885851,
+    "min": 527.2090910002589,
+    "max": 4390.403004013933
+   }
+  },
+  "ALL": {
+   "n": 92,
+   "raw_tool_acc": 0.7717391304347826,
+   "raw_exact_acc": 0.7608695652173914,
+   "conf_tool_acc": 0.7608695652173914,
+   "conf_exact_acc": 0.75,
+   "gated_tool_acc": 0.6739130434782609,
+   "gated_exact_acc": 0.6630434782608695,
+   "unstable": 0,
+   "errors": 2,
+   "latency": {
+    "n": 92,
+    "mean": 497.47778086432095,
+    "p50": 368.465636507608,
+    "p90": 679.8665459267795,
+    "p99": 4242.935033343384,
+    "min": 122.86661501275375,
+    "max": 4390.403004013933
+   }
+  }
+ },
+ "prefill_tps_median": 519.5999999999999,
+ "decode_tps_median": 151.2,
+ "engine_peak_ram_mb": 73.6,
+ "temp_end": "temp=73.0'C",
+ "throttled_end": "throttled=0x0"
+}

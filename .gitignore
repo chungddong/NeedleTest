@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+
+# Downloaded or built model artifacts (re-create with the steps in README.md)
+bin/
+models/
+checkpoints/
+*.cact
+*.safetensors
+
+# Local Claude Code settings
+.claude/settings.local.json

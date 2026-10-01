@@ -1,0 +1,1368 @@
+{
+ "meta": {
+  "device": "Raspberry Pi 5 Model B Rev 1.1",
+  "kernel": "6.12.47+rpt-rpi-2712",
+  "python": "3.13.5",
+  "sdk": "3.0.6",
+  "engine": "3.0.2",
+  "cases": 92,
+  "repeats": 3,
+  "model_mb": 35.33538
+ },
+ "official": {
+  "suites": {
+   "basic": {
+    "raw_exact_acc": 0.95,
+    "conf_exact_acc": 0.95,
+    "gated_exact_acc": 0.85,
+    "raw_tool_acc": 1.0,
+    "conf_tool_acc": 1.0,
+    "n": 20,
+    "p50": 291,
+    "p90": 569,
+    "max": 590
+   },
+   "args": {
+    "raw_exact_acc": 0.95,
+    "conf_exact_acc": 0.95,
+    "gated_exact_acc": 0.7,
+    "raw_tool_acc": 0.95,
+    "conf_tool_acc": 0.95,
+    "n": 20,
+    "p50": 357,
+    "p90": 552,
+    "max": 4591
+   },
+   "casual": {
+    "raw_exact_acc": 0.8667,
+    "conf_exact_acc": 0.8,
+    "gated_exact_acc": 0.8,
+    "raw_tool_acc": 0.8667,
+    "conf_tool_acc": 0.8,
+    "n": 15,
+    "p50": 337,
+    "p90": 2845,
+    "max": 4713
+   },
+   "multi": {
+    "raw_exact_acc": 1.0,
+    "conf_exact_acc": 0.9,
+    "gated_exact_acc": 0.8,
+    "raw_tool_acc": 1.0,
+    "conf_tool_acc": 0.9,
+    "n": 10,
+    "p50": 466,
+    "p90": 669,
+    "max": 895
+   },
+   "refusal": {
+    "raw_exact_acc": 0.6667,
+    "conf_exact_acc": 0.8667,
+    "gated_exact_acc": 0.9333,
+    "raw_tool_acc": 0.6667,
+    "conf_tool_acc": 0.8667,
+    "n": 15,
+    "p50": 303,
+    "p90": 493,
+    "max": 553
+   },
+   "korean": {
+    "raw_exact_acc": 0.1667,
+    "conf_exact_acc": 0.1667,
+    "gated_exact_acc": 0.1667,
+    "raw_tool_acc": 0.1667,
+    "conf_tool_acc": 0.1667,
+    "n": 12,
+    "p50": 538,
+    "p90": 777,
+    "max": 819
+   },
+   "ALL": {
+    "raw_exact_acc": 0.7935,
+    "conf_exact_acc": 0.8043,
+    "gated_exact_acc": 0.7283,
+    "raw_tool_acc": 0.8043,
+    "conf_tool_acc": 0.8152,
+    "n": 92,
+    "p50": 361,
+    "p90": 627,
+    "max": 4713
+   }
+  },
+  "prefill": 421.3,
+  "decode": 149.4,
+  "rss": 111.65625,
+  "cold": {
+   "init_s": 4.172580023994669,
+   "first_query_s": 0.4125231899670325
+  },
+  "latencies": [
+   114,
+   124,
+   174,
+   177,
+   179,
+   180,
+   196,
+   199,
+   201,
+   208,
+   215,
+   224,
+   232,
+   237,
+   245,
+   245,
+   260,
+   264,
+   267,
+   270,
+   270,
+   271,
+   272,
+   274,
+   276,
+   279,
+   280,
+   281,
+   286,
+   290,
+   293,
+   297,
+   299,
+   301,
+   303,
+   303,
+   306,
+   316,
+   318,
+   324,
+   331,
+   337,
+   350,
+   353,
+   356,
+   360,
+   362,
+   363,
+   364,
+   364,
+   366,
+   379,
+   392,
+   396,
+   399,
+   416,
+   431,
+   444,
+   445,
+   454,
+   458,
+   463,
+   464,
+   464,
+   471,
+   478,
+   480,
+   484,
+   493,
+   498,
+   501,
+   513,
+   516,
+   547,
+   553,
+   559,
+   568,
+   579,
+   589,
+   590,
+   600,
+   622,
+   628,
+   630,
+   644,
+   699,
+   785,
+   819,
+   895,
+   4421,
+   4591,
+   4713
+  ],
+  "extraction": {
+   "field_acc": 0.9807692307692307,
+   "record_acc": 0.9375,
+   "p50": 589.810467499774,
+   "fails": [
+    {
+     "text": "qty 10 x USB-C cable @ 7.99",
+     "got": {
+      "item": "xB-C cable",
+      "quantity": 10,
+      "unit_price": 7.99
+     }
+    }
+   ]
+  },
+  "embedding": {
+   "dim": 3072,
+   "nn_acc": 0.625,
+   "centroid_acc": 0.6666666666666666,
+   "p50": 18.470597482519224
+  },
+  "scaling": [
+   {
+    "n": 11,
+    "conf": 0.9090909090909091,
+    "p50": 304.6796889975667,
+    "rss": 111.53125,
+    "init": 1.9272788779926486
+   },
+   {
+    "n": 21,
+    "conf": 0.8545454545454545,
+    "p50": 351.6313250293024,
+    "rss": 116.625,
+    "init": 3.702511567971669
+   },
+   {
+    "n": 31,
+    "conf": 0.6545454545454545,
+    "p50": 457.6601290027611,
+    "rss": 122.375,
+    "init": 4.899735464015976
+   },
+   {
+    "n": 51,
+    "conf": 0.6727272727272727,
+    "p50": 482.7425199910067,
+    "rss": 134.15625,
+    "init": 8.42450414202176
+   }
+  ]
+ },
+ "depth": [
+  {
+   "depth": 2,
+   "threads": 4,
+   "conf": 0.17391304347826086,
+   "raw": 0.17391304347826086,
+   "strict": 0.17391304347826086,
+   "p50": 586.376087507233,
+   "p90": 904.0152124129236,
+   "prefill": 4257.3,
+   "decode": 725.75,
+   "rss": 73.59375,
+   "ready": 0.47961679397849366,
+   "errors": 21,
+   "suites": {
+    "basic": 0.0,
+    "args": 0.0,
+    "casual": 0.0,
+    "multi": 0.0,
+    "refusal": 1.0,
+    "korean": 0.08333333333333333
+   }
+  },
+  {
+   "depth": 4,
+   "threads": 4,
+   "conf": 0.17391304347826086,
+   "raw": 0.2608695652173913,
+   "strict": 0.17391304347826086,
+   "p50": 153.16878398880363,
+   "p90": 1290.2528312697548,
+   "prefill": 2470.6000000000004,
+   "decode": 466.75,
+   "rss": 73.03125,
+   "ready": 0.4582438099896535,
+   "errors": 9,
+   "suites": {
+    "basic": 0.0,
+    "args": 0.0,
+    "casual": 0.0,
+    "multi": 0.0,
+    "refusal": 1.0,
+    "korean": 0.08333333333333333
+   }
+  },
+  {
+   "depth": 6,
+   "threads": 4,
+   "conf": 0.17391304347826086,
+   "raw": 0.3804347826086957,
+   "strict": 0.17391304347826086,
+   "p50": 166.83243049192242,
+   "p90": 1488.0846689280588,
+   "prefill": 1625.25,
+   "decode": 357.85,
+   "rss": 73.59375,
+   "ready": 0.45531036803731695,
+   "errors": 8,
+   "suites": {
+    "basic": 0.0,
+    "args": 0.0,
+    "casual": 0.0,
+    "multi": 0.0,
+    "refusal": 1.0,
+    "korean": 0.08333333333333333
+   }
+  },
+  {
+   "depth": 8,
+   "threads": 4,
+   "conf": 0.41304347826086957,
+   "raw": 0.5217391304347826,
+   "strict": 0.391304347826087,
+   "p50": 194.37507499242201,
+   "p90": 382.68841759418143,
+   "prefill": 1201.65,
+   "decode": 296.8,
+   "rss": 73.59375,
+   "ready": 0.7481424870202318,
+   "errors": 5,
+   "suites": {
+    "basic": 0.45,
+    "args": 0.25,
+    "casual": 0.4,
+    "multi": 0.4,
+    "refusal": 0.8666666666666667,
+    "korean": 0.08333333333333333
+   }
+  },
+  {
+   "depth": 10,
+   "threads": 4,
+   "conf": 0.4891304347826087,
+   "raw": 0.5,
+   "strict": 0.42391304347826086,
+   "p50": 226.71955649275333,
+   "p90": 503.1779135169928,
+   "prefill": 955.5999999999999,
+   "decode": 236.4,
+   "rss": 73.03125,
+   "ready": 1.7354722879827023,
+   "errors": 2,
+   "suites": {
+    "basic": 0.7,
+    "args": 0.45,
+    "casual": 0.4666666666666667,
+    "multi": 0.4,
+    "refusal": 0.6666666666666666,
+    "korean": 0.08333333333333333
+   }
+  },
+  {
+   "depth": 12,
+   "threads": 4,
+   "conf": 0.5652173913043478,
+   "raw": 0.6413043478260869,
+   "strict": 0.5108695652173914,
+   "p50": 254.44625201635063,
+   "p90": 573.2741963118315,
+   "prefill": 715.8,
+   "decode": 214.10000000000002,
+   "rss": 73.59375,
+   "ready": 1.6830087450216524,
+   "errors": 3,
+   "suites": {
+    "basic": 0.75,
+    "args": 0.6,
+    "casual": 0.4,
+    "multi": 0.7,
+    "refusal": 0.7333333333333333,
+    "korean": 0.08333333333333333
+   }
+  },
+  {
+   "depth": 14,
+   "threads": 4,
+   "conf": 0.6413043478260869,
+   "raw": 0.7065217391304348,
+   "strict": 0.5434782608695652,
+   "p50": 279.3687770026736,
+   "p90": 587.7962421975099,
+   "prefill": 585.0999999999999,
+   "decode": 191.45,
+   "rss": 73.59375,
+   "ready": 1.0689497130224481,
+   "errors": 1,
+   "suites": {
+    "basic": 0.8,
+    "args": 0.75,
+    "casual": 0.6666666666666666,
+    "multi": 0.7,
+    "refusal": 0.7333333333333333,
+    "korean": 0.0
+   }
+  },
+  {
+   "depth": 16,
+   "threads": 4,
+   "conf": 0.6630434782608695,
+   "raw": 0.7391304347826086,
+   "strict": 0.5760869565217391,
+   "p50": 307.81734400079586,
+   "p90": 646.4890187839046,
+   "prefill": 527.1500000000001,
+   "decode": 166.95,
+   "rss": 73.578125,
+   "ready": 1.4583302759565413,
+   "errors": 2,
+   "suites": {
+    "basic": 0.85,
+    "args": 0.9,
+    "casual": 0.6,
+    "multi": 0.7,
+    "refusal": 0.6666666666666666,
+    "korean": 0.0
+   }
+  },
+  {
+   "depth": 18,
+   "threads": 4,
+   "conf": 0.75,
+   "raw": 0.7608695652173914,
+   "strict": 0.6630434782608695,
+   "p50": 368.465636507608,
+   "p90": 679.8665459267795,
+   "prefill": 519.5999999999999,
+   "decode": 151.2,
+   "rss": 73.59375,
+   "ready": 1.3266240819939412,
+   "errors": 2,
+   "suites": {
+    "basic": 0.95,
+    "args": 0.95,
+    "casual": 0.8,
+    "multi": 0.8,
+    "refusal": 0.6666666666666666,
+    "korean": 0.08333333333333333
+   }
+  },
+  {
+   "depth": 20,
+   "threads": 4,
+   "conf": 0.782608695652174,
+   "raw": 0.7608695652173914,
+   "strict": 0.7065217391304348,
+   "p50": 415.65823947894387,
+   "p90": 852.7810266823508,
+   "prefill": 465.8,
+   "decode": 137.45,
+   "rss": 73.59375,
+   "ready": 2.206383714976255,
+   "errors": 3,
+   "suites": {
+    "basic": 0.95,
+    "args": 0.95,
+    "casual": 0.8,
+    "multi": 1.0,
+    "refusal": 0.8,
+    "korean": 0.0
+   }
+  }
+ ],
+ "threads": [
+  {
+   "depth": 20,
+   "threads": 1,
+   "conf": 0.7717391304347826,
+   "raw": 0.7608695652173914,
+   "strict": 0.6956521739130435,
+   "p50": 496.1218519893009,
+   "p90": 984.8609945096542,
+   "prefill": 198.25,
+   "decode": 120.55,
+   "rss": 73.59375,
+   "ready": 3.1867300110170618,
+   "errors": 3,
+   "suites": {
+    "basic": 0.95,
+    "args": 0.95,
+    "casual": 0.8,
+    "multi": 0.9,
+    "refusal": 0.8,
+    "korean": 0.0
+   }
+  },
+  {
+   "depth": 20,
+   "threads": 2,
+   "conf": 0.782608695652174,
+   "raw": 0.7608695652173914,
+   "strict": 0.7065217391304348,
+   "p50": 345.3426655032672,
+   "p90": 691.7903050198221,
+   "prefill": 355.05,
+   "decode": 164.25,
+   "rss": 73.578125,
+   "ready": 1.8369046810548753,
+   "errors": 3,
+   "suites": {
+    "basic": 0.95,
+    "args": 0.95,
+    "casual": 0.8,
+    "multi": 1.0,
+    "refusal": 0.8,
+    "korean": 0.0
+   }
+  },
+  {
+   "depth": 20,
+   "threads": 3,
+   "conf": 0.7717391304347826,
+   "raw": 0.7608695652173914,
+   "strict": 0.6956521739130435,
+   "p50": 340.06201301235706,
+   "p90": 752.0342910429465,
+   "prefill": 438.65,
+   "decode": 161.39999999999998,
+   "rss": 73.59375,
+   "ready": 1.8453361199935898,
+   "errors": 3,
+   "suites": {
+    "basic": 0.95,
+    "args": 0.95,
+    "casual": 0.8,
+    "multi": 0.9,
+    "refusal": 0.8,
+    "korean": 0.0
+   }
+  },
+  {
+   "depth": 20,
+   "threads": 4,
+   "conf": 0.782608695652174,
+   "raw": 0.7608695652173914,
+   "strict": 0.7065217391304348,
+   "p50": 415.65823947894387,
+   "p90": 852.7810266823508,
+   "prefill": 465.8,
+   "decode": 137.45,
+   "rss": 73.59375,
+   "ready": 2.206383714976255,
+   "errors": 3,
+   "suites": {
+    "basic": 0.95,
+    "args": 0.95,
+    "casual": 0.8,
+    "multi": 1.0,
+    "refusal": 0.8,
+    "korean": 0.0
+   }
+  }
+ ],
+ "concurrency": [
+  {
+   "servers": 1,
+   "threads": 4,
+   "queries": 55,
+   "wall_s": 36.419871023041196,
+   "qps": 1.5101646012201417,
+   "latency_p50": 384.22379799885675,
+   "latency_p90": 796.5139612089844,
+   "total_peak_rss_mb": 73.578125,
+   "temp_end": "temp=71.9'C",
+   "throttled": "throttled=0x0"
+  },
+  {
+   "servers": 2,
+   "threads": 2,
+   "queries": 110,
+   "wall_s": 55.45959956396837,
+   "qps": 1.983425788589106,
+   "latency_p50": 635.3087409806903,
+   "latency_p90": 1017.1497898176311,
+   "total_peak_rss_mb": 147.171875,
+   "temp_end": "temp=73.6'C",
+   "throttled": "throttled=0x0"
+  },
+  {
+   "servers": 4,
+   "threads": 1,
+   "queries": 220,
+   "wall_s": 91.019271889003,
+   "qps": 2.4170705328019717,
+   "latency_p50": 984.7973014984746,
+   "latency_p90": 1834.8584613529963,
+   "total_peak_rss_mb": 293.3125,
+   "temp_end": "temp=69.2'C",
+   "throttled": "throttled=0x0"
+  },
+  {
+   "servers": 1,
+   "threads": 1,
+   "queries": 55,
+   "wall_s": 37.79235983698163,
+   "qps": 1.4553206054674541,
+   "latency_p50": 433.3564459811896,
+   "latency_p90": 640.4767230036668,
+   "total_peak_rss_mb": 73.578125,
+   "temp_end": "temp=68.1'C",
+   "throttled": "throttled=0x0"
+  }
+ ],
+ "builds": [
+  {
+   "label": "4L-w4",
+   "layers": 4,
+   "bits": 4,
+   "mb": 15.390548,
+   "conf": 0.18478260869565216,
+   "raw": 0.43478260869565216,
+   "p50": 308.0765964987222,
+   "rss": 52.4375,
+   "extract": 0.2692307692307692,
+   "embed": 0.4583333333333333,
+   "errors": 13,
+   "restarts": 4
+  },
+  {
+   "label": "8L-w4",
+   "layers": 8,
+   "bits": 4,
+   "mb": 27.411604,
+   "conf": 0.45652173913043476,
+   "raw": 0.4673913043478261,
+   "p50": 215.46485801809467,
+   "rss": 80.875,
+   "extract": 0.6923076923076923,
+   "embed": 0.5,
+   "errors": 2,
+   "restarts": 0
+  },
+  {
+   "label": "12L-w4",
+   "layers": 12,
+   "bits": 4,
+   "mb": 39.432724,
+   "conf": 0.6739130434782609,
+   "raw": 0.6413043478260869,
+   "p50": 289.55241150106303,
+   "rss": 109.859375,
+   "extract": 0.9423076923076923,
+   "embed": 0.5416666666666666,
+   "errors": 5,
+   "restarts": 0
+  },
+  {
+   "label": "16L-w4",
+   "layers": 16,
+   "bits": 4,
+   "mb": 51.45378,
+   "conf": 0.8152173913043478,
+   "raw": 0.7934782608695652,
+   "p50": 356.93252546479926,
+   "rss": 137.109375,
+   "extract": 0.9615384615384616,
+   "embed": 0.625,
+   "errors": 1,
+   "restarts": 0
+  },
+  {
+   "label": "20L-w4",
+   "layers": 20,
+   "bits": 4,
+   "mb": 63.4749,
+   "conf": 0.7717391304347826,
+   "raw": 0.7717391304347826,
+   "p50": 422.4996459670365,
+   "rss": 165.015625,
+   "extract": 0.9423076923076923,
+   "embed": 0.6666666666666666,
+   "errors": 3,
+   "restarts": 0
+  },
+  {
+   "label": "20L-w2-official",
+   "layers": 20,
+   "bits": 2,
+   "mb": 35.33538,
+   "conf": 0.8043478260869565,
+   "raw": 0.7934782608695652,
+   "p50": 361.1985635070596,
+   "rss": 111.65625,
+   "extract": 0.9807692307692307,
+   "embed": 0.6666666666666666,
+   "errors": 3,
+   "restarts": 0
+  }
+ ],
+ "failures": [
+  {
+   "suite": "basic",
+   "query": "Wake me up at 6:30 am",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:30"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:30"
+     }
+    }
+   ],
+   "conf": 0.7766,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_alarm.time"
+   ],
+   "latency": 356
+  },
+  {
+   "suite": "basic",
+   "query": "Set an alarm for 7 pm",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "19:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "19:00"
+     }
+    }
+   ],
+   "conf": 0.7511,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_alarm.time"
+   ],
+   "latency": 297
+  },
+  {
+   "suite": "basic",
+   "query": "Phone Dad",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Dad"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "Phone Dad"
+     }
+    }
+   ],
+   "conf": 0.4369,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 303
+  },
+  {
+   "suite": "args",
+   "query": "Set a timer for 2 hours",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 120
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 120
+     }
+    }
+   ],
+   "conf": 0.8778,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_timer.minutes"
+   ],
+   "latency": 301
+  },
+  {
+   "suite": "args",
+   "query": "Timer for an hour and a half",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 90
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 90
+     }
+    }
+   ],
+   "conf": 0.8973,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_timer.minutes"
+   ],
+   "latency": 224
+  },
+  {
+   "suite": "args",
+   "query": "Set the alarm for 5:45",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "05:45"
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0937,
+   "error": "tool call truncated: token budget exhausted",
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": null,
+   "latency": 4591
+  },
+  {
+   "suite": "args",
+   "query": "Alarm at 11:15 pm",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "23:15"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "23:15"
+     }
+    }
+   ],
+   "conf": 0.8121,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_alarm.time"
+   ],
+   "latency": 267
+  },
+  {
+   "suite": "args",
+   "query": "Put team meeting on the calendar for 2026-11-03 at 9am",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "team meeting"
+      },
+      "date": "2026-11-03",
+      "time": "09:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": "Team meeting",
+      "date": "2026-11-03",
+      "time": "09:00"
+     }
+    }
+   ],
+   "conf": 0.5509,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "create_event.time"
+   ],
+   "latency": 379
+  },
+  {
+   "suite": "args",
+   "query": "Schedule a haircut tomorrow at 3pm",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "haircut"
+      },
+      "date": "2026-10-02",
+      "time": "15:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": "Haircut",
+      "date": "2026-10-02",
+      "time": "15:00"
+     }
+    }
+   ],
+   "conf": 0.4161,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "create_event.time"
+   ],
+   "latency": 392
+  },
+  {
+   "suite": "casual",
+   "query": "throw on some taylor swift",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "taylor swift"
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "taylor swift"
+     }
+    }
+   ],
+   "conf": 0.1867,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 480
+  },
+  {
+   "suite": "casual",
+   "query": "need to be up at 5 am tmrw",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "05:00"
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0613,
+   "error": "tool call truncated: token budget exhausted",
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": null,
+   "latency": 4713
+  },
+  {
+   "suite": "casual",
+   "query": "plz set alarm 8:00",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "08:00"
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0776,
+   "error": "tool call truncated: token budget exhausted",
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": null,
+   "latency": 4421
+  },
+  {
+   "suite": "multi",
+   "query": "Turn on the bedroom lights and the bathroom lights",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "on"
+     }
+    },
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "on"
+     }
+    },
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "on"
+     }
+    }
+   ],
+   "conf": 0.3351,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 895
+  },
+  {
+   "suite": "multi",
+   "query": "Set an alarm for 6:00 and a timer for 30 minutes",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:00"
+     }
+    },
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:00"
+     }
+    },
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 30
+     }
+    }
+   ],
+   "conf": 0.9395,
+   "error": null,
+   "ok": 1.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_alarm.time"
+   ],
+   "latency": 318
+  },
+  {
+   "suite": "refusal",
+   "query": "Turn on the fan in the bedroom",
+   "want": [],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "on"
+     }
+    }
+   ],
+   "conf": 0.7938,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 464
+  },
+  {
+   "suite": "refusal",
+   "query": "Don't turn on the kitchen lights",
+   "want": [],
+   "got": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "on"
+     }
+    }
+   ],
+   "conf": 0.7192,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 1.0,
+   "ungrounded": [],
+   "latency": 303
+  },
+  {
+   "suite": "korean",
+   "query": "서울 날씨 어때?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "서울",
+        "Seoul"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0378,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 628
+  },
+  {
+   "suite": "korean",
+   "query": "부산 날씨 알려줘",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "부산",
+        "Busan"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0493,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 819
+  },
+  {
+   "suite": "korean",
+   "query": "아침 7시에 알람 맞춰줘",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "07:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 7
+     }
+    }
+   ],
+   "conf": 0.2991,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 416
+  },
+  {
+   "suite": "korean",
+   "query": "거실 불 켜줘",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.061,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 516
+  },
+  {
+   "suite": "korean",
+   "query": "침실 불 꺼",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0661,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 630
+  },
+  {
+   "suite": "korean",
+   "query": "부엌 조명 30%로 어둡게 해줘",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "dim",
+      "brightness_percent": 30
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0148,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 501
+  },
+  {
+   "suite": "korean",
+   "query": "온도 23도로 맞춰줘",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 23
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0886,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_alarm.time"
+   ],
+   "latency": 484
+  },
+  {
+   "suite": "korean",
+   "query": "볼륨 50으로 해줘",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 50
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.0002,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [
+    "set_thermostat.temperature"
+   ],
+   "latency": 279
+  },
+  {
+   "suite": "korean",
+   "query": "엄마한테 전화해줘",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": {
+       "one_of": [
+        "엄마",
+        "Mom"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "conf": 0.07,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 699
+  },
+  {
+   "suite": "korean",
+   "query": "재즈 틀어줘",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "one_of": [
+        "재즈",
+        "jazz"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "틀어줘"
+     }
+    }
+   ],
+   "conf": 0.102,
+   "error": null,
+   "ok": 0.0,
+   "strict_ok": 0.0,
+   "ungrounded": [],
+   "latency": 559
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "servers": 1,
+  "threads": 4,
+  "queries": 55,
+  "wall_s": 36.419871023041196,
+  "qps": 1.5101646012201417,
+  "latency_p50": 384.22379799885675,
+  "latency_p90": 796.5139612089844,
+  "total_peak_rss_mb": 73.578125,
+  "temp_end": "temp=71.9'C",
+  "throttled": "throttled=0x0"
+ },
+ {
+  "servers": 2,
+  "threads": 2,
+  "queries": 110,
+  "wall_s": 55.45959956396837,
+  "qps": 1.983425788589106,
+  "latency_p50": 635.3087409806903,
+  "latency_p90": 1017.1497898176311,
+  "total_peak_rss_mb": 147.171875,
+  "temp_end": "temp=73.6'C",
+  "throttled": "throttled=0x0"
+ },
+ {
+  "servers": 4,
+  "threads": 1,
+  "queries": 220,
+  "wall_s": 91.019271889003,
+  "qps": 2.4170705328019717,
+  "latency_p50": 984.7973014984746,
+  "latency_p90": 1834.8584613529963,
+  "total_peak_rss_mb": 293.3125,
+  "temp_end": "temp=69.2'C",
+  "throttled": "throttled=0x0"
+ },
+ {
+  "servers": 1,
+  "threads": 1,
+  "queries": 55,
+  "wall_s": 37.79235983698163,
+  "qps": 1.4553206054674541,
+  "latency_p50": 433.3564459811896,
+  "latency_p90": 640.4767230036668,
+  "total_peak_rss_mb": 73.578125,
+  "temp_end": "temp=68.1'C",
+  "throttled": "throttled=0x0"
+ }
+]
