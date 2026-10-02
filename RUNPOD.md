@@ -1,6 +1,6 @@
 # RunPod 세팅 가이드
 
-[FINETUNE.md](FINETUNE.md)의 한국어 파인튜닝을 RunPod GPU 서버에서 돌리기 위한 준비 과정입니다. RunPod 화면 이름은 2026-10 기준 [공식 문서](https://docs.runpod.io/get-started)를 따랐습니다. 화면이 바뀌었으면 문서를 우선하세요.
+[FINETUNE.md](FINETUNE.md)의 한국어 파인튜닝을 RunPod GPU 서버에서 돌리기 위한 준비 과정입니다. 현재 주 학습 장비는 RTX 3070 PC(WSL2)이고 RunPod는 대안입니다. 2026-10-02에 쓴 RunPod 서버는 GitHub 접속이 차단되어 있었으니, Pod를 띄우면 먼저 `curl -sI https://github.com`으로 확인하세요. RunPod 화면 이름은 2026-10 기준 [공식 문서](https://docs.runpod.io/get-started)를 따랐습니다. 화면이 바뀌었으면 문서를 우선하세요.
 
 ## 필요한 사양
 
@@ -59,7 +59,7 @@ git clone https://github.com/chungddong/NeedleTest.git
 ```
 
 ```bash
-cd NeedleTest && bash ko/runpod_smoke.sh
+cd NeedleTest && bash ko/gpu_smoke.sh
 ```
 
 스크립트가 하는 일: 가상환경 생성 → `cactus-needle[train,gpu]` 설치 → JAX가 GPU를 인식하는지 출력 → 24문장 과적합 학습 → 모델 파일 내보내기 → 한국어 추론 확인.

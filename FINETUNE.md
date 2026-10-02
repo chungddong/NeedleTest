@@ -1,6 +1,6 @@
 # Needle 3 한국어 파인튜닝 가이드
 
-재난 정전·설비 피해 신고 정형화(BlackoutLink)를 위해 Needle 3를 한국어로 파인튜닝하는 계획과, 그 전에 Pi에서 확인한 사실을 정리했습니다. 학습은 RunPod GPU 서버에서 진행합니다. 작성일은 2026-10-02입니다.
+재난 정전·설비 피해 신고 정형화(BlackoutLink)를 위해 Needle 3를 한국어로 파인튜닝하는 계획과, 그 전에 Pi에서 확인한 사실을 정리했습니다. 학습은 **RTX 3070 Windows PC의 WSL2**에서 진행합니다(RunPod는 대안). 작성일은 2026-10-02입니다.
 
 ## 요약
 
@@ -22,7 +22,7 @@
 | 모델 크기 | 파라미터 1.21억 개, 컨텍스트 8,192토큰 |
 | 라이선스 | **Apache 2.0** (가중치·코드). 수정·재배포 가능, 고지 유지 필요 |
 
-**아직 확인하지 못한 것**: 학습한 어댑터를 합쳐 `.cact`로 내보낸 뒤 엔진에서 한국어를 추론하는 단계, 실제 정확도 향상 폭, GPU 학습 속도. RunPod 첫 단계(`ko/runpod_smoke.sh`)에서 확인합니다.
+**아직 확인하지 못한 것**: 학습한 어댑터를 합쳐 `.cact`로 내보낸 뒤 엔진에서 한국어를 추론하는 단계, 실제 정확도 향상 폭, GPU 학습 속도. GPU 장비 첫 단계(`ko/gpu_smoke.sh`)에서 확인합니다.
 
 ## 설계에 반영할 제약
 
@@ -31,26 +31,60 @@
 3. **4비트로 내보내집니다.** 공개 도구는 4비트만 지원해서 20레이어 모델이 공식 2비트(35MB)보다 큰 63MB가 됩니다. Pi 측정에서 16레이어 4비트는 51MB, 메모리 137MB(Python SDK)였습니다. 현장 단말 기준으로도 충분히 작습니다.
 4. **LoRA는 어텐션만 학습합니다.** 정확도가 기대보다 낮게 멈추면 MLP나 바이트 임베딩까지 학습하도록 학습 코드를 수정할 수 있습니다. 코드는 JAX(`needle/model/finetune.py`)로 공개되어 있습니다.
 
-## RunPod 진행 순서
+## 학습 장비 준비
 
-저장소 루트에서 실행합니다.
+JAX의 GPU 버전은 Linux 전용이라, Windows에서는 **WSL2(Windows 안의 Ubuntu)**에서 학습합니다. 모델이 1.21억 파라미터라 RTX 3070(8GB)으로 충분합니다. 클라우드를 쓰려면 [RUNPOD.md](RUNPOD.md)를 보세요(단, 이전에 쓴 RunPod 서버는 GitHub 접속이 막혀 있었습니다).
 
-**0. Pod 준비**: NVIDIA GPU 16GB 이상이면 충분합니다(RTX 4090, A5000, L4 등). 모델이 1.21억 파라미터라 큰 GPU는 필요 없습니다. 계정 생성부터 접속, 결과 회수, 종료까지는 [RUNPOD.md](RUNPOD.md)를 보세요.
+**Windows 쪽 (한 번만)**
+
+1. NVIDIA 그래픽 드라이버를 최신으로 업데이트합니다. WSL2의 CUDA는 Windows 드라이버를 그대로 씁니다. **WSL 안에는 NVIDIA 드라이버를 설치하지 않습니다.**
+2. 관리자 권한 PowerShell에서 Ubuntu를 설치하고 재부팅합니다.
+
+```powershell
+wsl --install -d Ubuntu-24.04
+```
+
+**WSL Ubuntu 안에서 (한 번만)**
 
 ```bash
-git clone https://github.com/chungddong/NeedleTest.git
-cd NeedleTest
+nvidia-smi
 ```
+
+여기서 RTX 3070이 보여야 합니다. 그다음 기본 도구를 설치하고, GitHub에 푸시할 수 있게 로그인합니다.
+
+```bash
+sudo apt-get update && sudo apt-get install -y python3-venv git gh
+```
+
+```bash
+gh auth login
+```
+
+```bash
+gh auth setup-git
+```
+
+저장소는 **WSL 홈 폴더**에 받습니다. `/mnt/c/...`(Windows 드라이브)에 받으면 파일 접근이 매우 느립니다.
+
+```bash
+cd ~ && git clone https://github.com/chungddong/NeedleTest.git && cd NeedleTest
+```
+
+Claude Code도 이 WSL 터미널의 저장소 폴더에서 실행해야 GPU 학습 환경을 그대로 씁니다.
+
+## 진행 순서
+
+저장소 루트에서 실행합니다.
 
 **1. 스모크 테스트** (설치부터 학습, 내보내기, 엔진 추론까지 한 번에 확인)
 
 ```bash
-bash ko/runpod_smoke.sh
+bash ko/gpu_smoke.sh
 ```
 
-24개 문장을 일부러 외우게 한 뒤, 같은 문장에서 대부분 맞히면 파이프라인이 정상입니다. 사람이 쓴 테스트셋 점수는 이 단계에서는 낮게 나오는 게 정상입니다.
+출력 처음의 `jax devices:`에 `CudaDevice`가 보여야 GPU를 쓰는 것입니다. 24개 문장을 일부러 외우게 한 뒤, 같은 문장에서 대부분 맞히면 파이프라인이 정상입니다. 사람이 쓴 테스트셋 점수는 이 단계에서는 낮게 나오는 게 정상입니다. 결과는 `ko/results/smoke_*`에 저장되니 커밋해서 공유합니다.
 
-**2. 학습 데이터 생성** (OpenRouter API 키 필요, 사용량만큼 과금)
+**2. 학습 데이터 생성** (OpenRouter API 키 필요, 사용량만큼 과금. GPU는 쓰지 않음)
 
 ```bash
 export OPENROUTER_API_KEY=...
@@ -62,11 +96,12 @@ export OPENROUTER_API_KEY=...
 **3. 학습**
 
 ```bash
-.venv/bin/needle finetune ko/data/train.jsonl --epochs 3 --batch-size 16 --lr 1e-4 \
-  --max-len 512 --out ko/out/ko_lora.safetensors
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+.venv/bin/needle finetune ko/data/train.jsonl --epochs 3 --batch-size 8 --lr 1e-4 \
+  --max-len 512 --out ko/out/ko_lora.safetensors 2>&1 | tee ko/results/train.log
 ```
 
-학습이 끝나면 10% 검증 데이터의 정확도(4비트 기준)를 출력합니다.
+학습이 끝나면 10% 검증 데이터의 정확도(4비트 기준)를 출력합니다. RTX 3070(8GB)이라 배치를 8로 잡았습니다. 메모리 부족(OOM)이 나면 4로 낮추고, 여유가 있으면 16으로 올립니다.
 
 **4. 내보내기** (깊이별로 여러 개 만들어 비교)
 
@@ -80,13 +115,18 @@ done
 **5. 평가**
 
 ```bash
-# 사람이 쓴 한국어 테스트셋 (학습에 절대 쓰지 않음)
-.venv/bin/python ko/try_model.py ko/out/needle3-ko-20L.cact ko/data/test_human.jsonl
-# 영어 능력이 무너지지 않았는지 기존 벤치마크로 확인
+# 사람이 쓴 한국어 테스트셋 (학습에 절대 쓰지 않음). 깊이별로 반복
+.venv/bin/python ko/try_model.py ko/out/needle3-ko-20L.cact ko/data/test_human.jsonl \
+  --out ko/results/ko-20L_test_human.json
+# 영어 능력이 무너지지 않았는지 기존 벤치마크로 확인 (results/ko-20L.json 생성)
 .venv/bin/python bench.py --weights ko/out/needle3-ko-20L.cact --label ko-20L
 ```
 
-**6. Pi로 가져와 측정**: `.cact` 파일만 복사하면 Pi에서 그대로 돌아갑니다(`scp`). 지연·메모리는 Pi에서 `bench.py`, `cbench.py`로 다시 잽니다.
+**6. 결과 공유**: `ko/results/`(평가 JSON, 학습 로그), `results/ko-*.json`, `ko/data/train.jsonl`을 커밋하고 푸시합니다. `.cact` 모델 파일은 git에 넣지 않고 같은 네트워크의 Pi로 복사합니다. 지연·메모리는 Pi에서 `bench.py`, `cbench.py`로 다시 잽니다.
+
+```bash
+scp ko/out/needle3-ko-*.cact chungman@<Pi 주소>:~/Develop/NeedleTest/models/
+```
 
 ## 데이터 원칙
 
@@ -120,5 +160,6 @@ done
 | `ko/make_smoke_data.py` | 파이프라인 확인용 24개 (학습용) |
 | `ko/make_test_data.py` | 사람이 쓴 평가셋 32개 (학습 금지) |
 | `ko/gen_data.py` | OpenRouter로 한국어 학습 데이터 생성 |
-| `ko/try_model.py` | `.cact` 모델로 데이터셋을 돌려 정답 수 확인 |
-| `ko/runpod_smoke.sh` | GPU 서버 첫 실행: 설치 + 스모크 학습·내보내기·추론 |
+| `ko/try_model.py` | `.cact` 모델로 데이터셋을 돌려 채점, `--out`으로 결과 JSON 저장 |
+| `ko/gpu_smoke.sh` | GPU 장비 첫 실행: 설치 + 스모크 학습·내보내기·추론, 결과를 `ko/results/`에 저장 |
+| `ko/results/` | 평가 결과와 학습 로그 (커밋 대상). `base-20L-w2_test_human.json`은 원본 모델 기준점 |
