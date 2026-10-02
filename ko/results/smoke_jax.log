@@ -3,7 +3,7 @@ O 햇살아파트 102동 전기가 다 나갔어요 -> [{"name":"report_incident
 O 신촌리 마을 30가구 정전입니다 -> [{"name":"report_incident","arguments":{"incident_type":"outage","location":"신촌리 마을","households":30}}]   [think: power out, 30 households stated -> outage; households 30; hazard none]
 O OO리 전봇대가 쓰러졌어요 전선이 바닥에 있어요 위험해요 -> [{"name":"report_incident","arguments":{"incident_type":"pole_down","location":"OO리","hazard":"electrocution"}}]   [think: pole fell, wire on the ground, says it is dangerous -> pole_down; households none; hazard electrocut]
 O 중앙시장 앞 전주 넘어졌습니다 -> [{"name":"report_incident","arguments":{"incident_type":"pole_down","location":"중앙시장 앞"}}]   [think: utility pole fell over -> pole_down; households none; hazard none]
-O 학교 뒤편 전선이 끊어져서 늘어져 있어요 -> [{"name":"report_incident","arguments":{"incident_type":"line_down","location":"학교 뒤편","hazard":"electrocution"}}]   [think: power line snapped and hanging -> line_down; households none; hazard electrocution]
+O 학교 뒤편 전선이 끊어져서 늘어져 있어요 -> [{"name":"report_incident","arguments":{"incident_type":"line_down","location":"학교 뒤편"}}]   [think: power line snapped and hanging -> line_down; households none; hazard none]
 O 다리 옆 전선 끊김 -> [{"name":"report_incident","arguments":{"incident_type":"line_down","location":"다리 옆"}}]   [think: power line cut -> line_down; households none; hazard none]
 O 우리 집 앞 변압기에서 윙윙 소리가 엄청 나요 -> [{"name":"report_incident","arguments":{"incident_type":"transformer_noise","location":"우리 집 앞"}}]   [think: transformer humming loudly -> transformer_noise; households none; hazard none]
 O 버스정류장 위 변압기 소음 신고합니다 -> [{"name":"report_incident","arguments":{"incident_type":"transformer_noise","location":"버스정류장 위"}}]   [think: reports transformer noise -> transformer_noise; households none; hazard none]

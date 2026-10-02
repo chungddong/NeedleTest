@@ -3,18 +3,18 @@
  "data": "ko/data/test_human.jsonl",
  "scores": {
   "n": 32,
-  "exact": 7,
-  "decision": 28,
+  "exact": 9,
+  "decision": 30,
   "positives": 26,
-  "incident_type": 12,
-  "location": 11,
+  "incident_type": 11,
+  "location": 12,
   "errors": 0,
-  "latency_p50_ms": 641.9
+  "latency_p50_ms": 522.6
  },
  "host": "DESKTOP-4UAUMJ7",
  "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
  "needle_version": "3.0.6",
- "time": "2026-10-02T14:05:27",
+ "time": "2026-10-02T14:32:47",
  "rows": [
   {
    "query": "남산동 3통 지금 정전이에요",
@@ -32,14 +32,15 @@
      "name": "report_incident",
      "arguments": {
       "incident_type": "outage",
-      "location": "남산동 3통 지금"
+      "location": "남산동 3통 지금",
+      "households": 3
      }
     }
    ],
-   "reasoning": "power is all out -> outage; households 3; hazard none",
+   "reasoning": "power out, 3 households stated -> outage; households 3; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 578.5,
+   "latency_ms": 745.0,
    "exact": false,
    "decision": true,
    "incident_type": true,
@@ -61,18 +62,19 @@
     {
      "name": "report_incident",
      "arguments": {
-      "incident_type": "outage",
-      "location": "푸른마을"
+      "incident_type": "line_down",
+      "location": "푸른마을",
+      "households": 300
      }
     }
    ],
-   "reasoning": "no power for two hours -> outage; households none; hazard none",
+   "reasoning": "power line snapped and hanging -> line_down; households 300; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 480.3,
+   "latency_ms": 706.4,
    "exact": false,
    "decision": true,
-   "incident_type": true,
+   "incident_type": false,
    "location": false
   },
   {
@@ -98,7 +100,7 @@
    "reasoning": "power is all out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 617.1,
+   "latency_ms": 570.9,
    "exact": true,
    "decision": true,
    "incident_type": true,
@@ -127,7 +129,7 @@
    "reasoning": "power is out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 413.2,
+   "latency_ms": 662.6,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -158,7 +160,7 @@
    "reasoning": "no power for two hours -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 1452.9,
+   "latency_ms": 675.2,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -187,7 +189,7 @@
    "reasoning": "power line sagging -> line_down; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 964.1,
+   "latency_ms": 557.4,
    "exact": true,
    "decision": true,
    "incident_type": true,
@@ -213,10 +215,10 @@
      }
     }
    ],
-   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "reasoning": "power line snapped and hanging -> line_down; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 1217.9,
+   "latency_ms": 719.6,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -238,15 +240,14 @@
      "name": "report_incident",
      "arguments": {
       "incident_type": "spark",
-      "location": "초등학교 정문",
-      "hazard": "fire"
+      "location": "초등학교 정문"
      }
     }
    ],
-   "reasoning": "sparks from a line, says a fire may start -> spark; households none; hazard fire",
+   "reasoning": "sparks and sounds like electricity -> spark; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 1790.8,
+   "latency_ms": 652.4,
    "exact": false,
    "decision": true,
    "incident_type": true,
@@ -268,15 +269,15 @@
     {
      "name": "report_incident",
      "arguments": {
-      "incident_type": "transformer_noise",
+      "incident_type": "spark",
       "location": "야산 쪽"
      }
     }
    ],
-   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "reasoning": "sparks from a pole -> spark; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 827.9,
+   "latency_ms": 523.6,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -307,7 +308,7 @@
    "reasoning": "power out, about 12 households stated -> outage; households 12; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 996.9,
+   "latency_ms": 562.8,
    "exact": false,
    "decision": true,
    "incident_type": true,
@@ -336,7 +337,7 @@
    "reasoning": "power is all out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 675.1,
+   "latency_ms": 454.5,
    "exact": true,
    "decision": true,
    "incident_type": true,
@@ -357,15 +358,15 @@
     {
      "name": "report_incident",
      "arguments": {
-      "incident_type": "line_down",
+      "incident_type": "outage",
       "location": "저 아래"
      }
     }
    ],
-   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "reasoning": "power is all out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 654.0,
+   "latency_ms": 376.6,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -388,15 +389,14 @@
      "name": "report_incident",
      "arguments": {
       "incident_type": "line_down",
-      "location": "밭 옆에 전깃줄이",
-      "hazard": "electrocution"
+      "location": "밭 옆에"
      }
     }
    ],
    "reasoning": "power line sagging -> line_down; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 739.3,
+   "latency_ms": 471.0,
    "exact": false,
    "decision": true,
    "incident_type": true,
@@ -422,10 +422,10 @@
      }
     }
    ],
-   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "reasoning": "power line snapped and hanging -> line_down; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 476.0,
+   "latency_ms": 416.8,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -443,10 +443,10 @@
     }
    ],
    "got": [],
-   "reasoning": "says the power is fine -> no report",
+   "reasoning": "asks about the weather -> no report",
    "confidence": null,
    "error": null,
-   "latency_ms": 164.4,
+   "latency_ms": 134.6,
    "exact": false,
    "decision": false,
    "incident_type": false,
@@ -467,15 +467,15 @@
     {
      "name": "report_incident",
      "arguments": {
-      "incident_type": "line_down",
+      "incident_type": "outage",
       "location": "새싹유치원"
      }
     }
    ],
-   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "reasoning": "power is out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 476.0,
+   "latency_ms": 496.8,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -504,7 +504,7 @@
    "reasoning": "power out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 424.1,
+   "latency_ms": 484.2,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -533,7 +533,7 @@
    "reasoning": "power is all out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 576.1,
+   "latency_ms": 558.9,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -563,7 +563,7 @@
    "reasoning": "power line cut -> line_down; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 419.0,
+   "latency_ms": 592.5,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -593,7 +593,7 @@
    "reasoning": "power out, about 2 households stated -> outage; households 2; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 664.1,
+   "latency_ms": 652.3,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -614,20 +614,19 @@
     {
      "name": "report_incident",
      "arguments": {
-      "incident_type": "line_down",
-      "location": "대촌동 변압기",
-      "hazard": "electrocution"
+      "incident_type": "outage",
+      "location": "대촌동"
      }
     }
    ],
-   "reasoning": "power line snapped and hanging -> line_down; households none; hazard electrocution",
+   "reasoning": "power is all out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 579.2,
+   "latency_ms": 534.2,
    "exact": false,
    "decision": true,
    "incident_type": false,
-   "location": false
+   "location": true
   },
   {
    "query": "배전선로 단선 금곡교 인근 감전 주의 필요",
@@ -646,15 +645,14 @@
      "name": "report_incident",
      "arguments": {
       "incident_type": "line_down",
-      "location": "배전선로",
-      "hazard": "electrocution"
+      "location": "배전선로"
      }
     }
    ],
-   "reasoning": "power line snapped and hanging -> line_down; households none; hazard electrocution",
+   "reasoning": "power line snapped and hanging -> line_down; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 790.3,
+   "latency_ms": 605.1,
    "exact": false,
    "decision": true,
    "incident_type": true,
@@ -683,7 +681,7 @@
    "reasoning": "power is all out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 1007.1,
+   "latency_ms": 529.2,
    "exact": false,
    "decision": true,
    "incident_type": true,
@@ -712,7 +710,7 @@
    "reasoning": "sparks from a pole -> spark; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 1100.5,
+   "latency_ms": 506.5,
    "exact": false,
    "decision": true,
    "incident_type": false,
@@ -738,10 +736,10 @@
      }
     }
    ],
-   "reasoning": "outage -> outage; Green Valley apartments -> households 5; hazard none",
+   "reasoning": "power went out -> outage; Green Valley households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 975.4,
+   "latency_ms": 322.9,
    "exact": true,
    "decision": true,
    "incident_type": true,
@@ -771,7 +769,7 @@
    "reasoning": "power line is down -> line_down; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 644.8,
+   "latency_ms": 389.5,
    "exact": false,
    "decision": true,
    "incident_type": true,
@@ -780,21 +778,13 @@
   {
    "query": "이번 달 전기요금 왜 이렇게 많이 나왔어요?",
    "want": [],
-   "got": [
-    {
-     "name": "report_incident",
-     "arguments": {
-      "incident_type": "line_down",
-      "location": "이번 달"
-     }
-    }
-   ],
-   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "got": [],
+   "reasoning": "says the power is fine -> no report",
    "confidence": null,
    "error": null,
-   "latency_ms": 639.0,
-   "exact": false,
-   "decision": false,
+   "latency_ms": 206.2,
+   "exact": true,
+   "decision": true,
    "incident_type": false,
    "location": false
   },
@@ -805,7 +795,7 @@
    "reasoning": "asks about the electricity bill -> no report",
    "confidence": null,
    "error": null,
-   "latency_ms": 212.5,
+   "latency_ms": 147.3,
    "exact": true,
    "decision": true,
    "incident_type": false,
@@ -814,21 +804,13 @@
   {
    "query": "아까 정전됐다가 지금은 다시 들어왔어요 괜찮아요",
    "want": [],
-   "got": [
-    {
-     "name": "report_incident",
-     "arguments": {
-      "incident_type": "outage",
-      "location": "아까 정전됐다가"
-     }
-    }
-   ],
-   "reasoning": "power is all out -> outage; households none; hazard none",
+   "got": [],
+   "reasoning": "wants to change the account holder -> no report",
    "confidence": null,
    "error": null,
-   "latency_ms": 952.8,
-   "exact": false,
-   "decision": false,
+   "latency_ms": 250.1,
+   "exact": true,
+   "decision": true,
    "incident_type": false,
    "location": false
   },
@@ -839,7 +821,7 @@
    "reasoning": "asks about the electricity bill -> no report",
    "confidence": null,
    "error": null,
-   "latency_ms": 192.2,
+   "latency_ms": 234.5,
    "exact": true,
    "decision": true,
    "incident_type": false,
@@ -852,15 +834,15 @@
     {
      "name": "report_incident",
      "arguments": {
-      "incident_type": "line_down",
-      "location": "한전 고객센터"
+      "incident_type": "outage",
+      "location": "한전"
      }
     }
    ],
-   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "reasoning": "power is out -> outage; households none; hazard none",
    "confidence": null,
    "error": null,
-   "latency_ms": 467.2,
+   "latency_ms": 521.6,
    "exact": false,
    "decision": false,
    "incident_type": false,
@@ -873,7 +855,7 @@
    "reasoning": "wants to change the account holder -> no report",
    "confidence": null,
    "error": null,
-   "latency_ms": 291.1,
+   "latency_ms": 359.1,
    "exact": true,
    "decision": true,
    "incident_type": false,
