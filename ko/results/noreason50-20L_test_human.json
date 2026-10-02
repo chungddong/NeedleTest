@@ -120,8 +120,7 @@
      "name": "report_incident",
      "arguments": {
       "incident_type": "pole_down",
-      "location": "저수지 가는 길",
-      "hazard": "electrocution"
+      "location": "저수지 가는 길"
      }
     }
    ],
@@ -827,6 +826,15 @@
    "decision": false,
    "incident_type": false,
    "location": false
+  }
+ ],
+ "rescored": [
+  {
+   "time": "2026-10-02T14:36:17",
+   "data": "ko/data/test_human.jsonl",
+   "relabeled": [
+    "저수지 가는 길에 전주가 기울어서 넘어갔어요 전선이 길에 떨어져 있어요"
+   ]
   }
  ]
 }

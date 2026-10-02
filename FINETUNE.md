@@ -171,6 +171,7 @@ scp ko/out/needle3-ko-*.cact chungman@<Pi 주소>:~/Develop/NeedleTest/models/
 | `ko/schema.py` | 신고 스키마 `report_incident` |
 | `ko/make_smoke_data.py` | 파이프라인 확인용 24개 (학습용, 행마다 근거 구절 → `reasoning`) |
 | `ko/jax_score.py` | 어댑터를 `.cact` 없이 JAX에서 채점 (기본값은 엔진처럼 `<think>` 강제, `--no-think`) |
+| `ko/rescore.py` | 라벨을 고친 뒤 저장된 결과 JSON을 모델 재실행 없이 다시 채점 |
 | `ko/make_test_data.py` | 사람이 쓴 평가셋 32개 (학습 금지) |
 | `ko/gen_data.py` | OpenRouter로 한국어 학습 데이터 생성 |
 | `ko/try_model.py` | `.cact` 모델로 데이터셋을 돌려 채점, `--out`으로 결과 JSON 저장 |
