@@ -25,7 +25,8 @@ TRAINLOG=ko/results/train${TAG:+_$TAG}.log
 mkdir -p ko/out/split ko/results
 
 # 512 fits batch 8 on an 8 GB card (1024 ran out of memory); rows longer than the cap are
-# truncated at the end, so the count is printed (1 of 3,000 rows, 514 tokens, on 2026-10-02).
+# truncated at the end, so the count is printed (evidence-format data on 2026-10-02: 1 of 3,000
+# rows, 514 tokens; label-only data: 0).
 MAXCAP=${MAXCAP:-512}
 MAXLEN=$($PY - "$MAXCAP" <<'EOF'
 import sys

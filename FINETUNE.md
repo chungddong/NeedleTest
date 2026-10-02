@@ -109,11 +109,11 @@ bash ko/gpu_smoke.sh
 ```
 
 이번 생성에서 행이 줄어든 과정입니다.
-1. 검수에서 53행을 버리고(중복, 말투 불일치) 13행의 라벨을 고쳤습니다.
+1. 검수에서 53행을 버리고(중복, 말투 불일치) 13행을 고쳤습니다. 그중 답이 바뀐 건 6행으로 모두 `location` 범위였고, 7행은 근거 구절만 바뀌었습니다. 유형·`hazard`·`households`가 바뀐 행은 없습니다.
 2. 자동 검사에서 평가셋과 비슷한 문장 2행과 중복 2행을 더 버렸습니다.
 3. 남은 3,443행을 고정 시드로 섞어 3,000행을 썼습니다.
 
-라벨 분포는 거절 358, outage 951, line_down 461, pole_down 354, spark 349, transformer_noise 267, fire 260이고, `hazard`는 560행, `households`는 271행에 있습니다. 직접 표본 190행을 읽어 라벨 규칙에 맞는 것을 확인했습니다.
+라벨 분포는 거절 358, outage 951, line_down 461, pole_down 354, spark 349, transformer_noise 267, fire 260이고, `hazard`는 560행, `households`는 271행에 있습니다. 조립 후 표본을 직접 읽어 라벨 규칙에 맞는 것을 확인했습니다(스타일별 12행씩 120행, `hazard`가 붙은 비화재 행 40행, `households` 행 30행. 이 검토 자체는 결과 파일로 남기지 않았습니다).
 
 `gen_data.py`는 이 밖에도 생성 프롬프트를 출력하고(`--print-prompt`), OpenRouter로 직접 생성할 수 있습니다(`OPENROUTER_API_KEY` 필요, 기본 모델 `deepseek/deepseek-v4.1-flash`). 어느 경로든 같은 검사를 거칩니다. 걸러내는 대상은 스키마 위반, 원문에 없는 `location`, 평가셋과 같거나 거의 같은 문장(글자 바이그램 자카드 0.45 이상), 영어 근거 구절이 없는 행입니다.
 
@@ -129,7 +129,9 @@ bash ko/train_main.sh
 4. 12/16/20레이어로 내보내 평가셋을 채점하고, `bench.py`로 영어 능력이 유지되는지 확인합니다.
 5. 같은 PC에서 원본 4비트 모델도 같은 방식으로 채점해 비교 기준으로 씁니다.
 
-`--max-len`은 512입니다. RTX 3070(8GB)에서 배치 8, 길이 1024는 메모리 부족(OOM)이었습니다. 3,000행 중 512토큰을 넘는 행은 1개(514토큰, 끝 2토큰이 잘림)뿐이라 512로 고정했습니다(중앙값 362, 상위 1% 461토큰). 메모리가 부족하면 `BATCH=4 bash ko/train_main.sh`로 배치를 낮춥니다.
+**현재 최선 설정(v2)**: `TAG=v2 EPOCHS=8 LR=1e-3 bash ko/train_main.sh`. 처음 설정(3에폭, 근거+라벨 `reasoning`)은 평가셋 정답 8/32에 그쳤습니다. 검증 실험에서 라벨만 쓰는 `reasoning`과 8에폭이 가장 좋아 그 설정으로 다시 학습했고, 평가셋 정답이 19/32가 됐습니다(한국어 신고 유형 21/24). 자세한 수치와 결과 파일은 CLAUDE.md "현재 상태"에 있습니다. 학습 loss(에폭 끝 배치)는 5에폭에 처음 0.002 아래(0.0016)로 내려가고 이후 0.0003~0.0023 사이를 오가며, 학습 데이터를 거의 외우는 구간에 들어갑니다(`ko/results/train_v2.log`). 학습 loss만으로는 과적합을 판단할 수 없으니 검증과 평가셋으로 확인합니다.
+
+`--max-len`은 512입니다. RTX 3070(8GB)에서 배치 8, 길이 1024는 메모리 부족(OOM)이었습니다. 근거+라벨 형식이던 `train.jsonl`에서는 512토큰을 넘는 행이 1개(514토큰, 끝 2토큰이 잘림)뿐이라 512로 고정했고, 라벨만 형식인 지금 데이터는 512를 넘는 행이 없습니다. `train_main.sh`가 실행할 때마다 그 개수를 출력합니다. 메모리가 부족하면 `BATCH=4 bash ko/train_main.sh`로 배치를 낮춥니다.
 
 **4. 내보내기** (깊이별로 여러 개 만들어 비교)
 
@@ -192,7 +194,9 @@ scp ko/out/needle3-ko-*.cact chungman@<Pi 주소>:~/Develop/NeedleTest/models/
 | `ko/gen_workflow.js` | 학습 데이터를 만든 Claude Code 워크플로 (생성 20묶음 + 묶음별 검수 2개) |
 | `ko/apply_fixes.py` | 검수 결과(수정·삭제)를 원본 행에 적용 |
 | `ko/data/gen/` | `train.jsonl`의 원본 행(`raw/`)과 검수 결과(`workflow_result.json`) |
-| `ko/train_main.sh` | 본 학습: 학습률 선택, 전체 학습, 12/16/20레이어 내보내기, 평가, 영어 회귀 |
+| `ko/train_main.sh` | 본 학습: 학습률 선택, 전체 학습, 12/16/20레이어 내보내기, 평가, 영어 회귀 (`LR=`, `EPOCHS=`, `TAG=`) |
+| `ko/exp_reasoning.sh` | `reasoning` 형식(근거+라벨 / 라벨만)과 에폭(3/8) 비교 실험 |
+| `ko/calib.py` | 확신도(토큰 확률) 구간별 정확도, ECE, 문턱값별 처리 비율 |
 | `ko/make_test_data.py` | 사람이 쓴 평가셋 32개 (학습 금지) |
 | `ko/gen_data.py` | 생성 프롬프트·라벨 검사·`reasoning` 조립. 원본 행을 `--from`으로 조립하거나 OpenRouter로 생성 |
 | `ko/try_model.py` | `.cact` 모델로 데이터셋을 돌려 채점, `--out`으로 결과 JSON 저장 |

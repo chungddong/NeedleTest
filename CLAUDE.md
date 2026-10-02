@@ -26,10 +26,19 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
   - 평가셋 32개 정답은 12L 5, 16L 4, **20L 8**. 20L 한국어 신고 24건은 호출 23, 장소 16, 유형 6, 정답 4. 같은 PC의 원본 4비트 20L은 정답 2/32, 유형 7/26, 장소 3/26 (`ko/results/ko-*L_test_human.json`, `base-20L-w4_test_human.json`).
   - 영어 회귀(`bench.py`, 92문항)는 파인튜닝 20L 0.674, 원본 4비트 0.772. multi 0.80 대 1.00, refusal 0.27 대 0.53 (`results/ko-20L.json`, `results/pc-base-20L-w4.json`).
   - **약점은 신고 유형.** 검증 오답을 보면 모델이 먼저 쓰는 영어 근거 구절이 입력과 무관한 흔한 문구로 쏠리고(변압기 소음에 "power out, 40 households stated"), 호출이 그 문구를 따라감.
+- **후속 실험** (같은 검증 300행, 1e-3, `ko/exp_reasoning.sh`, `ko/results/exp_*`): 정답은 근거+라벨 3에폭 90, 라벨만 3에폭 108, 근거+라벨 8에폭 167, **라벨만 8에폭 213**(유형 250/270, 판단 293/300). 근거 구절을 빼는 것과 에폭을 늘리는 것 모두 효과가 있음. `reasoning`을 라벨만 쓰는 형식으로 바꿔 `train.jsonl`을 재조립(행·순서 동일).
+- **현재 최선 모델 v2** (라벨만 `reasoning`, 1e-3, 8에폭, 3,000행; `TAG=v2 EPOCHS=8 LR=1e-3 bash ko/train_main.sh`; 어댑터 `ko/out/ko_v2_lora.safetensors`, `ko/out/needle3-ko-v2-20L.cact` 63MB):
+  - 평가셋 32개(학습에 안 쓴 사람이 쓴 문장): 20L **정답 19/32**, 판단 31/32. 한국어 신고 24건은 정답 12, **유형 21**, 장소 14. 무관 문의 거절 6/6. 12L 정답 2, 16L 8 (`ko/results/ko-v2-*L_test_human.json`).
+  - 유형 정확도가 검증 93%와 평가셋 88%로 비슷함(1차는 49% 대 31%).
+  - **남은 약점은 장소**: 대부분 범위를 넓게 자름("시청 사거리 신호등이랑", "대촌동 변압기 소음 민원 현장 확인"). 유형 오답 2건("불 다 꺼졌어요"를 `fire`로), 신고 누락 1건("정전요 행복빌라").
+  - 영어 회귀 0.739 (1차 0.674, 원본 4비트 0.772). multi 1.00, refusal 0.67(원본 0.53)이지만 basic 0.90, args 0.85, bench 한국어 세트 0/12 (`results/ko-v2-20L.json`).
+  - 확신도 구간 평가(`ko/calib.py`, JAX에서 출력 전체 확률): 평균 확신도 0.85 대 정확도 0.59로 과신(ECE 0.31). 0.95 이상 18행은 정확도 89%, 0.50~0.95 11행은 27%. 0.95 이상만 자동 접수하면 56%를 정확도 89%로 처리 (`ko/results/calib_v2_test_human.json`, 32행이라 구간별 표본이 작음).
 
 다음 할 일
-1. 후속 실험(진행 중, 같은 검증 300행): 근거 구절을 뺀 라벨만의 `reasoning`(3에폭), 지금 형식으로 8에폭, 라벨만 8에폭. 좋아지면 그 방식으로 최종 모델을 다시 만들기.
-2. 결과를 커밋·푸시하고, `.cact`는 Pi로 복사해 지연·메모리 측정.
+1. `ko/out/needle3-ko-v2-20L.cact`를 Pi로 복사해 지연·메모리 측정.
+2. 장소 범위 자르기 개선(학습 데이터 장소 규칙 점검, 장소가 길게 잘린 실패 유형 보강).
+3. 평가셋을 100~200문장으로 확대(32문장은 구간이 넓음).
+4. 확신도 게이트를 단말에서 쓰려면 엔진이 토큰 확률을 내줘야 함(현재 JAX에서만 계산).
 
 데이터 생성은 OpenRouter 대신 이 세션의 Claude 에이전트로 합니다(사용자 결정). 외부 유료 서비스나 API 키가 필요하면 먼저 이유를 설명합니다.
 
@@ -68,6 +77,7 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
 bash ko/gpu_smoke.sh                                              # 첫 실행: 설치 + 스모크
 .venv/bin/python ko/try_model.py <model.cact|-> ko/data/test_human.jsonl --out ko/results/<이름>.json
 .venv/bin/python ko/jax_score.py ko/out/<adapter>.safetensors ko/data/smoke.jsonl   # 엔진 없이 어댑터 채점
+.venv/bin/python ko/calib.py ko/out/<adapter>.safetensors <data.jsonl> --name <이름>   # 확신도 구간별 정확도
 .venv/bin/needle finetune ko/data/train.jsonl --epochs 3 --batch-size 8 --lr 1e-4 --max-len 512 --out ko/out/ko_lora.safetensors
 .venv/bin/needle build checkpoints/needle3.safetensors --lora ko/out/ko_lora.safetensors --layers 20 --out ko/out/needle3-ko-20L.cact
 .venv/bin/python bench.py --weights ko/out/needle3-ko-20L.cact --label ko-20L   # 영어 회귀 확인

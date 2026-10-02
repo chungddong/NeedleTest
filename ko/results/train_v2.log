@@ -1,0 +1,67 @@
+  backend   gpu  float32
+  depth     20 layers
+  data      3000 examples  seq_len 512  cap 512
+  numerics  CQ W4 STE + A8 (matches export)
+  lora      rank 16  alpha 32  5 weight groups
+  schedule  3000 steps  warmup 150  cosine decay  clip 1.0  (compiling...)
+  step      60/3000  loss 0.2219
+  step      120/3000  loss 0.0952
+  step      180/3000  loss 0.1063
+  step      240/3000  loss 0.0660
+  step      300/3000  loss 0.0576
+  step      360/3000  loss 0.0595
+  epoch     1/8  loss 0.0509
+  step      420/3000  loss 0.0419
+  step      480/3000  loss 0.0860
+  step      540/3000  loss 0.0393
+  step      600/3000  loss 0.0591
+  step      660/3000  loss 0.0546
+  step      720/3000  loss 0.0472
+  epoch     2/8  loss 0.0483
+  step      780/3000  loss 0.0365
+  step      840/3000  loss 0.0216
+  step      900/3000  loss 0.0209
+  step      960/3000  loss 0.0394
+  step      1020/3000  loss 0.0205
+  step      1080/3000  loss 0.0164
+  epoch     3/8  loss 0.0145
+  step      1140/3000  loss 0.0084
+  step      1200/3000  loss 0.0177
+  step      1260/3000  loss 0.0158
+  step      1320/3000  loss 0.0227
+  step      1380/3000  loss 0.0069
+  step      1440/3000  loss 0.0028
+  step      1500/3000  loss 0.0095
+  epoch     4/8  loss 0.0095
+  step      1560/3000  loss 0.0060
+  step      1620/3000  loss 0.0136
+  step      1680/3000  loss 0.0134
+  step      1740/3000  loss 0.0031
+  step      1800/3000  loss 0.0036
+  step      1860/3000  loss 0.0004
+  epoch     5/8  loss 0.0016
+  step      1920/3000  loss 0.0083
+  step      1980/3000  loss 0.0035
+  step      2040/3000  loss 0.0010
+  step      2100/3000  loss 0.0040
+  step      2160/3000  loss 0.0129
+  step      2220/3000  loss 0.0008
+  epoch     6/8  loss 0.0013
+  step      2280/3000  loss 0.0029
+  step      2340/3000  loss 0.0032
+  step      2400/3000  loss 0.0029
+  step      2460/3000  loss 0.0110
+  step      2520/3000  loss 0.0016
+  step      2580/3000  loss 0.0042
+  epoch     7/8  loss 0.0023
+  step      2640/3000  loss 0.0003
+  step      2700/3000  loss 0.0011
+  step      2760/3000  loss 0.0019
+  step      2820/3000  loss 0.0009
+  step      2880/3000  loss 0.0010
+  step      2940/3000  loss 0.0043
+  step      3000/3000  loss 0.0003
+  epoch     8/8  loss 0.0003
+  adapter   ko/out/ko_v2_lora.safetensors
+  next      needle build checkpoints/needle3.safetensors --lora ko/out/ko_v2_lora.safetensors
+  note      local tuning leaves the confidence head untrained; needle build drops it and confidence reports None
