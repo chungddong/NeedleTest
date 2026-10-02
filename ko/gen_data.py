@@ -10,6 +10,10 @@ reasons in a <think> block before calling, so training rows must teach that bloc
 The model writes only a short English evidence phrase; the label part comes from
 the answers. Rows with a missing or non-English evidence phrase are dropped.
 
+Rows are also dropped when the answers break the schema (unknown keys, enum values,
+households outside 1..100000), when a location is not copied verbatim from the query,
+or when the query is a sentence of the evaluation set. Drop counts are printed at the end.
+
 Usage (on the GPU server):
   export OPENROUTER_API_KEY=...        # your own key; generation is billed by OpenRouter
   python ko/gen_data.py --num 3000 --out ko/data/train.jsonl
@@ -20,14 +24,55 @@ import os
 import random
 import re
 import sys
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, os.path.dirname(__file__))
 
-from needle.model.finetune import _openrouter, _parse_array, DEFAULT_MODEL
+from needle.model.finetune import _openrouter, _parse_array
 from schema import TOOLS_JSON, reasoning
 
+# Pinned instead of needle's "deepseek/deepseek-flash-latest", which OpenRouter lists only as
+# "~deepseek/deepseek-flash-latest" (an alias that currently points at this model) and whose
+# target can change between runs.
+DEFAULT_MODEL = "deepseek/deepseek-v4.1-flash"
 HANGUL = re.compile("[ㄱ-ㆎ가-힣]")
+SCHEMA = TOOLS_JSON[0]
+PROPS = SCHEMA["parameters"]["properties"]
+TEST_QUERIES = {json.loads(line)["query"].strip()
+                for line in open(os.path.join(os.path.dirname(__file__), "data", "test_human.jsonl"),
+                                 encoding="utf-8")}
+
+
+def problem(row):
+    """Why a generated row is unusable, or None when it is fine."""
+    query = row.get("query")
+    if not isinstance(query, str) or not query.strip():
+        return "no query"
+    if query.strip() in TEST_QUERIES:
+        return "evaluation sentence"
+    answers = row.get("answers")
+    if not isinstance(answers, list):
+        return "answers not a list"
+    for call in answers:
+        args = call.get("arguments") if isinstance(call, dict) else None
+        if not isinstance(call, dict) or call.get("name") != SCHEMA["name"] or not isinstance(args, dict):
+            return "bad call"
+        if set(args) - set(PROPS) or not set(SCHEMA["parameters"]["required"]) <= set(args):
+            return "bad keys"
+        if args["incident_type"] not in PROPS["incident_type"]["enum"]:
+            return "bad incident_type"
+        if "hazard" in args and args["hazard"] not in PROPS["hazard"]["enum"]:
+            return "bad hazard"
+        households = args.get("households")
+        if households is not None and (type(households) is not int or not 1 <= households <= 100000):
+            return "bad households"
+        if not isinstance(args["location"], str) or not args["location"].strip() or args["location"] not in query:
+            return "location not copied from query"
+    evidence = row.get("evidence")
+    if not isinstance(evidence, str) or not evidence.strip() or HANGUL.search(evidence):
+        return "missing or Korean evidence"
+    return None
 
 STYLES = [
     "표준어로 차분하게 신고하는 주민",
@@ -70,16 +115,17 @@ def batch(style, n, model, api_key):
     text = _openrouter([{"role": "user", "content": PROMPT.format(
         tools=json.dumps(TOOLS_JSON, ensure_ascii=False, indent=1), n=n, style=style,
         refusals=max(1, n // 8))}], model, api_key)
-    kept = []
+    kept, dropped = [], Counter()
     for row in _parse_array(text):
-        evidence = str(row.pop("evidence", "") or "").strip()
-        if not evidence or HANGUL.search(evidence) or not isinstance(row.get("answers"), list):
+        why = problem(row)
+        if why:
+            dropped[why] += 1
             continue
-        row["reasoning"] = reasoning(evidence, row["answers"])
-        row["tools"] = TOOLS_JSON
-        row["style"] = style
-        kept.append(row)
-    return kept
+        evidence = row.pop("evidence").strip()
+        kept.append({"query": row["query"], "tools": TOOLS_JSON,
+                     "reasoning": reasoning(evidence, row["answers"]),
+                     "answers": row["answers"], "style": style})
+    return kept, dropped
 
 
 def main():
@@ -95,24 +141,38 @@ def main():
         raise SystemExit("set OPENROUTER_API_KEY")
 
     jobs = [random.choice(STYLES) for _ in range(-(-args.num * 13 // 10 // args.batch))]
-    seen, rows = set(), []
+    print(f"model {args.model}, {len(jobs)} batches of {args.batch}", flush=True)
+    seen, rows, dropped, failed = set(), [], Counter(), 0
     with ThreadPoolExecutor(args.workers) as pool:
         futures = [pool.submit(batch, s, args.batch, args.model, api_key) for s in jobs]
         for fut in as_completed(futures):
             try:
-                for row in fut.result():
+                kept, why = fut.result()
+                dropped.update(why)
+                for row in kept:
                     key = row["query"].strip()
-                    if key not in seen:
+                    if key in seen:
+                        dropped["duplicate"] += 1
+                    else:
                         seen.add(key)
                         rows.append(row)
             except Exception as exc:
+                failed += 1
                 print("failed:", exc, flush=True)
             print(f"{len(rows)} examples", flush=True)
+    print(f"dropped {sum(dropped.values())}: {dict(dropped.most_common())}; failed batches {failed}")
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
-    with open(args.out, "w") as f:
-        for row in rows[:args.num]:
+    rows = rows[:args.num]
+    with open(args.out, "w", encoding="utf-8") as f:
+        for row in rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
-    print(f"wrote {min(len(rows), args.num)} examples to {args.out}")
+    print(f"wrote {len(rows)} examples to {args.out}")
+    calls = [c["arguments"] for r in rows for c in r["answers"]]
+    print("refusals", sum(not r["answers"] for r in rows),
+          "| types", dict(Counter(a["incident_type"] for a in calls).most_common()),
+          "| hazard", dict(Counter(a["hazard"] for a in calls if "hazard" in a)),
+          "| households", sum("households" in a for a in calls),
+          "| multi-call", sum(len(r["answers"]) > 1 for r in rows))
 
 
 if __name__ == "__main__":

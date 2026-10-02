@@ -98,11 +98,12 @@ bash ko/gpu_smoke.sh
 **2. 학습 데이터 생성** (OpenRouter API 키 필요, 사용량만큼 과금. GPU는 쓰지 않음)
 
 ```bash
-export OPENROUTER_API_KEY=...
-.venv/bin/python ko/gen_data.py --num 3000 --out ko/data/train.jsonl
+read -rs OPENROUTER_API_KEY && export OPENROUTER_API_KEY   # 키를 붙여넣고 Enter (화면과 기록에 남지 않음)
+.venv/bin/python ko/gen_data.py --num 100 --out ko/data/pilot.jsonl     # 시범 생성
+.venv/bin/python ko/gen_data.py --num 3000 --out ko/data/train.jsonl    # 시범 결과 확인 후
 ```
 
-생성된 데이터에서 100개쯤은 직접 읽고 라벨 규칙(아래)에 맞는지 확인하세요. 틀린 라벨이 많으면 프롬프트(`ko/gen_data.py`의 `PROMPT`)를 고친 뒤 다시 생성합니다.
+생성 모델의 기본값은 `deepseek/deepseek-v4.1-flash`입니다(`--model`로 변경). needle의 기본값 `deepseek/deepseek-flash-latest`는 OpenRouter에 `~` 붙은 별칭으로만 있고, 가리키는 모델이 바뀔 수 있어서 고정했습니다. 스키마 위반, 원문에 없는 `location`, 평가셋과 같은 문장, 영어 근거 구절이 없는 행은 자동으로 버리고 끝에 버린 이유별 개수와 라벨 분포를 출력합니다. 시범 생성분에서 라벨 규칙(아래)에 맞는지 직접 확인하고, 틀린 라벨이 많으면 프롬프트(`ko/gen_data.py`의 `PROMPT`)를 고친 뒤 본 생성을 합니다.
 
 **3. 학습**
 
