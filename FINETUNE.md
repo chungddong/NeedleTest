@@ -95,25 +95,41 @@ bash ko/gpu_smoke.sh
 
 출력 처음의 `jax devices:`에 `CudaDevice`가 보여야 GPU를 쓰는 것입니다. 24개 문장을 50에폭 동안 일부러 외우게 한 뒤 두 번 채점합니다. 먼저 `ko/jax_score.py`로 엔진 없이 JAX에서 채점하고, 그다음 `.cact`로 엔진에서 채점합니다. 둘 다 대부분 맞히면 파이프라인이 정상입니다. JAX만 맞히고 엔진이 못 맞히면 내보내기나 엔진 쪽 문제입니다. 10에폭으로는 loss가 0.07까지 내려가도 신고 유형을 거의 학습하지 못했습니다. loss는 출력 토큰 전체의 평균이라, 쉬운 JSON 구조와 장소를 옮겨 적는 바이트가 대부분을 차지하기 때문입니다. 사람이 쓴 테스트셋 점수는 이 단계에서는 낮게 나오는 게 정상입니다. 결과는 `ko/results/smoke*`에 저장되니 커밋해서 공유합니다.
 
-**2. 학습 데이터 생성** (OpenRouter API 키 필요, 사용량만큼 과금. GPU는 쓰지 않음)
+**2. 학습 데이터 생성** (GPU는 쓰지 않음)
+
+현재 `ko/data/train.jsonl`(3,000행)은 Claude Code 워크플로(`ko/gen_workflow.js`)로 만들었습니다(2026-10-02).
+- **생성**: 화자 스타일 10종 × 지역 2종(농어촌·산간·해안, 도시·공단)으로 20묶음 × 170행을 만들었습니다. 시범 100행을 더해 원본은 3,500행입니다.
+- **검수**: 묶음마다 서로 독립인 검수 에이전트 둘이 라벨 규칙과 장소·말투·중복을 따로 보고, 수정할 행만 데이터로 돌려줬습니다.
+- **평가셋 차단**: 생성과 검수 에이전트는 평가셋 파일을 열지 않습니다.
+- **기록**: 원본은 `ko/data/gen/raw/`, 검수 결과는 `ko/data/gen/workflow_result.json`에 있고, 아래 명령으로 `train.jsonl`이 똑같이 다시 만들어집니다.
 
 ```bash
-read -rs OPENROUTER_API_KEY && export OPENROUTER_API_KEY   # 키를 붙여넣고 Enter (화면과 기록에 남지 않음)
-.venv/bin/python ko/gen_data.py --num 100 --out ko/data/pilot.jsonl     # 시범 생성
-.venv/bin/python ko/gen_data.py --num 3000 --out ko/data/train.jsonl    # 시범 결과 확인 후
+.venv/bin/python ko/apply_fixes.py ko/data/gen/workflow_result.json ko/data/gen/raw ko/out/fixed
+.venv/bin/python ko/gen_data.py --from ko/out/fixed/*.jsonl --num 3000 --out ko/data/train.jsonl
 ```
 
-생성 모델의 기본값은 `deepseek/deepseek-v4.1-flash`입니다(`--model`로 변경). needle의 기본값 `deepseek/deepseek-flash-latest`는 OpenRouter에 `~` 붙은 별칭으로만 있고, 가리키는 모델이 바뀔 수 있어서 고정했습니다. 스키마 위반, 원문에 없는 `location`, 평가셋과 같은 문장, 영어 근거 구절이 없는 행은 자동으로 버리고 끝에 버린 이유별 개수와 라벨 분포를 출력합니다. 시범 생성분에서 라벨 규칙(아래)에 맞는지 직접 확인하고, 틀린 라벨이 많으면 프롬프트(`ko/gen_data.py`의 `PROMPT`)를 고친 뒤 본 생성을 합니다.
+이번 생성에서 행이 줄어든 과정입니다.
+1. 검수에서 53행을 버리고(중복, 말투 불일치) 13행의 라벨을 고쳤습니다.
+2. 자동 검사에서 평가셋과 비슷한 문장 2행과 중복 2행을 더 버렸습니다.
+3. 남은 3,443행을 고정 시드로 섞어 3,000행을 썼습니다.
 
-**3. 학습**
+라벨 분포는 거절 358, outage 951, line_down 461, pole_down 354, spark 349, transformer_noise 267, fire 260이고, `hazard`는 560행, `households`는 271행에 있습니다. 직접 표본 190행을 읽어 라벨 규칙에 맞는 것을 확인했습니다.
+
+`gen_data.py`는 이 밖에도 생성 프롬프트를 출력하고(`--print-prompt`), OpenRouter로 직접 생성할 수 있습니다(`OPENROUTER_API_KEY` 필요, 기본 모델 `deepseek/deepseek-v4.1-flash`). 어느 경로든 같은 검사를 거칩니다. 걸러내는 대상은 스키마 위반, 원문에 없는 `location`, 평가셋과 같거나 거의 같은 문장(글자 바이그램 자카드 0.45 이상), 영어 근거 구절이 없는 행입니다.
+
+**3. 학습** (학습률 선택 → 전체 학습 → 깊이별 내보내기 → 평가를 한 번에)
 
 ```bash
-export XLA_PYTHON_CLIENT_PREALLOCATE=false
-.venv/bin/needle finetune ko/data/train.jsonl --epochs 3 --batch-size 8 --lr 1e-4 \
-  --max-len 512 --out ko/out/ko_lora.safetensors 2>&1 | tee ko/results/train.log
+bash ko/train_main.sh
 ```
 
-학습이 끝나면 10% 검증 데이터의 정확도(4비트 기준)를 출력합니다. RTX 3070(8GB)이라 배치를 8로 잡았습니다. 메모리 부족(OOM)이 나면 4로 낮추고, 여유가 있으면 16으로 올립니다.
+1. `train.jsonl`을 90/10(시드 0)으로 나눕니다. 10%는 학습 데이터에서 떼어 둔 검증용이고, 평가셋이 아닙니다.
+2. 학습률 1e-4, 3e-4, 1e-3을 3에폭씩 학습하고, 엔진으로 검증셋을 채점해 가장 좋은 값을 고릅니다.
+3. 그 학습률로 `train.jsonl` 전체를 다시 학습합니다.
+4. 12/16/20레이어로 내보내 평가셋을 채점하고, `bench.py`로 영어 능력이 유지되는지 확인합니다.
+5. 같은 PC에서 원본 4비트 모델도 같은 방식으로 채점해 비교 기준으로 씁니다.
+
+`--max-len`은 가장 긴 행에 맞춰 자동으로 정합니다. RTX 3070(8GB)이라 배치를 8로 잡았고, 메모리 부족(OOM)이 나면 `BATCH=4 bash ko/train_main.sh`로 낮춥니다.
 
 **4. 내보내기** (깊이별로 여러 개 만들어 비교)
 
@@ -173,8 +189,12 @@ scp ko/out/needle3-ko-*.cact chungman@<Pi 주소>:~/Develop/NeedleTest/models/
 | `ko/make_smoke_data.py` | 파이프라인 확인용 24개 (학습용, 행마다 근거 구절 → `reasoning`) |
 | `ko/jax_score.py` | 어댑터를 `.cact` 없이 JAX에서 채점 (기본값은 엔진처럼 `<think>` 강제, `--no-think`) |
 | `ko/rescore.py` | 라벨을 고친 뒤 저장된 결과 JSON을 모델 재실행 없이 다시 채점 |
+| `ko/gen_workflow.js` | 학습 데이터를 만든 Claude Code 워크플로 (생성 20묶음 + 묶음별 검수 2개) |
+| `ko/apply_fixes.py` | 검수 결과(수정·삭제)를 원본 행에 적용 |
+| `ko/data/gen/` | `train.jsonl`의 원본 행(`raw/`)과 검수 결과(`workflow_result.json`) |
+| `ko/train_main.sh` | 본 학습: 학습률 선택, 전체 학습, 12/16/20레이어 내보내기, 평가, 영어 회귀 |
 | `ko/make_test_data.py` | 사람이 쓴 평가셋 32개 (학습 금지) |
-| `ko/gen_data.py` | OpenRouter로 한국어 학습 데이터 생성 |
+| `ko/gen_data.py` | 생성 프롬프트·라벨 검사·`reasoning` 조립. 원본 행을 `--from`으로 조립하거나 OpenRouter로 생성 |
 | `ko/try_model.py` | `.cact` 모델로 데이터셋을 돌려 채점, `--out`으로 결과 JSON 저장 |
 | `ko/gpu_smoke.sh` | GPU 장비 첫 실행: 설치 + 스모크 학습·내보내기·추론, 결과를 `ko/results/`에 저장 |
 | `ko/results/` | 평가 결과와 학습 로그 (커밋 대상). `base-20L-w2_test_human.json`은 원본 모델 기준점 |

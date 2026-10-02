@@ -29,13 +29,16 @@ def main():
     ap.add_argument("weights", nargs="?", default="-")
     ap.add_argument("data", nargs="?", default="ko/data/smoke.jsonl")
     ap.add_argument("--out", help="write per-row results and scores to this JSON file")
+    ap.add_argument("--auto-date", action=argparse.BooleanOptionalAction, default=None,
+                    help="SDK date fact; default on for the published model, off for a weights file")
     args = ap.parse_args()
     weights = None if args.weights == "-" else args.weights
+    # Tuned weights saw no system turn in training, so skip the auto date fact
+    # (as `needle finetune` advises); base-model archives pass --auto-date.
+    auto_date = weights is None if args.auto_date is None else args.auto_date
 
     def make_agent():
-        # Tuned weights saw no system turn in training, so skip the auto date fact
-        # (as `needle finetune` advises); the base model keeps the SDK default.
-        return needle.Needle(tools=TOOLS, weights=weights, auto_date=weights is None)
+        return needle.Needle(tools=TOOLS, weights=weights, auto_date=auto_date)
 
     agent = make_agent()
     rows = [json.loads(line) for line in open(args.data, encoding="utf-8")]
@@ -90,7 +93,7 @@ def main():
         os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
         with open(args.out, "w", encoding="utf-8") as f:
             json.dump({
-                "weights": args.weights, "data": args.data, "scores": scores,
+                "weights": args.weights, "data": args.data, "auto_date": auto_date, "scores": scores,
                 "host": socket.gethostname(), "platform": platform.platform(),
                 "needle_version": needle.__version__,
                 "time": datetime.datetime.now().isoformat(timespec="seconds"),

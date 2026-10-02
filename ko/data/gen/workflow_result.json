@@ -1,0 +1,1385 @@
+{
+ "results": [
+  {
+   "chunk": "s01a",
+   "style": "표준어로 차분하게 신고하는 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, 170 rows in total. I checked every row by reading it back to myself. No script was run, because the task did not allow shell commands.\n\nCounts by type: 20 refusal, 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise, 15 fire.\n- 15 outage rows state households: 12, 30, 18, 25, 40, 9, 15, 22, 7, 35, 50, 6, 10, 28 and 45.\n- 30 rows have a hazard: 15 fire rows with fire/fire, 10 electrocution (line_down or pole_down) and 5 spark rows with hazard fire (\"불이 날 것 같습니다\").\n- 65 equipment rows have no hazard. 15 of them are spark-only rows.\n- 15 rows describe more than one event, labeled by the priority rule. Examples: pole plus wire on the ground is pole_down; sparks then an outage is spark; a transformer bang then an outage is transformer_noise; a broken wire with sparks is line_down; sparks then a fire is fire.\n- Length: 30 rows are 2–3 words, 90 are one sentence and 50 are two or three sentences.\n\nHard calls:\n- Refusal hard negatives: some refusals mention 정전 but are not outage reports. These include a planned-outage schedule question, a question about whether an earlier report was repaired, a \"power came back\" thanks, a breaker that had tripped, and a light that flickered but is fine now. All are answers [].\n- Where a place word ran straight into a plural facility word (e.g. \"근처 민박집들이\"), I reworded to \"근처에 있는 ...\" so the location ends cleanly. A few locations still include a trailing place noun, such as \"합천 가야면 해인사 가는 국도변 식당가\" and \"매곡리 저수지 둑 아래 축사\".\n- I counted \"~ 쪽\", \"일대\", \"한가운데\", \"가장자리\", \"가는 길\" and \"위\" as position words and kept them in the location.\n- Non-household numbers (\"30분째\", \"펑 소리가 두 번\") were kept without households.\n- Short rows were hard to vary in a calm standard-Korean voice, so the pattern \"<면/리> 정전입니다\" repeats a few times with different place names. 3 short rows use 해요체 (\"정전됐어요\", \"불났어요\"). The short refusal \"주소 변경 문의드립니다\" is somewhat generic.\n- Uniqueness: every row uses a different proper place name, mostly county + 면/읍/리 combinations with real and made-up villages. Generic facility nouns (마을회관, 경로당, 과수원, 국도변, 등산로 입구) do repeat. One row's location is \"안골\", which is a fairly common village name."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   }
+  },
+  {
+   "chunk": "s01b",
+   "style": "표준어로 차분하게 신고하는 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files of 34 rows each. Every file has the same mix: 4 refusals, 11 outage, 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Totals are 20 refusals, 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise and 15 fire. 15 outage rows state a household count (8 to 120 households, written as 가구 or 세대).\n\nI checked everything by hand only, because no shell commands were allowed. That covers location substrings, enum values, integer households, English-only evidence and unique queries. Nothing was run or parsed by machine, so run the usual validator before merging.\n\nAll rows use the 표준어로 차분하게 신고하는 주민 style.\n\n- Hazard: 33 rows have a hazard. The 15 fire rows all have hazard fire, as the rule says to do when a fire actually started. The other 18 are on non-fire rows (12 electrocution, 6 fire). That leaves 62 equipment-damage rows with no hazard, including 13 spark-only rows.\n- Rows with more than one problem: 20, a bit above the target of about 15. Each uses the priority order. Examples:\n  - pole fell and a line came down -> pole_down\n  - line snapped and sparked -> line_down\n  - transformer noise, then sparks -> spark\n  - sparks, then a fire -> fire\n  - transformer bang, then outage -> transformer_noise\n- Length: about 32 short rows of two to four words, about 90 one-sentence rows and about 48 rows of two or three sentences.\n- Trap rows: some rows include apartment block and unit numbers (105동, 714동 1502호, 2203동 801호, 1407호, 3동) or building counts (빌라 세 동, 다세대 건물 네 채) without a households value. The two 3동 and 세 동 rows also state a real count (60세대, 45세대), and only that number becomes households.\n\nRules that were hard to apply:\n1. Location boundary with a trailing noun. Where a non-equipment noun followed the place (a roof, a wall, a building), I either kept it as part of the place or reworded the sentence so the boundary was clear. Kept examples: 신정동 물류창고 지붕, 봉명동 원룸촌 담벼락 쪽, 서울대입구역 근처 원룸 건물. In rows like 남동공단 2블록 변압기 쪽에서, I dropped both the equipment noun and the 쪽 that follows it.\n2. Copula and particle endings. Locations given as 'X입니다', 'X인데' or 'X이고' were cut before the copula. 'X으로' and 'X에' were cut before the particle, e.g. 덕천동 젊음의거리 상가 쪽, 서면교차로.\n3. Place-name uniqueness. Every proper place name is used once across all 170 rows, including the places mentioned in refusal rows (오류동, 사당동). I also removed city prefixes that would have repeated, such as 대전, 부산, 인천, 안양 and 수원. Common nouns do repeat: 상가, 골목, 기숙사, 정문, 원룸촌, 오피스텔, 지하상가 and 물류창고. The 대학교 기숙사 theme makes 기숙사 hard to avoid, but each university is different.\n4. Fire rows: in the multi-problem fire rows I made the equipment itself catch fire (line insulation, a transformer, a pole), not a nearby tree or wall. That keeps them within the definition of fire as fire on the equipment.\n5. The refusal rows mix several kinds:\n   - bills: electricity-bill inquiry, when the bill is sent, high usage on the bill, bill reissue\n   - payment: auto-debit, card payment, payment deadline\n   - account changes: name change when moving, name-change inquiry, service sign-up after moving in\n   - other questions: wind warning, tomorrow's weather, service center hours, how to prepare for outages\n   - not an outage: power is fine (오류동, 사당동), it was only the user's own breaker, the neighbor was simply out\n   - recovery: power came back after yesterday's lightning, yesterday's reported outage was restored"
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s01b_p5.jsonl",
+      "line": 26,
+      "query": "강풍이 심해서 혹시 몰라 연락드렸습니다. 사당동 저희 아파트는 전기가 정상적으로 들어오고 있습니다.",
+      "action": "drop",
+      "reason": "Near-duplicate of s01b_p1.jsonl line 24 ('강풍 때문에 걱정돼서 연락드렸습니다. 여기 오류동 쪽은 전기가 잘 들어오고 있습니다.'). Both are two-sentence 'power is fine' refusals, and each clause is a paraphrase of the earlier one (wind worry, so I called / place X has normal power). Only the synonyms and an unlabeled place name differ, so the row adds no new refusal pattern."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s02a",
+   "style": "경상도 사투리를 쓰는 어르신",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, 170 rows in total. Each file has the same mix: 4 refusals, 11 outage (3 of them with households), 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Totals are 20 refusals, 55 outage (15 with households), 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise and 15 fire.\n\nHazard: 30 rows. These are the 15 fire rows (all hazard fire, since a real fire means both fields are fire) plus 15 more: line_down 5, pole_down 4, spark 4 and transformer_noise 2. Of those 15, 10 are electrocution and 5 are fire. 65 equipment-damage rows have no hazard, including 16 spark-only rows. Rows with two or more phenomena: 16 (pole+line, pole+outage, pole+spark, line+spark, line+outage, noise+outage, spark->fire, pole->fire, line->fire). Length: 31 rows of two or three words, 89 one-sentence rows and 50 rows of two or three sentences. Every row has the style string, and the dialect shows in each query through endings and words like 카이, 아이가, -삣다, 끊깄다, 심더, 능교, 데이, 퍼뜩 and 마카.\n\nI checked each row by hand before writing it; no script was run, since shell commands were not allowed. The checks were: location appears character for character in the query, with no trailing particle or equipment noun; only the allowed argument keys and enum values; households is a JSON integer; evidence has no Hangul and is 2-8 words; no duplicate queries. Proper place names (villages, harbors, temples and so on) are not repeated across the 170 rows. Generic landmark nouns such as 국도변, 저수지, 다리, 주차장, 비닐하우스 and 위판장 do appear more than once, each time attached to a different place name. Refusal rows contain no place names.\n\nRules that were hard to apply:\n1) I treated \"위험하다/위험합니더/위험해서 우짜노\" as electrocution even when the danger described is traffic or a crowd near a fallen pole, following the rule literally.\n2) \"불이 안 들어온다\" and \"불도 몬 켠다\" (the lights won't come on) are labeled outage. The word 불 here could be confused with fire, but I kept these because people really talk this way.\n3) \"전기가 끊겼다/끊깄다\" (the power is cut) is labeled outage, not line_down. line_down is only used when a 전깃줄 or 전선 is described as broken, sagging or fallen.\n4) Urgent outages that involve no electrocution or fire risk get no hazard: an oxygen machine at home, fish dying in a tank, frozen crops.\n5) One fire row describes a fallen line that set grass alight. I labeled it fire/fire as the closest fit to \"fire on equipment.\"\n6) Households come only from stated 가구, 세대 or 집 counts written as Korean number words. The row with \"우리 반 열두 세대\" is labeled 12.\n7) Long reporter-given locations are kept whole, for example \"대병면 합천호 회양관광단지 들어가는 길\" and \"내남면 이조리 한우농장 들어가는 입구.\" In \"춘산면 빙계계곡에 있는 민박집\" the location stops at \"춘산면 빙계계곡.\""
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02a_p5.jsonl",
+      "line": 32,
+      "query": "아까 정전됐던 거 이제 다 들어왔심더. 확인 전화 받았는데 괘안십니더.",
+      "action": "drop",
+      "reason": "Near-duplicate refusal: its main sentence only rewords s02a_p3.jsonl line 32 (\"아까 나갔던 전기 방금 다 들어왔심더\"). Both say the same thing (power that went out earlier is back), and a 'power restored' refusal already appears in s02a_p1 line 32."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s02b",
+   "style": "경상도 사투리를 쓰는 어르신",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files of 34 rows each, 170 in total. Every row uses the style 경상도 사투리를 쓰는 어르신. I checked the rows by hand while writing; I ran no script (shell was not allowed), so a validator pass is still worth running.\n\n**Mix by type:**\n- 20 refusals: bill amount, overdue payment, payment in parts, card payment, auto-pay, missing bill after a move, account name change (3), summer rate discount, typhoon, snow and heat-wave forecasts, EV charger, asking whether a repair is done, power already restored (2), and not-an-outage cases (TV remote battery, own breaker, neighbors away).\n- outage 55 (15 state a household count), line_down 25, pole_down 20, spark 20, transformer_noise 15, fire 15.\n\n**Hazard:** 30 rows carry one.\n- All 15 fire rows have hazard fire.\n- 12 electrocution rows say 위험하다, 감전될까 or 감전되겠다.\n- 3 spark rows say a fire may start (불나겠다, 불붙겠다, 불 옮겨붙겠다) and get hazard fire.\n- About 65 equipment rows have no hazard, including spark-only rows and lines sparking on the ground.\n\n**Multi-phenomenon rows (19, slightly above the ~15 target):** each takes the higher-priority type. Pole down with line down gives pole_down, a line on the ground that sparks gives line_down, sparks that turn into a fire give fire, a pole that falls and catches fire gives fire, and sparks or transformer noise followed by an outage keep spark or transformer_noise.\n\n**Length:** about 35 short texts of two to four words, about 85 single sentences and about 50 rows of two or three sentences.\n\n**Rules that were hard to apply:**\n1. **\"불 나갔다\" vs \"불났다\".** In the dialect, 불 나갔다 or 불이 꺼졌다 means the lights went out, while 불났다 means a fire. I kept both because people really say them, and labeled them outage and fire. The model has to tell these apart, so the outage rows with 불 phrasing are a deliberate contrast.\n2. **Household counts.** Apartment building and unit numbers (107동 1503호, 106동) never become households. One row says 노인네들 스무 명, which counts people, so it has no households field on purpose. One row joins a building number with a stated count (정관 롯데캐슬 106동 … 아흔 세대) and gets households 90.\n3. **Danger that is not electrical.** Some rows mention heat stroke, an oxygen machine at home, freezing, or an ambulance that cannot get through. None of these is an electrocution or fire risk, so they have no hazard.\n4. **Location boundaries.** I kept place nouns that are part of the spot (상가, 주택, 골목, 동네, 사무실, 길목, 지붕 위) and position words (앞, 옆, 뒤, 뒤편, 근처, 맞은편, 안). I dropped particles and equipment nouns, including 분전함. Each location is copied character for character from its query.\n5. **Repeated place names.** To keep every place unique across all 170 rows, I left out city prefixes once used (울산, 김해, 마산, 진해, 포항, 구미, 창원, 진주, 경산 appear once each). I also avoided near-duplicates such as 온천장/온천동 and 양산천/양산. Generic nouns such as 시장, 기숙사, 공단, 물류창고 and 경로당 do repeat, but always with a different place name attached.\n6. **Real names.** A few real landmarks and brand-named apartments appear (현대아파트, 두산위브, 롯데캐슬, 고려제강, 포스텍) mixed with invented ones. A reviewer may want to swap the brand names if they are a concern."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p3.jsonl",
+      "line": 14,
+      "query": "강풍 불고 나서 광안동 수영구청 앞 상가 정전됐다 카이.",
+      "action": "drop",
+      "reason": "Trivial variation of s02b_p1.jsonl line 14 ('강풍 불고 나서 반송 큰시장 상가가 다 정전됐심더.'). The lead-in and predicate are the same, and only the place is swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p3.jsonl",
+      "line": 30,
+      "query": "폭염에 일산동 조선소 정문 앞 변압기가 지잉지잉 소리를 억수로 낸데이.",
+      "action": "drop",
+      "reason": "Trivial variation of s02b_p1.jsonl line 29 ('폭염에 문현동 금융단지 뒤 변압기가 웅웅 소리를 억수로 낸다.'). The frame is the same, and only the place, the sound word and the ending change."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p4.jsonl",
+      "line": 14,
+      "query": "강풍에 남산역 앞 상가 불이 다 꺼졌심더.",
+      "action": "drop",
+      "reason": "Trivial variation of s02b_p2.jsonl line 15 ('강풍 분 뒤로 침산동 오페라하우스 앞 상가 불이 다 꺼졌심더.'). The predicate '앞 상가 불이 다 꺼졌심더' is word for word the same, and only the place changes."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p4.jsonl",
+      "line": 20,
+      "query": "강풍에 동상동 전통시장 지붕 위로 전깃줄이 떨어졌심더.",
+      "action": "drop",
+      "reason": "Trivial variation of s02b_p3.jsonl line 20 ('강풍에 석전 사거리 신호등 옆 전깃줄이 떨어져 있심더.'). It is the same '강풍에 [place] 전깃줄이 떨어졌' frame with only the place swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p4.jsonl",
+      "line": 23,
+      "query": "강풍에 장성동 시장 입구 전봇대가 확 기울었다 아이가.",
+      "action": "drop",
+      "reason": "Trivial variation of s02b_p2.jsonl line 23 ('강풍에 대명동 계명대 기숙사 뒤편 전봇대가 삐딱하이 기울었다.'). It is the same '강풍에 [place] 전봇대가 [adverb] 기울었다' frame, and only the place and the adverb change."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p4.jsonl",
+      "line": 30,
+      "query": "폭염에 엄궁동 대림시장 앞 변압기가 하루 종일 왱왱 소리를 낸데이.",
+      "action": "drop",
+      "reason": "Trivial variation of s02b_p1.jsonl line 29 ('폭염에 문현동 금융단지 뒤 변압기가 웅웅 소리를 억수로 낸다.'). It is the same '폭염에 [place] 변압기가 [sound] 소리를 낸다' frame, and only the place and the adverb change."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s02b_p5.jsonl",
+      "line": 23,
+      "query": "강풍에 상인동 상인역 1번 출구 앞 전봇대가 비스듬히 기울었심더.",
+      "action": "drop",
+      "reason": "Trivial variation of s02b_p2.jsonl line 23 ('강풍에 대명동 계명대 기숙사 뒤편 전봇대가 삐딱하이 기울었다.'). It is the same '강풍에 [place] 전봇대가 [adverb] 기울었다' frame, and only the place and the adverb change."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s03a",
+   "style": "전라도 사투리를 쓰는 어르신",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each. Per file: 4 refusals, 11 outage (3 with a household count), 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Totals: outage 55 (15 with households), line_down 25, pole_down 20, spark 20, transformer_noise 15, fire 15, refusals 20.\n\nCounts:\n- Hazard is set on 31 rows: all 15 fire rows, plus 16 others (electrocution where the reporter says dangerous or fears electrocution, fire where they say it might catch fire).\n- About 64 equipment-damage rows have no hazard, including several rows where sparks fly but no danger is stated.\n- About 18 rows describe more than one problem and use the priority rule (e.g. pole down plus line on the road gives pole_down; transformer hum then sparks gives spark; spark that lights grass gives fire).\n- Length mix is about 34 short 2-3 word texts, 90 single sentences and 46 two-or-three-sentence reports. Short rows are a little over the ~30 target and multi-sentence rows a little under ~50.\n\nPoints that were hard to apply:\n1. In Jeolla dialect, '불 나가' means the lights went out and '불나' means a fire started. I avoided the bare '불 나가' form. Where '불이 안 들어와' is used for an outage, the wording around it makes clear it is an outage.\n2. '겁나게' is a dialect intensifier ('very') but reads like 'scared'. I used it only in rows that already state a fire hazard or have nothing to do with danger. I also kept '무섭다' out of rows without a hazard.\n3. Households only use 가구/세대 counts. I avoided '열 집'-style or vague counts like 열댓. Rows with other numbers carry no households value: 3번 축사, 103동, 축사 2동, 국도 29호선, 두 시간째, 여든 (an age), 전봇대 두 개.\n4. Dialect place particles were stripped so the location stays verbatim: '입구서' gives '입구', '꼭대기서', '위로' gives '위', '밑에' gives '밑'. Some locations are long phrases kept exactly as said, such as '땅끝마을 펜션 단지 들어가는 길' and '국도 29호선 내장산 입구 휴게소'.\n5. Three fire rows are fire started by electrical equipment rather than the equipment itself burning: a fallen line lighting fishing nets, sparks lighting roadside grass, and a downed pole's line catching fire. I labeled them fire with hazard fire.\n6. One transformer_noise row has hazard fire because the reporter says it might burst into fire. The rest have no hazard.\n7. Every place name is used once across all 170 rows. Generic nouns such as 경로당, 마을회관, 저수지 and 비닐하우스 repeat, but always with a different place name. One refusal row names a place (운암면); the others name none. I did not open any repository file and did not run shell commands. The checks on locations, keys, Korean-free evidence and duplicates were done by reading each row, not by running a validator."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p3.jsonl",
+      "line": 22,
+      "query": "복내면 불꽃 튀어부러라",
+      "action": "drop",
+      "reason": "Trivial variation of s03a_p1.jsonl line 29 \"삼향 불꽃 튀어부러\": only the place name and one trailing syllable (라) differ."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03a_p5.jsonl",
+      "line": 1,
+      "query": "송광면 정전이랑께요",
+      "action": "drop",
+      "reason": "Trivial variation of s03a_p1.jsonl line 19 \"비금 정전이랑께\": only the place name and one trailing syllable (요) differ."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s03b",
+   "style": "전라도 사투리를 쓰는 어르신",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s03b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, every row in the 전라도 어르신 style. I checked them by reading them over only, because shell commands were not allowed, so no script has validated them.\n\nCounts by my own tally:\n- Row types: refusal 20, outage 55, line_down 25, pole_down 20, spark 20, transformer_noise 15, fire 15.\n- households: given in 15 outage rows (8 to 300). Several other rows carry building or unit numbers (105동, 3동 302호, 7동 1104호, 2층, 3블록, 2번로, 첨단2지구) with no households, on purpose.\n- hazard: 31 rows. All 15 fire rows have fire/fire. The other 16 are 10 electrocution and 6 fire, spread over line_down, pole_down and spark.\n- Equipment damage with no hazard: 65 rows, including 15 spark rows with sparks only.\n- Several phenomena in one row: about 17, using the priority rule. Examples: pole plus line goes to pole_down, line plus spark to line_down, spark plus outage to spark, transformer noise plus outage to transformer_noise, fire plus pole/line/outage to fire.\n- Length: about 29 two-to-three-word texts, about 92 one-sentence rows, about 49 rows of two or three sentences.\n\nRules that were hard to apply:\n1. Copula endings after a place: several queries end the place with a dialect copula (매화빌라인디라, 금남로4가역인디라, 경로당인디요, 바닷가 앞 빌라여라). I treated these like particles and kept only the noun phrase as location, which is still an exact substring of the query.\n2. Dialect particles: forms like 전주서, 전깃줄서 and 꼭대기서 put 서 in place of 에서. Every location ends before the equipment noun, so the 서 never ends up inside a location.\n3. \"Dangerous\" maps to electrocution: two pole_down rows say only 위험하다 (p1 산수동, p2 인후동), so they got electrocution as the rule says. In other \"danger\" rows I added 감전 to the wording so the label is clearly backed by the text.\n4. Unique place names: every proper name (동, 시장, 역, 단지, 빌라, 병원, 산단) is used once across all 170 rows. Generic nouns such as 시장, 골목, 사거리, 기숙사, 오피스텔 and 주공아파트 repeat, but always with a different 동 or proper name. One location, 용봉동 대학 기숙사 쪽, has no school name. I avoided the banned common names.\n5. Wildfire smoke in a city: 산불 연기 does not fit an urban setting well, so it appears in only 5 rows (4 reports and 1 refusal). The other disasters are covered more evenly.\n6. Refusal types: bill timing, high bill, automatic payment, welfare discount, progressive-rate discount, account-holder change (two rows), billing address change, cancelling service when moving, meter reading, customer center number, typhoon arrival, tomorrow's weather, preparing for outages, outage compensation, power is back (two rows), asking whether power is restored, TV only and not an outage, and power still on despite smoke."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   }
+  },
+  {
+   "chunk": "s04a",
+   "style": "충청도 사투리를 쓰는 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, 170 rows in all, all in the Chungcheong dialect style. I checked every row by hand while writing, but I ran no shell or script, so nothing has been machine-validated. Please run the JSON, location-substring and duplicate checks before using these rows.\n\nCounts by row type:\n- Each file has 4 refusals, 11 outage, 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Across the 5 files that is 20 refusals, 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise and 15 fire.\n- 15 outage rows state a household count. One extra line_down row in p5 also states one (\"서른 가구\" → 30).\n- 31 rows have a hazard: all 15 fire rows plus 16 others (line_down 5, pole_down 5, spark 5, transformer_noise 1). No outage row has a hazard.\n- About 18 rows describe two or more things at once and use the priority rule.\n- 30 rows are 2 to 4 words, 90 are one sentence and 50 are two or three sentences.\n\nRules that were hard to apply:\n1. A broken line that is sparking (p4 \"기산면 신막리 논 옆 끊어진 전선에서 불꽃이 튀어유\") is labeled line_down, because line_down ranks above spark. An intact line that sparks is labeled spark.\n2. \"위험해 보여유\" and \"위험혀유\" were mapped to electrocution, as the rule says. \"금방이라도 넘어갈 것 같어유\" (the pole may fall over) was given no hazard, because it is about collapse, not electric shock or fire.\n3. \"불이 싹 다 나갔슈\" and \"불이 다 꺼졌슈\" mean the lights went out, so those rows are outage, not fire. One of them adds \"정전인가 봐유\" to make that clear.\n4. The p5 row \"운산면 읍내 연립 3동 열네 세대\" has households=14, and \"3동\" stays in the location as a building number. The p3 row \"맹동면 국도 21호선 갓길\" has a route number that is not a household count.\n5. I dropped \"열두 집\" for a row of shops because the count was ambiguous. Every household count uses 가구 or 세대.\n6. Where a place word was followed by a direction such as \"위로 지나가는\", I rewrote the sentence so the location ends cleanly with 앞 or 옆.\n7. The p3 refusal now says only that the reporter's own area has power, without mentioning a neighbor's outage. The p5 row \"정전 아니구유, 우리 집 전구가 나간 거였슈\" keeps the word 정전 but denies an outage.\n8. In p3 \"감물면 오성리서\", the particle 서 was removed from the location.\n9. No place name repeats across the 170 rows. Generic nouns (저수지, 경로당, 과수원, 펜션) do repeat, each with a different proper name. Refusal rows that mention a place (유구읍, 미원면, 정산면, 합덕읍) used each name only once.\n\nAs instructed, I did not open or read any evaluation file or any other repository file."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   }
+  },
+  {
+   "chunk": "s04b",
+   "style": "충청도 사투리를 쓰는 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each (170 rows). I checked them by hand only, because shell commands were not allowed, so nothing parsed the JSON or tested the location substrings automatically. Run the usual validator before merging.\n\nEvery file has the same row mix: 4 refusals, 11 outage (3 of them state a household count), 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Totals: outage 55 (15 with households), line_down 25, pole_down 20, spark 20, transformer_noise 15, fire 15, refusals 20.\n\nOther counts:\n- **hazard:** 32 rows have one. That is the 15 fire rows (hazard fire), 13 electrocution rows (line_down, pole_down and spark) and 4 fire-risk rows (spark or transformer_noise).\n- **No hazard:** about 63 equipment rows, including plain spark rows where sparks fly but nobody mentions danger.\n- **Multi-phenomenon rows:** 17, resolved by the priority rule (for example pole plus line gives pole_down, line plus spark gives line_down, transformer noise plus outage gives transformer_noise, pole falling and catching fire gives fire).\n- **Length:** about 32 short rows (2 to 4 words), about 90 one-sentence rows, about 48 rows with two or three sentences.\n\nPlaces are in the Daejeon, Cheongju, Cheonan/Asan, Sejong, Chungju/Jecheon and Seosan/Dangjin areas. No 동, station, market or complex name repeats. Generic nouns like 공단, 오피스텔 and 물류창고 do repeat with different place names. I kept each city name (천안, 아산) to one row.\n\nJudgment calls:\n1. **Words between place and equipment:** in \"교현동 학교 담장 따라 전깃줄이\" the location is \"교현동 학교 담장\", with 따라 dropped.\n2. **위 and 밑:** I treated them as position words and kept them (\"엄사 사거리 횡단보도 위\", \"홍도동 육교 밑\"), although they are not in the rule's example list (앞, 옆, 뒤편, 근처, 주변).\n3. **Copula endings:** in phrases like \"OO 7층인디\", \"OO 기숙사인디유\" and \"OO 1동인디유\" I stripped the ending and kept the full noun phrase as the location.\n4. **\"위험혀유\" alone:** a leaning pole or a fallen line with only \"dangerous\" got hazard electrocution, following the rule.\n5. **\"불 (다) 나갔슈\":** this means the lights are out, so it is labeled outage. \"불났슈\" and \"불붙었슈\" are labeled fire. These pairs are meant to teach that contrast.\n6. **Numbers that are not households:** building and unit numbers (104동, 201동, 1동), floors (7층) and durations (세 시간째) were never used as households. Only explicit 가구 or 세대 counts were, written as Korean number words or digits.\n7. **Restoration requests:** \"복구 다 됐는지 확인 좀\" and \"전기 다시 들어왔슈\" are refusals with answers [], because they confirm or ask about a past outage rather than report a new one.\n\nI did not open test_human.jsonl, make_test_data.py or ko/results, or any other repository file."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p4.jsonl",
+      "line": 1,
+      "query": "나성동 정전이유",
+      "action": "drop",
+      "reason": "Trivial variation of s04b_p3 line 9 \"다가동 정전이여유\": same two-word template, only the place name and the ending changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p4.jsonl",
+      "line": 9,
+      "query": "고운동 전기 나갔어유",
+      "action": "drop",
+      "reason": "Trivial variation of s04b_p1 line 1 \"둔산동 전기 나갔슈\": same words, only the place name and the ending changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p5.jsonl",
+      "line": 1,
+      "query": "만년동 전기 나갔시유",
+      "action": "drop",
+      "reason": "Trivial variation of s04b_p1 line 1 \"둔산동 전기 나갔슈\" (and p4 line 9): same words, only the place name and the ending changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p5.jsonl",
+      "line": 9,
+      "query": "예천동 정전됐어유",
+      "action": "drop",
+      "reason": "Trivial variation of s04b_p2 line 1 \"복대동 정전됐슈\": same template, only the place name and the ending changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p5.jsonl",
+      "line": 14,
+      "query": "반월동 전깃줄 끊겼슈",
+      "action": "drop",
+      "reason": "Trivial variation of s04b_p1 line 28 \"비래동 전선 끊겼슈\" and s04b_p2 line 13 \"내덕동 전깃줄 끊어졌슈\": same template with a swapped place name and a synonym or contraction."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p5.jsonl",
+      "line": 21,
+      "query": "가양동 전봇대 쓰러졌어유",
+      "action": "drop",
+      "reason": "Trivial variation of s04b_p2 line 19 \"운천동 전봇대 쓰러졌슈\": same words, only the place name and the ending changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s04b_p3.jsonl",
+      "line": 29,
+      "query": "신당동 변압기 웅웅혀유",
+      "action": "drop",
+      "reason": "Trivial variation of s04b_p2 line 30 \"성안길 변압기 윙윙혀유\" (and s04b_p1 line 13 \"관저동 변압기 웅웅거려유\"): same template, only the place name and the sound word changed."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s05a",
+   "style": "급하고 당황해서 문장이 끊기는 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, 170 rows in total. I checked every row by hand against the rules. I could not check them with a script because shell commands were not allowed, so a validator should still run over these files.\n\nRows per type:\n- outage 55 (15 give a household count: 12, 30, 7, 40, 25, 9, 15, 50, 6, 18, 22, 8, 35, 11, 20)\n- line_down 25\n- pole_down 20\n- spark 20\n- transformer_noise 15\n- fire 15 (every fire row has hazard \"fire\")\n- refusal 20 (answers [])\n\nOther counts:\n- 30 rows have a hazard: 15 fire rows, plus 15 more split as 5 line_down, 5 pole_down and 5 spark.\n- About 65 equipment rows have no hazard, including spark-only rows such as \"전선이 끊어져서… 땅바닥에서 불꽃이 튀어요\".\n- About 18 rows describe more than one problem and use the priority order. Examples: a pole falling with lines on the road is pole_down, sparks that turn into a fire are fire, a humming transformer followed by sparks is spark, and a line snapping with a spark at the end is line_down.\n- Length mix is 30 short two-or-three-word rows, with the rest split between one sentence and two or three sentences.\n\nEach location is a contiguous substring of its query, with trailing particles and equipment nouns removed. All 150 place names are different. I gave each place a different proper name; facility words such as 마을회관, 축사 and 등산로 입구 repeat only under different village names.\n\nJudgement calls:\n1. Fear without a named danger gets no hazard. Rows that say only 무서워요 / 무섭다고 (a scary transformer or line) have none. Rows that say 위험해요 or 감전될까 봐 get electrocution.\n2. \"아직 불은 안 났는데\" (no fire yet) next to sparks gets no hazard, because the caller does not say a fire is likely. Remove that row if it is too close to the boundary.\n3. Counts of people are not households. \"손님이 열 명\" (10 guests) has no households. \"스무 가구가 넘어요… 아니, 딱 스무 가구\" (over 20 households… no, exactly 20) is labelled 20 because the caller corrects to an exact number.\n4. A pole falling with a transformer coming down too is pole_down.\n5. A few rows use a little regional dialect (나가부렀어요) inside the panicked style.\n6. To keep locations contiguous inside the broken sentences, the full place phrase appears unbroken at least once in each query, for example \"동막골이요, 동막골!\"."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p3.jsonl",
+      "line": 2,
+      "query": "청룡리 정전!! 빨리요!!",
+      "action": "drop",
+      "reason": "Trivial variation of s05a_p1.jsonl line 2 (\"월곡리 정전요!! 빨리요\"): same words and structure, only the place name is swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p3.jsonl",
+      "line": 16,
+      "query": "구담리… 전기 나갔어요!!",
+      "action": "drop",
+      "reason": "Same template as s05a_p1.jsonl line 9 (\"노루목… 전기 나갔어요!!\"), with only the place name changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p4.jsonl",
+      "line": 5,
+      "query": "가음리 전기 나갔어요!!",
+      "action": "drop",
+      "reason": "Trivial variation of s05a_p1.jsonl line 9 (\"노루목… 전기 나갔어요!!\"): same text minus the ellipsis, with a different place name."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05a_p4.jsonl",
+      "line": 30,
+      "query": "도화리… 정전이요!!",
+      "action": "drop",
+      "reason": "Trivial variation of s05a_p2.jsonl line 10 (\"가래울… 정전이에요!\"): same structure, only the place name and ending punctuation differ."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s05b",
+   "style": "급하고 당황해서 문장이 끊기는 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each. Each file has 4 refusals, 11 outage, 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire, so the totals are 20/55/25/20/20/15/15.\n\n- **households:** 15 rows, 3 per file.\n- **hazard:** 32 rows. That is the 15 fire rows (all fire/fire) plus 17 others: 13 electrocution and 4 fire risk.\n- **Equipment damage with no hazard:** 63 rows. Many only describe sparks.\n- **Multi-phenomenon rows:** 16, using the priority rule. The combinations are pole+line, pole+sparks, line+sparks, line+outage, transformer noise+sparks, sparks then fire, transformer bang then fire, outage+transformer noise, and sparks then outage.\n- **Length:** about 31 very short texts, about 50 rows of two or three sentences, and the rest single sentences.\n- **Checks:** These were done by hand only; no shell or validator was run. Every location appears character-for-character in its query, with no trailing particle and no equipment noun. households values are JSON integers. Evidence fields contain no Korean. No two queries are the same.\n\nRules that were hard to apply:\n1. **Repeated words in place names.** Every proper place name is used only once across all 170 rows. Generic words do repeat with different names attached: 기숙사, 지하상가, 오거리, 사거리, 공단/산단, 상가, 원룸, 물류단지, 부두, 호수공원.\n2. **Approximate household counts.** These were labeled with the stated number: \"한 서른 세대\" is 30 and \"스무 가구 정도\" is 20. Apartment building numbers like 104동 and 7단지 were kept in location and never used as households.\n3. **Cutting long location phrases.** I ended locations at the place phrase and left out what comes after. Examples: \"답십리 고미술상가 위층\" (not \"...원룸들\"), \"역전시장 골목\" (not \"...지붕 위\"), \"온천장역 앞\" (not \"...상가들\"), \"구미 공단동\". Some keep descriptive nouns, such as \"서면 젊음의거리 간판 위\" and \"반월당역 지하상가 환기구 위\", because 간판 and 환기구 are not power equipment.\n4. **Borderline hazard wording.** Expressions of fear without a stated danger were left without hazard: \"무서워요\", \"어떡해요\", \"애들 하교 시간인데\", \"아직 불은 안 났는데\", \"넘어갈 것 같아요\". So were a burning smell or a gas station nearby unless the reporter said \"불날 것 같아요\". One query that asked whether something might explode was reworded to avoid implying danger.\n5. **Refusals in the panicked style.** Each refusal still uses the hurried, broken speech. They cover bill amount, missing bill, change of account name, cancelling service on move-out, starting service on move-in, late payment, automatic transfer, card payment, progressive rates, heat-wave discount, meter reading, EV charging price, typhoon timing, wind warning, wildfire shelter location, power restored, and four not-an-outage cases (home breaker, light bulb, TV fault, flicker from nearby construction)."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p4.jsonl",
+      "line": 9,
+      "query": "당산동… 정전이요!!",
+      "action": "drop",
+      "reason": "Trivial variation of s05b_p2.jsonl line 2/9 '광장시장… 정전이에요!!': the only differences are the place name and 이요 versus 이에요. It adds nothing beyond another place name."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p5.jsonl",
+      "line": 1,
+      "query": "남포동 정전… 정전요!",
+      "action": "drop",
+      "reason": "Trivial variation of s05b_p3.jsonl line 1 '구월동 정전! 정전이요…'. It uses the same words in the same order ('X 정전 + 정전(이)요'), with only the place and punctuation changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s05b_p5.jsonl",
+      "line": 28,
+      "query": "전봇대 기울었어요… 신포시장!",
+      "action": "drop",
+      "reason": "Word-for-word clone of s05b_p3.jsonl line 12 '전봇대 기울었어요… 진주 중앙시장 뒤!'. Only the place name is swapped."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s06a",
+   "style": "맞춤법과 띄어쓰기가 틀린 문자 메시지",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files of 34 rows each, 170 rows in total. I checked the rows by hand only, because shell commands were not allowed, so nothing has been run through a JSON or substring validator.\n\nCounts:\n- Rows by type: 20 refusals, 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise, 15 fire.\n- Households: 15 outage rows give a household count.\n- Hazard: 31 rows. All 15 fire rows are fire/fire, plus 16 others: 10 electrocution on line_down or pole_down, 4 fire on spark, 2 fire on transformer_noise. 65 equipment-damage rows have no hazard, including plain spark-only rows.\n- Two or more phenomena: about 16 rows, labelled by the priority rule (pole plus fallen line gives pole_down; spark then outage gives spark; fire with outage or a snapped line gives fire; transformer bang then outage gives transformer_noise; snapped line that sparks gives line_down).\n- Length: about 32 rows of 2-3 words, 88 one-sentence rows, 50 rows of two sentences or more.\n\nRules that were hard to apply:\n1. Location with spacing errors. Where a place is run together with other words, the location is the exact run-together text with only the trailing particle removed (\"내촌리12가구\" gives 내촌리; \"임계면 송계리 논밭사이로\" gives \"임계면 송계리 논밭사이\"). Where a place is followed by a copula (\"노루목 펜션인데\", \"봉평면 메밀밭 옆 민박집인데요\", \"대야리 이장인데요\"), I cut it at the place noun.\n2. Place names. Every location string and every place name (village, harbour, reservoir, pass) is used once. Generic nouns such as 경로당, 마을회관, 등산로입구, 국도변, 펜션 and 선착장 do appear in more than one row, but always with a different place name. Refusal rows have no place names.\n3. Household counts. One row states an approximate figure (\"열가구 정도\"); I labelled it 10. Numbers that are not households (\"세시간\", \"38번국도\", \"두개\" for poles) are not labelled.\n4. Hazard borderline cases:\n   - Lines low enough to catch passing cars (\"차 지나갈때 걸릴거같아요\"), feeling scared (\"무서워서 잠을 못자겟어여\") and a pole about to fall further have no hazard.\n   - A transformer described with a burning smell plus \"불날꺼같아요\" is transformer_noise with hazard fire.\n   - Fire spreading to grass from a burning line is fire, not something else.\n5. Intermittent power (\"전기가 들어왓다 나갓다\") is labelled outage. A row saying power is back after yesterday's outage is a refusal (restoration confirmed). A row about a neighbour's lights being off because they were travelling is a refusal (not an outage)."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   }
+  },
+  {
+   "chunk": "s06b",
+   "style": "맞춤법과 띄어쓰기가 틀린 문자 메시지",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each. Every file has the same mix: 4 refusals, 11 outage (3 of them state a household count), 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Across all 170 rows: 32 rows have a hazard (all 15 fire rows plus 17 others) and 63 equipment-damage rows have none, including most spark-only rows. About 18 rows mention two or more problems, using fire > pole_down > line_down > spark > transformer_noise > outage. Lengths: 34 rows are 2-3 words, 50 are 2-3 sentences, and 86 are a single sentence. I checked everything by reading it over; I ran no script.\n\nRules that were hard to apply:\n1) **Location with wrong spacing.** In this style, words often run together (e.g. \"독산동우시장 전주에\", \"응암동변압기\", \"창원상남동 변압기불낫어요\"). In those cases the location is just the place part, cut out exactly as written (\"독산동우시장\", \"응암동\", \"창원상남동\"). Misspellings in place names are kept as written, such as \"뒷편\".\n2) **Plural ending.** One query says \"흑석동 서달산아래 원룸들\"; I took \"흑석동 서달산아래 원룸\" as the location and treated \"들\" like a particle.\n3) **Household counts in Korean words.** Four rows give the count in words: 열두가구=12, 스무가구=20, 여섯가구=6, 열가구=10. The rest use digits. Apartment building and unit numbers (405동, 1203호, 103동, 9동) were never counted as households.\n4) **Hazard edge cases.**\n   - Where a reporter says something looks dangerous or might explode (\"위험해보여요\", \"터질꺼같아서\"), I used electrocution, per the rule that danger means electrocution.\n   - Fear of a car getting caught in a line, a pole about to fall, or someone trapped in an elevator got no hazard.\n   - A burning smell or smoke without actual flames (a transformer, and a fallen line in one pole row) is not counted as a fire. Where those rows also say a fire might start, they get hazard fire.\n5) **A swaying pole.** One pole row describes swaying, so I also wrote that the pole is leaning, to fit pole_down.\n6) **Refusals that look like power problems.** Some refusals are close to real outages: a household breaker or fuse tripping, planned maintenance by building management, power already back on, and a request to check an earlier repair. All of them say there is no outage or it is fixed, so they have answers [].\n7) **Repeated place names.** No proper place name repeats in all 170 rows. Generic words do repeat (시장, 역, 공단, 기숙사, 골목, 상가), but always with a different name attached."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p4.jsonl",
+      "line": 2,
+      "query": "산불연기 때문인지 수락산역 근처 아파트 전기가 갑짜기 나갓어요",
+      "action": "drop",
+      "reason": "Trivial variation of s06b_p1.jsonl line 2 ('폭염때문에그런지 봉천동 관악빌라 전기가 갑짜기 나갓어요'): the same '[cause] 때문인지 [place] 전기가 갑짜기 나갓어요' skeleton with the same typos and the same evidence. Only the cause and the place changed."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p4.jsonl",
+      "line": 27,
+      "query": "마천동 골목시장 뒤 다세대 40세대 다 정전이에여. 강풍때매그런거같은대 확인좀 해주세여",
+      "action": "drop",
+      "reason": "Trivial variation of line 16 in the same file ('자양동 뚝섬유원지역 근처 다세대 18세대 정전이에여 강풍때매그런가'): the same '[place] 다세대 N세대 정전이에여 강풍때매그런..' skeleton with the same misspellings. Only the place and the number changed, plus a tacked-on request."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s06b_p5.jsonl",
+      "line": 25,
+      "query": "폭설때매 이촌동 한강맨션 쪽 전선이 눈에 눌려서 끈어졋어요. 근처 동들 전부 정전이구여",
+      "action": "drop",
+      "reason": "Near word-for-word copy of s06b_p3.jsonl line 25 ('폭설때문에 오창 과학산업단지 입구 전선이 눈에 눌려서 끈어졋어요. 그쪽 공장들 전부 정전이구요'): the same two-sentence structure and wording with the same evidence ('line broke under snow, outage'). Only the place and the subject of the second sentence changed."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s07a",
+   "style": "음성 인식(STT) 오류가 섞인 문장",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "Every file has 34 rows. Across all five files: 20 refusals, 55 outage (15 give a household count), 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise and 15 fire. 32 rows have a hazard: the 15 fire rows plus 17 others (12 electrocution, and 5 spark rows with hazard fire because the reporter says a fire may start). 63 equipment-damage rows have no hazard. There are 30 short rows. 18 rows report more than one problem, a little above the target of about 15; the priority rule picks the incident_type in those rows.\n\nRules that were hard to apply:\n(1) Because of the STT style, some locations contain recognition errors such as wrong spacing or phonetic spelling (\"수동리 버스 정 류장 앞\", \"매화 마을 경로 당\", \"월정리 팬 션\"). Each location is copied character for character from its query, errors included, and I did not correct them.\n(2) Some hazard phrases are themselves STT errors. One row says \"감정 될까 봐 위험 해요\", with 감정 misheard for 감전. I labelled it electrocution because 위험 is said directly. Another, \"전기 흐를까 봐 위험 해요\", is also labelled electrocution because the reporter says it is dangerous.\n(3) Where a location ended in 위로, such as \"다리 위로\" and \"둑 위로\", I dropped 로 as a particle and kept 위 as a position word.\n(4) Generic nouns such as 마을 회관, 펜션 단지, 염전 창고, 위판장 and 수협 appear in more than one location, but each one goes with a different proper place name. Some names are in the same real county (율포/율어면/봉산리; 화개/쌍계/악양/평사리), but no place name is used twice.\n(5) One line_down row says the line may touch cars and the reporter feels 조마조마. It has no hazard because no electrocution or fire danger is stated.\n(6) Household numbers mix Korean number words (열다섯, 스물두, 열 일곱) and digits (30, 25, 18), as STT output would. Counts of poles (\"전봇대 두 개\") were not used as households.\n\nFiles were written with the Write tool only. I ran no shell command or validation script, so all of the checks above were done by hand."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p1.jsonl",
+      "line": 25,
+      "query": "내린천 캠핑장 전기 나감",
+      "action": "drop",
+      "reason": "Style mismatch: the row is labeled STT but has no recognition artifacts (no broken spacing, no phonetic misspellings), and the -감 ending is typed memo shorthand, not a spoken utterance. Unlike the other terse rows, nothing here looks like STT output."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07a_p5.jsonl",
+      "line": 16,
+      "query": "아까 동호 해변 정전 됐던 거요. 지금은 불 들어 와서 신고 취소 할게요",
+      "action": "drop",
+      "reason": "Near-duplicate of s07a_p1.jsonl line 15 ('아까 동막 해변 쪽 정전 신고 했는데 지금 전기 다시 드러 왔어요'). Same opener, an almost identical beach name (동막 해변 / 동호 해변) and the same content: an earlier outage report where the power is now back. The only real difference is the added '신고 취소'."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s07b",
+   "style": "음성 인식(STT) 오류가 섞인 문장",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, 170 rows in total. I did not run shell commands, so I checked the rows by hand while writing them; no script has validated them.\n\nComposition:\n- Refusals: 20, four per file. Topics are a high bill, bill reissue, autopay, paying by card, late fees, a bill that has not arrived, checking the bill, name change (2), closing an account, snow advisory, typhoon forecast, power restored (2), power is fine (3), a tripped breaker, a failed light bulb, and smoke smell with no outage.\n- outage: 55. Fifteen of them state households (12, 30, 8, 25, 10, 120, 40, 60, 18, 7, 200, 20, 32, 400, 9), mostly spoken as Korean number words like 삼십 세대 or 서른두 가구.\n- Other types: line_down 25, pole_down 20, spark 20, transformer_noise 15, fire 15.\n- hazard: 32 rows. All 15 fire rows have fire/fire. Seventeen other rows have electrocution or fire. The remaining 63 equipment-damage rows have no hazard, and that includes several rows where sparks fly but no danger is mentioned.\n- Length: 32 rows are two or three words, about 89 are one sentence, and 49 are two or three sentences.\n- Place names: every row uses a different 동, station, 공단 or market. Generic nouns such as 오피스텔, 원룸촌 and 물류창고 do repeat.\n\nRules that were hard to apply:\n1. STT errors and location matching. Spoken-style spellings like 아페 (for 앞에) or 끄치에요 (for 끝이에요) would split the position word, so the location would no longer appear letter-for-letter in the query. I kept the location span mostly clean and put the errors in the rest of the sentence. Some locations still carry deliberate spacing or spelling errors and are copied as heard: 독산동 우성 오피스 텔, 가산디지털 단지역 근처 상가, 성수이가동, 월곡역 이번 출구 앞, 가락동 주공 아파드.\n2. Rows with more than one phenomenon came out at about 20 instead of about 15. Examples are a fallen pole plus a line plus sparks (pole_down), a fallen line plus sparks (line_down), sparks that turn into fire (fire), and transformer noise followed by an outage (transformer_noise).\n3. Two hazard calls are judgement calls. A transformer row saying it might burst and looks dangerous (터질 거 같아서 위험해 보여요) is labelled electrocution, following the rule that saying something is dangerous means electrocution. A row where a fallen pole is blocking a gate and the reporter says it is dangerous is also electrocution.\n4. In 송현동 시장 골목 the sparks are directly above a stack of boxes, but I limited location to the alley name and left the box pile out.\n5. Rows saying the lights went out (불이 꺼져써요, 다 꺼져써요) are labelled outage, not fire."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s07b_p3.jsonl",
+      "line": 16,
+      "query": "음 그 낙뇌 치는 소리 나고 바로 전기가 나가써요. 대흥동 대학 기숙사 3층 전부요.",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "대흥동 대학 기숙사 3층"
+        }
+       }
+      ],
+      "evidence": "power out right after lightning",
+      "reason": "The reporter names a more specific place, the 3rd floor of the dormitory, but the location leaves off '3층'. Floor and building numbers like 712동 and B동 are kept in other rows, so the location should be '대흥동 대학 기숙사 3층'."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s08a",
+   "style": "현장 작업자의 짧은 업무용 보고 (약어, 설비 번호 포함)",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, 170 in total. I checked them by reading through them myself; no script or JSON validation was run, because shell commands were not allowed. A pass with ko/gen_data.py's row validator is still worth doing.\n\nEach file has 4 refusals, 11 outage (3 of them with households), 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Totals: 20 / 55 (15 with households) / 25 / 20 / 20 / 15 / 15.\n\n- Hazard is set on 31 rows. All 15 fire rows have hazard fire. The other 16 are 12 electrocution (line or pole down, spark in rain) and 4 fire (sparks near sawdust, fertilizer, a market stall). About 64 equipment-damage rows have no hazard, including spark rows that only say 불꽃 or 스파크 and a broken line touching seawater with no danger stated.\n- 17 rows mention two things at once, a bit more than the ~15 asked for. They test the priority rule: pole+line → pole_down, line+spark → line_down, spark+transformer hum → spark, line/spark/transformer noise + outage → the equipment type.\n- Length: 32 two-or-three-word rows, about 88 one-sentence rows, 50 rows of two or three sentences.\n\nRules that were hard to apply:\n1. Equipment numbers (전주 No.14, #7, TR #2) are kept out of location. The rule says to drop equipment names, so the number goes with them, and every location ends before the equipment noun or number. The pipeline should agree with this choice.\n2. In field jargon \"N호\" can mean customer or household count, but it collides with the apartment 호수 rule. So households are always written as 가구 or 세대. One row (악양면) says \"3개 리 정전\" and has no households value, since that counts villages, not households.\n3. Following the rule that 위험 means electrocution, one pole_down row (백석리) has hazard electrocution, though the danger it gives is foot traffic around a leaning pole, not a stated electrical risk. 통제 and 차단 wording only appears in rows that state a danger.\n4. Some refusals are borderline. \"정전 아님 확인\" and \"대관령면 이상 없음\" are terse; 추자도 was a short planned cut that is already back to normal; 너븐들 turned out to be a broken light with the supply normal. All are labeled answers: [] as not-outage or restoration confirmations. I avoided a \"customer's own breaker tripped\" case because it would be ambiguous.\n5. Base place names (리, 면, 항, 도, and invented names like 솔뫼리 or 반딧골) are never repeated across the 170 rows. Generic landmark words such as 경로당, 선착장 and 진입로 do repeat with different place names.\n\nI did not open test_human.jsonl, make_test_data.py or ko/results/, or any other repository file."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   }
+  },
+  {
+   "chunk": "s08b",
+   "style": "현장 작업자의 짧은 업무용 보고 (약어, 설비 번호 포함)",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote all 5 files, 34 rows each. I checked the rows by hand while writing them. I ran no scripts, as instructed, so the JSON parse, the location substring match and the duplicate check still need to run in the merge/validate step.\n\nEach file has 4 refusals, 11 outage (3 with a stated household count), 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. Totals: 20 refusals, 55 outage (15 with households), 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise, 15 fire.\n\n- **Hazard:** 30 rows have it. The 15 fire rows are fire+fire. The other 15 are mostly electrocution, plus fire on one transformer_noise row (화재 우려) and one spark row (fire spreading to a tree). Equipment-damage rows with no hazard: 65, including several sparks-only rows.\n- **Multiple phenomena:** about 19 rows. Examples: pole down with lines down → pole_down; line broken with sparks → line_down; transformer fire with outage → fire; sparks with outage → spark; transformer noise with low voltage → transformer_noise.\n- **Length:** about 32 rows of 2-3 words, about 88 single sentences, 50 rows of 2-3 sentences.\n\nRules that were hard to apply:\n1. **Equipment numbers next to the place.** The work-report style puts numbers like P#, No., TR# and D/L right beside the place. I wrote them after the equipment noun or in a separate clause (e.g. \"반월공단 6블록 교차로 전주(#3108)\"), so they stay out of location. A few very short rows put the code first (\"P#5520 전도, 이문동\") or use a bracket tag (\"[정전] 망원시장\", \"[스파크] 당산역 앞 P#415\"). In those, location is just the place.\n2. **\"위험\" to electrocution.** Three pole rows say only 위험 (it could hit cars or people), and I followed the rule and labelled them electrocution. One spark row says 감전될 것 같음.\n3. **Counts that are not households.** Building and other numbers were kept out of households: 912동, 104동, 빌라 3개동, 기숙사 2개동, 공장 3개소, 전주 2본, 3층, 차량 2대. In one row (기숙사 2개동, 세대수 64) only the explicit 64 was used. \"전 세대 정전\" has no number, so no households.\n4. **Place names.** Every place name is used once across all 170 rows, refusals included. Some generic words do repeat with different named places, such as 오피스텔, 기숙사, 시장, 사거리, 공단 and 산단. One location is a bare place word without a 동 name: \"운암동 시장 입구\" (no market name).\n5. **Location boundary judgment calls.** I picked the shorter place phrase in \"길동 생태공원 앞\" (query: 앞 빌라 3개동 정전) and \"대연동 경성대 후문\" (query: 후문 25세대 정전). I kept the building in \"신정동 신트리공원 옆 오피스텔\" (query: 오피스텔 포함 약 150세대).\n6. **Refusals in work-report style.** To keep the style, refusals include billing, autopay change, reissuing a bill, changing the bill's mailing address, name change, move-out meter reading, new-service paperwork, summer rates, weather and typhoon-track questions, restoration confirmed, and several not-an-outage cases (indoor breaker, streetlight timer, internet only, planned maintenance). There are also two internal notes: a supply request for COS fuses and insulators, and a night-shift handover. The supply request names equipment but reports no damage.\n7. **Possible line_down confusion.** Rows about a feeder or transmission stop use 차단/정지/트립 with no physical damage and are labelled outage. Watch whether this reads as line_down.\n\nI did not read or open any repository file, including test_human.jsonl."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p2.jsonl",
+      "line": 8,
+      "query": "[정전] 구월동 로데오",
+      "action": "drop",
+      "reason": "Trivial variation of s08b_p1.jsonl line 15 \"[정전] 망원시장\": same bracket-tag template with only the place name swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p5.jsonl",
+      "line": 22,
+      "query": "[정전] 다산신도시",
+      "action": "drop",
+      "reason": "Third copy of the \"[정전] <place>\" template (s08b_p1.jsonl line 15, s08b_p2.jsonl line 8); only the place name differs."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s08b_p3.jsonl",
+      "line": 30,
+      "query": "답십리 P#7215 전도",
+      "action": "drop",
+      "reason": "Trivial variation of s08b_p2.jsonl line 1 \"남동공단 P#0917 전도\": identical wording with only the place and pole number swapped."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s09a",
+   "style": "한국어가 서툰 외국인 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files of 34 rows each, 170 rows in total. I did not run any shell commands, so these files have not been checked by a script. I checked each row by hand before writing.\n\nRow counts:\n- Labels: 20 refusals, 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise, 15 fire. Each file has the same split: 4 refusals, 11 outage, 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise, 3 fire.\n- 15 outage rows state a household count: 3 per file, 5 to 100 households.\n- 31 rows have a hazard. All 15 fire rows have hazard \"fire\". The other 16 come from line_down, pole_down, spark and transformer_noise rows that say the danger outright, using 위험해요, 감전 될 것 같아요, 불 날 것 같아요 or similar.\n- More than 60 equipment-damage rows have no hazard. They include spark-only rows such as \"불꽃 튀어요\" and \"번쩍번쩍\".\n- 17 rows contain two or more incidents, a little above the requested ~15. Labels follow the priority order fire > pole_down > line_down > spark > transformer_noise > outage. For example, pole plus line on the ground is pole_down, line plus sparks is line_down, transformer noise plus sparks is spark, and sparks that turn into fire are fire.\n- Length: 30 short texts of two or three words, 90 one-sentence rows (run-ons without a full stop count as one sentence), and 50 rows of two or three sentences.\n\nEvery location is an exact substring of its query, with the trailing particle or copula removed (에, 에서, 이에요, 부터, 요). Every place name is unique across all 170 rows, and none of the common names to avoid were used.\n\nRules that were hard to apply:\n1) Household counts. Learners often say \"집 열두 개\", \"집 아홉 개요\" or \"집 스물두 개\" instead of 가구 or 세대. I treated a stated number of houses as a household count, and the evidence for those rows says \"N houses stated\". Six rows use this form; the rest say 가구 or 세대. I avoided wording like \"백 가구 넘게\", because \"more than 100\" would not give a clean integer.\n\n2) Locations in learner word order. Sometimes the place comes after the problem, as in \"사과 저장고 전기 없어요 의풍리 산 밑에 있어요\", where I used \"의풍리 산 밑\". Sometimes it is split across sentences, as in \"축사 앞 전봇대 쓰러졌어요. 장군리 소 키우는 곳이에요.\", where I used \"장군리 소 키우는 곳\". In both cases I took the most specific span that appears word for word in the query.\n\n3) Wording close to the hazard line. \"트럭 걸릴 것 같아요\" (a truck might catch the line) and \"차 위에 걸려요\" (the line rests on cars) state no shock or fire danger, so those rows have no hazard. \"무서워요\" (I'm scared) appears in only one row, and that row also says 감전 될 것 같아요, so the label comes from the explicit statement.\n\n4) Hard negatives. \"불 다 꺼졌어요\" means the lights went out, so it is labelled outage; \"옆집 불 꺼졌는데 … 정전 아니에요\" is a refusal; and \"고지서 안 와요\" (the bill didn't come) is a refusal. These sit next to fire rows that use 불, so the model has to tell the meanings apart.\n\n5) Learner style in short texts. Two- or three-word texts can read as native Korean. I added learner markers where I could: noun endings like 나감, 쓰러짐 and 떨어짐, the English words power and electricity, and expressions such as \"전기 죽었어요\"."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09a_p5.jsonl",
+      "line": 1,
+      "query": "흑산도 전기 없어요",
+      "action": "drop",
+      "reason": "Trivial variation of s09a_p2.jsonl line 1 (\"모항 전기 없어요\"): the text is the same and only the place name is swapped. It adds no new phrasing to the set."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s09b",
+   "style": "한국어가 서툰 외국인 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s09b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each. Every file has the same mix: 4 refusals, 11 outage (3 of them state a household count), 5 line_down, 4 pole_down, 4 spark, 3 transformer_noise and 3 fire. That makes 20 refusals, 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise and 15 fire.\n\nI counted the rest by hand while writing; no script checked them.\n- **Hazard:** 33 rows. That is all 15 fire rows, plus 5 each for line_down, pole_down and spark, plus 3 transformer_noise. 62 equipment-damage rows have no hazard, including about 10 spark-only rows.\n- **Two or more events in one row:** 17 rows. The priority rule decided the type: a pole with a line on the ground is pole_down, sparks with transformer noise is spark, a line that sparked and then burned is fire.\n- **Length:** about 33 rows of 2–3 words, 86 one-sentence rows and 51 rows of two or three sentences.\n- **Uniqueness:** no query repeats, and each location uses a different place name. Generic words such as 공단, 기숙사, 골목 and 산업단지 do repeat inside different names.\n\nRules that were hard to apply:\n1. **What counts as danger.** By the rule, \"위험해요\" means electrocution. So I kept \"위험\", \"감전\", \"불 날\" and \"무서워요\" out of every no-hazard row, because 무서워요 is ambiguous. I also used it only in rows that state a hazard elsewhere. Two transformer_noise rows say \"터질 것 같아요 위험해요\" or \"감전 사고 날 것 같아요\"; I labelled both electrocution.\n2. **The word 불.** These speakers often use 불 for lights (\"불 안 켜져요\", \"편의점 불 다 나갔어요\", \"창고 불 다 꺼졌어요\"). I labelled those outage, not fire. They are useful contrast rows, but the parent should know they are intentional.\n3. **Locations in broken Korean.** Speakers often drop particles, so the location runs straight into words that follow it. I cut the location before possessive words like \"우리 가게\" and \"우리 식당\": \"대림중앙시장 우리 가게\" gives \"대림중앙시장\". Two locations are followed by a copula instead of a particle (\"연남동 골목이에요\", \"웅상이에요\"), and I stripped the copula.\n4. **Second-hand counts.** Two household counts are reported by someone else (\"반장님 말해요\", \"집주인 말했어요\"). I still entered them as households, because the number is stated in the message. Apartment block and unit numbers, floors, exit numbers and 119 were never used as households.\n5. **Showing the style in short rows.** In 2–3 word rows I used nonstandard endings such as \"없다요\", \"정전 했어요\", \"넘어짐\" and \"끝났어요\". Some longer rows mix in English words like please, Hello, Sorry and Fire, or the speaker says where they are from."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   }
+  },
+  {
+   "chunk": "s10a",
+   "style": "영어로 신고하는 외국인 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each, 170 rows in total. Every row uses the style \"영어로 신고하는 외국인 주민\", and query and location are both in English.\n\nWhat the files contain:\n- **Type counts:** 20 refusals, 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise and 15 fire. Each file has 4 / 11 / 5 / 4 / 4 / 3 / 3 in that order.\n- **Households:** 15 outage rows state a household count. Numbers for apartment buildings, villa units, pension rooms, hours and clock times are never used as households.\n- **Hazard:** 33 rows carry a hazard. That is all 15 fire rows plus 18 other rows where the reporter says it is dangerous, mentions a shock or electrocution, or says it may catch fire. About 62 equipment-damage rows have no hazard, including rows where sparks are the only problem.\n- **Multiple events:** about 18 rows describe more than one event, slightly above the ~15 target. Each is labelled by the priority rule, e.g. a fallen pole with wires is pole_down, a fallen wire that sparks is line_down, and transformer noise during an outage is transformer_noise.\n- **Length:** about 35 rows are 2–4 word texts, a few more than the ~30 target. About 50 rows are two or three sentences and the rest are one sentence.\n\nWhere I had to make a judgment call:\n1. **Articles in location:** I kept \"the\" in location (e.g. \"the Mopo harbor\"), following the rule's example \"the school\". When the reporter said no article, location has none (\"Gumho bridge\", \"Sanbuk road\"). Every location is an exact substring of its query.\n2. **Positional words in English:** The Korean rule keeps words like 앞, 옆 and 뒤편 in location, but English words like behind, beside, in front of, next to and at the corner of are prepositions. I dropped them and kept only the noun phrase, e.g. \"in front of the Mido general store\" gives \"the Mido general store\".\n3. **Two place names in one location:** In one row, location is the literal phrase \"Sejin villa unit 102, Haean-eup\". That keeps it verbatim but puts two place names in one location. The unit number is not counted as households.\n4. **Households wording:** \"8 families\" counts as households 8, and \"we are 9 households\" counts as 9.\n5. **Borderline fire rows:** One fire row has a fallen wire setting dry grass on fire, which I treated as equipment fire. In one transformer_noise row the transformer \"smells like burning\" and the reporter says \"I think it will catch fire\"; it gets hazard fire, but the type stays transformer_noise because no fire is seen.\n6. **Implied danger:** Some rows only imply danger without stating it, such as \"almost touching people's heads\", \"I was worried\" (a refusal) and \"my family is scared\". None of these get a hazard.\n7. **Place names:** Every proper place name is used once across all 170 rows, and I avoided the common names on the banned list. Generic words like orchard, pension and national road do repeat.\n\nI did not open or search any repository file, and I ran no shell commands."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": []
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p3.jsonl",
+      "line": 20,
+      "query": "No power in room 305 of the Daesong pension while the typhoon wind is very strong.",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "room 305 of the Daesong pension"
+        }
+       }
+      ],
+      "evidence": "no power in pension room",
+      "reason": "Location drops the room number the reporter gave; the most specific place is 'room 305 of the Daesong pension' (unit numbers are kept as in p2 line 33)."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p4.jsonl",
+      "line": 25,
+      "query": "Power is out and the transformer at the corner of the Wadong cow farm is making a loud hum.",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "transformer_noise",
+         "location": "the corner of the Wadong cow farm"
+        }
+       }
+      ],
+      "evidence": "transformer loud hum, power out",
+      "reason": "Location drops the position word 'corner'; English drops only the preposition 'at', so the noun phrase is 'the corner of the Wadong cow farm'."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p3.jsonl",
+      "line": 7,
+      "query": "Spark from wire at the Doam-ri crossroad, raining hard.",
+      "action": "drop",
+      "reason": "Trivial variation of p1 line 10 'Sparks coming out from wire at the Jeongam bus stop, raining very hard.': same wording with only the place swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p3.jsonl",
+      "line": 19,
+      "query": "Fire on the electric pole at the Ijin pier!",
+      "action": "drop",
+      "reason": "Trivial variation of p1 line 20 'Fire on the pole at the Chudong orchard!': differs only by 'electric' and the place name."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p3.jsonl",
+      "line": 33,
+      "query": "No power, Ihak village",
+      "action": "drop",
+      "reason": "Trivial variation of p1 line 1 'No power Gwangcheon-ri': same text with only the place swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p4.jsonl",
+      "line": 8,
+      "query": "Sparks, Gaya village",
+      "action": "drop",
+      "reason": "Trivial variation of p1 line 15 'Sparks, Hwasan-ri': same text with only the place swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p4.jsonl",
+      "line": 32,
+      "query": "Transformer buzz Jinsan-ri",
+      "action": "drop",
+      "reason": "Trivial variation of p1 line 25 'Transformer buzzing, Okseo-ri': only the verb form and place differ."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p4.jsonl",
+      "line": 34,
+      "query": "Transformer fire, Gunnae-ri",
+      "action": "drop",
+      "reason": "Trivial variation of p3 line 34 'Transformer on fire, Myeongsa-ri': only 'on' and the place differ."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p5.jsonl",
+      "line": 2,
+      "query": "No electricity Hwaam-ri",
+      "action": "drop",
+      "reason": "Trivial variation of p2 line 2 'No electricity Bonggang-ri': same text with only the place swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p5.jsonl",
+      "line": 23,
+      "query": "Blackout, Sapsido island",
+      "action": "drop",
+      "reason": "Trivial variation of p2 line 23 'Blackout Yangchon pier': same text with only the place swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10a_p5.jsonl",
+      "line": 29,
+      "query": "Pole down, Dangsan-ri",
+      "action": "drop",
+      "reason": "Trivial variation of p2 line 7 'Pole down Jangpyeong-ri': same text with only the place swapped."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "s10b",
+   "style": "영어로 신고하는 외국인 주민",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p1.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p2.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p3.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p4.jsonl",
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p5.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p1.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p2.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p3.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p4.jsonl",
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p5.jsonl"
+    ],
+    "rows": 170,
+    "refusals": 20,
+    "notes": "I wrote 5 files with 34 rows each. Every row's query and location are in English, from foreign residents (some fluent, some broken English, some say where they are from).\n\nCounts:\n- 20 refusals: bills, name change, moving in/out, closing an account, weather, asking whether power is back, \"power is back\", and \"not an outage\" (bulb, internet, a brief flicker).\n- 55 outage, 25 line_down, 20 pole_down, 20 spark, 15 transformer_noise, 15 fire.\n- households: 15 rows, all outage. Values: 40, 120, 15, 60, 25, 32, 200, 18, 12, 300, 45, 9, 80, 7, 520. Some rows also contain numbers that are not household counts (8 floors, Building 105, three workers, room numbers, gil numbers).\n- hazard: 33 rows. All 15 fire rows have hazard fire. Of the other 18, 14 are electrocution and 4 are fire, from sparks with a stated fire fear or a leaning pole with a stated fire fear.\n- Equipment damage with no hazard: 47 rows, including spark-only rows.\n- More than one problem in the report: 16 rows, labeled by the priority rule. Pole down with wires or outage gives pole_down, line down with sparks or outage or transformer noise gives line_down, spark with outage or transformer noise gives spark, and fire with outage or a fallen wire gives fire.\n- Length: about 35 very short texts (2 to 4 words), about 90 single sentences, about 45 rows of two or three sentences.\n\nEvery location appears verbatim in its query, with no leading preposition and no equipment noun. No location or query repeats across the 170 rows. I wrote the files but did not validate them with a script, because running commands was not allowed. The checks were manual, row by row.\n\nRules that were hard to apply:\n1. English prepositions. \"in front of X\", \"next to X\", \"outside X\", \"behind X\" and \"over X\" were all reduced to the bare noun phrase X. Korean labels keep words like front and side (앞, 옆), but the English rule says to drop them. I avoided phrases like \"the basement of X\" by writing \"X basement\".\n2. The article \"the\". To keep locations clean, most use proper names without \"the\". The rule's example \"the school\" is never used.\n3. Commas inside locations. A few locations have a comma because the reporter said them that way: \"Mugeo-dong, Ulsan\", \"Jeongwang-dong, Siheung\", \"Room 1507, Seocho Prime Officetel\". They are copied exactly.\n4. Same name, two spellings. I removed \"Daelim\" because \"Daerim Station\" was already used and both are the same Korean name. Brand-name complexes (Lotte Castle, Hillstate, Ssangyong Yega) are used once each.\n5. Hazard edge cases. \"very dangerous\", \"it looks dangerous\" and \"can get shock\" are labeled electrocution. \"Transformer exploded\" and \"something exploded\" appear only in fire rows, so explosion wording is never the only basis for a hazard. A spark row with \"the wall is hot, I'm worried about fire\" is labeled hazard fire.\n6. A sagging, hanging-low or loose line is labeled line_down, since the rule includes sagging lines (늘어지거나). A leaning or tilted pole is labeled pole_down.\n7. One status question (\"is the power already restored in Garak-dong?\") is a refusal with a place name in it. That place name is not used anywhere else."
+   },
+   "label": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p1.jsonl",
+      "line": 9,
+      "query": "Sparks Gupo Market",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "spark",
+         "location": "Gupo Market"
+        }
+       }
+      ],
+      "evidence": "reports sparks",
+      "reason": "Label is correct, but the evidence \"sparks\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p1.jsonl",
+      "line": 17,
+      "query": "Sindorim Station blackout",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "Sindorim Station"
+        }
+       }
+      ],
+      "evidence": "reports a blackout",
+      "reason": "Label is correct, but the evidence \"blackout\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p2.jsonl",
+      "line": 2,
+      "query": "Blackout in Bongcheon-dong",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "Bongcheon-dong"
+        }
+       }
+      ],
+      "evidence": "reports a blackout",
+      "reason": "Label is correct, but the evidence \"blackout\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p2.jsonl",
+      "line": 28,
+      "query": "Sparks at Daein Market",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "spark",
+         "location": "Daein Market"
+        }
+       }
+      ],
+      "evidence": "reports sparks",
+      "reason": "Label is correct, but the evidence \"sparks\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p3.jsonl",
+      "line": 17,
+      "query": "Bulgwang-dong blackout",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "Bulgwang-dong"
+        }
+       }
+      ],
+      "evidence": "reports a blackout",
+      "reason": "Label is correct, but the evidence \"blackout\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p3.jsonl",
+      "line": 25,
+      "query": "Sparks Ansan Station",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "spark",
+         "location": "Ansan Station"
+        }
+       }
+      ],
+      "evidence": "reports sparks",
+      "reason": "Label is correct, but the evidence \"sparks\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p4.jsonl",
+      "line": 7,
+      "query": "Sparks Chungmuro Station",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "spark",
+         "location": "Chungmuro Station"
+        }
+       }
+      ],
+      "evidence": "reports sparks",
+      "reason": "Label is correct, but the evidence \"sparks\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p4.jsonl",
+      "line": 11,
+      "query": "Outage Naedang-dong",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "Naedang-dong"
+        }
+       }
+      ],
+      "evidence": "reports an outage",
+      "reason": "Label is correct, but the evidence \"outage\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p4.jsonl",
+      "line": 33,
+      "query": "Blackout all over Jeonnong-dong after the heavy snow last night.",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "Jeonnong-dong"
+        }
+       }
+      ],
+      "evidence": "blackout after heavy snow",
+      "reason": "Label is correct, but the evidence \"blackout\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p5.jsonl",
+      "line": 2,
+      "query": "Blackout Dapsimni",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "Dapsimni"
+        }
+       }
+      ],
+      "evidence": "reports a blackout",
+      "reason": "Label is correct, but the evidence \"blackout\" is one word and the rule requires 2-8."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p5.jsonl",
+      "line": 15,
+      "query": "Sparks Sinseol-dong",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "spark",
+         "location": "Sinseol-dong"
+        }
+       }
+      ],
+      "evidence": "reports sparks",
+      "reason": "Label is correct, but the evidence \"sparks\" is one word and the rule requires 2-8."
+     }
+    ]
+   },
+   "span": {
+    "checked": 170,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p3.jsonl",
+      "line": 17,
+      "query": "Bulgwang-dong blackout",
+      "action": "drop",
+      "reason": "Same wording as s10b_p1.jsonl line 17 (\"Sindorim Station blackout\"); only the place is swapped, so it is a trivial template repeat."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p3.jsonl",
+      "line": 25,
+      "query": "Sparks Ansan Station",
+      "action": "drop",
+      "reason": "Same wording as s10b_p1.jsonl line 9 (\"Sparks Gupo Market\"); only the place is swapped, so it is a trivial template repeat."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p4.jsonl",
+      "line": 7,
+      "query": "Sparks Chungmuro Station",
+      "action": "drop",
+      "reason": "Third use of the \"Sparks <place>\" template (see s10b_p1.jsonl line 9); only the place is swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p5.jsonl",
+      "line": 4,
+      "query": "Line down Dongmyo Station",
+      "action": "drop",
+      "reason": "Same wording as s10b_p3.jsonl line 3 (\"Line down Imun-dong\"); only the place is swapped, so it is a trivial template repeat."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p5.jsonl",
+      "line": 15,
+      "query": "Sparks Sinseol-dong",
+      "action": "drop",
+      "reason": "Fourth use of the \"Sparks <place>\" template (see s10b_p1.jsonl line 9); only the place is swapped."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\s10b_p5.jsonl",
+      "line": 20,
+      "query": "Lights back on, thanks",
+      "action": "drop",
+      "reason": "Trivial paraphrase of the refusal at s10b_p2.jsonl line 30 (\"Power is back now, thanks!\"). It has the same content, no place and only synonyms swapped."
+     }
+    ]
+   }
+  },
+  {
+   "chunk": "pilot",
+   "style": "mixed",
+   "files": [
+    "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl"
+   ],
+   "gen": {
+    "files": [
+     "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl"
+    ],
+    "rows": 100,
+    "refusals": 15,
+    "notes": "pilot, generated earlier"
+   },
+   "label": {
+    "checked": 100,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 15,
+      "query": "구포장터 입구 전봇대에서 파박파박 불똥이 튄다. 비 오는데 와 저라노.",
+      "action": "fix",
+      "reason": "The location keeps the equipment name 전봇대. The rule strips equipment names such as 전봇대/전주/변압기/전선 from location (compare the rule's example \"공원 입구 전주에서 불꽃이\" giving \"공원 입구\"). incident_type spark with no hazard is correct.",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "spark",
+         "location": "구포장터 입구"
+        }
+       }
+      ],
+      "evidence": "sparks from pole"
+     }
+    ]
+   },
+   "span": {
+    "checked": 100,
+    "missing_files": [],
+    "fixes": [
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 5,
+      "query": "밤마다 푸른들아파트 205동 옆 변압기에서 웅웅 하는 소리가 크게 납니다.",
+      "action": "drop",
+      "reason": "Place name '푸른들아파트' uses the explicitly avoided common name '푸른'; the query itself carries the banned name, so it cannot be fixed by relabeling."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 15,
+      "query": "구포장터 입구 전봇대에서 파박파박 불똥이 튄다. 비 오는데 와 저라노.",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "spark",
+         "location": "구포장터 입구"
+        }
+       }
+      ],
+      "evidence": "sparks from pole",
+      "reason": "location '구포장터 입구 전봇대' includes the equipment noun '전봇대', which must be dropped; the place phrase is '구포장터 입구'."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 47,
+      "query": "전기가요! 안 들어와요! 우리 동네 전부 다요, 오십 가구는 될 거예요! 산호리 새마을이요!",
+      "action": "drop",
+      "reason": "Place name '산호리 새마을' uses the explicitly avoided common name '새마을'; the problem is in the query text."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 51,
+      "query": "정전됬어요 어제부터 계속 안들어와요 신정동 한빛빌라 2층입니다",
+      "action": "drop",
+      "reason": "Place name '한빛빌라' uses the explicitly avoided common name '한빛' (the location also leaves out the stated '2층'); the query itself is the problem."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 66,
+      "query": "변압이 소리가 이상해요 밤새 웅웅 거려요 아 시끄러워 화정리 마을 입구 쪽이요",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "transformer_noise",
+         "location": "화정리 마을 입구 쪽"
+        }
+       }
+      ],
+      "evidence": "strange humming transformer",
+      "reason": "location drops the position word '쪽'. Position words must be kept and only the trailing '이요' removed, so it should be '화정리 마을 입구 쪽'."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 71,
+      "query": "태풍 영향 용문변전소 2호 D/L 차단기 트립, 정전. 수용가 약 300호 확인",
+      "action": "fix",
+      "answers": [
+       {
+        "name": "report_incident",
+        "arguments": {
+         "incident_type": "outage",
+         "location": "용문변전소",
+         "households": 300
+        }
+       }
+      ],
+      "evidence": "feeder tripped, 300 customers stated",
+      "reason": "location '용문변전소 2호 D/L' includes the feeder line identifier (D/L = distribution line), which is equipment, not a place; the place phrase is '용문변전소'."
+     },
+     {
+      "file": "F:\\Develop\\NeedleTest\\ko\\out\\raw\\pilot.jsonl",
+      "line": 75,
+      "query": "COS 접속부 스파크 확인, 화재 없음. 대야리 새마을창고 앞 전주 NO.3",
+      "action": "drop",
+      "reason": "Place name '새마을창고' uses the explicitly avoided common name '새마을', which also repeats the '새마을' of row 47; the problem is in the query text."
+     }
+    ]
+   }
+  }
+ ],
+ "missing": []
+}
