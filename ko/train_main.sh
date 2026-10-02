@@ -16,14 +16,22 @@ BATCH=${BATCH:-8}
 LRS=${LRS:-"1e-4 3e-4 1e-3"}
 mkdir -p ko/out/split ko/results
 
-MAXLEN=$($PY - <<'EOF'
-from needle.model.finetune import fit_max_len
+# 512 fits batch 8 on an 8 GB card (1024 ran out of memory); rows longer than the cap are
+# truncated at the end, so the count is printed (1 of 3,000 rows, 514 tokens, on 2026-10-02).
+MAXCAP=${MAXCAP:-512}
+MAXLEN=$($PY - "$MAXCAP" <<'EOF'
+import sys
+from needle.model.finetune import fit_max_len, read_examples, render_example
 from needle.model.tokenizer import get_tokenizer
-print(fit_max_len("ko/data/train.jsonl", get_tokenizer(), 2048))
+cap, tok = int(sys.argv[1]), get_tokenizer()
+over = sum(len(tok.encode(p)) + len(tok.encode(t)) + 2 > cap
+           for p, t in (render_example(ex) for ex in read_examples("ko/data/train.jsonl")))
+print(f"rows longer than {cap}: {over}", file=sys.stderr)
+print(fit_max_len("ko/data/train.jsonl", tok, cap))
 EOF
 )
 MAXLEN=$(echo "$MAXLEN" | tail -1)
-echo "== max-len $MAXLEN (longest row, rounded up to a power of two)"
+echo "== max-len $MAXLEN"
 
 $PY - <<'EOF'
 import random
