@@ -14,13 +14,13 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
 - Pi 5에서 원본 모델 벤치마크: 영어 90%, 한국어 17%, 지연 361ms, 메모리 74MB(C 런타임). 결과는 [RESULTS.md](RESULTS.md).
 - 한국어 파인튜닝 가능성 확인: 토크나이저에 한글 조각이 없고(바이트 단위, 글자당 2.46토큰), Pi CPU에서 LoRA 학습 시 loss가 떨어지는 것까지 확인. [FINETUNE.md](FINETUNE.md).
 - 원본 모델 기준점: 사람이 쓴 평가셋 32개 중 정답 7개, **한국어 신고 24건은 0건** (`ko/results/base-20L-w2_test_human.json`).
-- RTX 3070 WSL2(Ubuntu 24.04, 저장소 `~/NeedleTest`)에서 `ko/gpu_smoke.sh` 완주: JAX가 `CudaDevice` 사용, 60스텝 loss 0.958 → 0.069, `.cact` 내보내기와 엔진 추론까지 동작 (`ko/results/smoke_*`).
-- **스모크 기준 미달**: 학습한 24문장에서 정답 4/24. 한국어 신고는 호출 형식과 `location`은 일부 맞히지만(`location` 6/17) `incident_type`이 거의 틀리고(1/17), 오류 8건(토큰 예산 초과 5, UTF-8 깨짐 3). 원인(학습 부족인지 파이프라인 문제인지)은 아직 확인하지 않음.
+- **GPU 스모크 통과** (RTX 3070 WSL2, Ubuntu 24.04, 저장소 `~/NeedleTest`): 학습 → `.cact` 내보내기 → 엔진 추론까지 동작. 학습한 24문장에서 엔진 정답 **24/24**, 오류 0 (`ko/results/smoke-20L_smoke.json`). 50에폭 300스텝 loss 0.0014.
+- **처음 두 번 실패한 원인**: 엔진은 도구 호출 전에 항상 `<think>` 추론 블록을 쓰는데, 학습 데이터에 `reasoning`이 없었음. 10에폭은 4/24(유형도 미학습), 50에폭은 JAX 24/24인데 `<think>`를 붙이면 JAX 12/24, 엔진 11/24 (`ko/results/noreason*`). `reasoning`을 넣자 해결.
+- 사람이 쓴 평가셋(참고용, 24문장만 학습): 정답 7/32, 오류 0. 한국어 신고 24건 중 호출 23, 유형 10, 장소 9, 정답 3 (원본은 정답 0). 추론 문장은 스모크의 24개 구절을 그대로 재사용하는 수준이라, 다양한 데이터가 필요함.
 
 다음 할 일
-1. 스모크 기준 미달 원인 확인 (예: 에폭을 늘려 24문장을 외우는지 재확인).
-2. 사용자와 확인한 뒤 학습 데이터 생성(`ko/gen_data.py`), 본 학습, 깊이별 내보내기, 평가.
-3. 결과를 커밋·푸시하고, `.cact`는 Pi로 복사해 지연·메모리 측정.
+1. 사용자가 요청하면 학습 데이터 생성(`ko/gen_data.py`, 이제 `reasoning` 포함), 본 학습, 깊이별 내보내기, 평가.
+2. 결과를 커밋·푸시하고, `.cact`는 Pi로 복사해 지연·메모리 측정.
 
 본 학습과 데이터 생성은 **사용자가 요청할 때** 진행합니다. 데이터 생성은 OpenRouter 요금이 듭니다.
 
@@ -30,6 +30,9 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
 - **스키마의 키와 enum 값은 영어**(`incident_type: "pole_down"`), 한국어는 신고자 표현을 그대로 옮기는 `location`에만 씀: 한국어는 글자당 바이트 3개로 생성되므로 출력할 한국어를 최소화.
 - **라벨 규칙**: `hazard`는 감전·화재 위험을 직접 말했을 때만(“불꽃이 튀어요”만으로는 넣지 않음, “불날 것 같아요”면 `fire`). `households`는 가구·세대 수를 말했을 때만. 무관한 문의와 “정전 아님”은 `answers: []`.
 - **확신도 헤드가 빠짐**: `needle build --lora`는 확신도 헤드를 제거해 confidence가 `None`이 됩니다. 거절 예시 학습, SDK 검증, 규칙 검사로 보완합니다.
+- **모든 학습 행에 `reasoning` 한 줄**: 엔진이 항상 `<think>`부터 생성하므로 이 블록을 학습시켜야 합니다. 형식은 `ko/schema.py`의 `reasoning()`: 영어 근거 구절 + 라벨에서 자동으로 만든 판단(`power out, 30 households stated -> outage; households 30; hazard none`, 거절은 `... -> no report`). 라벨과 어긋날 수 없고, 한국어를 쓰지 않아 토큰이 적습니다.
+- **파인튜닝 모델은 `auto_date=False`**: 학습 프롬프트에 system 턴이 없으므로 SDK의 자동 날짜 문구를 끕니다(`ko/try_model.py`, 앱에서도 동일).
+- **학습과 엔진 중 어디가 문제인지 분리**: `ko/jax_score.py`로 어댑터를 엔진 없이 JAX에서 채점합니다(기본값은 엔진처럼 `<think>` 강제).
 - **4비트 내보내기**: 공개 도구는 4비트만 지원(20레이어 63MB). 깊이 12/16/20을 만들어 정확도·크기를 비교합니다.
 
 ## 규칙
@@ -44,7 +47,7 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
 
 | 장비 | 역할 |
 |---|---|
-| RTX 3070 Windows PC (WSL2 Ubuntu) | 학습, 내보내기, 1차 평가. 저장소는 WSL 홈 폴더에 둠 |
+| RTX 3070 Windows PC (WSL2 Ubuntu-24.04) | 학습, 내보내기, 1차 평가. 저장소는 WSL 홈(`~/NeedleTest`, `.venv` 설치됨). Claude Code는 Windows 저장소(`F:\Develop\NeedleTest`)에서 `wsl -d Ubuntu-24.04`로 작업하고, 커밋·푸시는 GitHub 인증이 있는 Windows 저장소에서 함 |
 | Raspberry Pi 5 (`chungserver`) | 벤치마크(지연·메모리), 결과 검토. `models/`에 `.cact`를 받아 측정 |
 | GitHub `chungddong/NeedleTest` | 코드, 데이터, 평가 결과 공유 |
 
@@ -55,6 +58,7 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
 ```bash
 bash ko/gpu_smoke.sh                                              # 첫 실행: 설치 + 스모크
 .venv/bin/python ko/try_model.py <model.cact|-> ko/data/test_human.jsonl --out ko/results/<이름>.json
+.venv/bin/python ko/jax_score.py ko/out/<adapter>.safetensors ko/data/smoke.jsonl   # 엔진 없이 어댑터 채점
 .venv/bin/needle finetune ko/data/train.jsonl --epochs 3 --batch-size 8 --lr 1e-4 --max-len 512 --out ko/out/ko_lora.safetensors
 .venv/bin/needle build checkpoints/needle3.safetensors --lora ko/out/ko_lora.safetensors --layers 20 --out ko/out/needle3-ko-20L.cact
 .venv/bin/python bench.py --weights ko/out/needle3-ko-20L.cact --label ko-20L   # 영어 회귀 확인

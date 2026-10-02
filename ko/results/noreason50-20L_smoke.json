@@ -1,0 +1,646 @@
+{
+ "weights": "ko/out/smoke50-20L.cact",
+ "data": "ko/data/smoke.jsonl",
+ "scores": {
+  "n": 24,
+  "exact": 11,
+  "decision": 17,
+  "positives": 20,
+  "incident_type": 17,
+  "location": 13,
+  "errors": 1,
+  "latency_p50_ms": 509.2
+ },
+ "host": "DESKTOP-4UAUMJ7",
+ "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+ "needle_version": "3.0.6",
+ "time": "2026-10-02T13:45:33",
+ "rows": [
+  {
+   "query": "행복동 일대 정전됐어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "행복동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "행복동"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 534.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "햇살아파트 102동 전기가 다 나갔어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "햇살아파트 102동"
+     }
+    }
+   ],
+   "got": [],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 488.3,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "신촌리 마을 30가구 정전입니다",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신촌리 마을",
+      "households": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신촌리 마을",
+      "households": 30
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 584.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "OO리 전봇대가 쓰러졌어요 전선이 바닥에 있어요 위험해요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "OO리",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "OO리"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 461.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "중앙시장 앞 전주 넘어졌습니다",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "중앙시장 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "중앙시장 앞"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 1596.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "학교 뒤편 전선이 끊어져서 늘어져 있어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "학교 뒤편",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "학교"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 889.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "다리 옆 전선 끊김",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "다리 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "전선"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 431.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "우리 집 앞 변압기에서 윙윙 소리가 엄청 나요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "우리 집 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "우리 집 앞"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 500.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "버스정류장 위 변압기 소음 신고합니다",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "버스정류장 위"
+     }
+    }
+   ],
+   "got": [],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 569.3,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "공원 입구 전주에서 불꽃이 튀어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "공원 입구"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "공원 입구"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 451.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "주유소 옆 전선에서 스파크가 나요 불날 것 같아요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "주유소 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "주유소 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 634.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산 밑 변압기에 불이 붙었어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "산 밑",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "산 밑"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 479.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "윗마을 전기가 다 나가삔다 아이가",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "윗마을"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "윗마을"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 1510.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "아랫동네 전기 안 들어온 지 두 시간 됐슈",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "아랫동네"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "아랫동네"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 684.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "동사무소 근처 50세대 정전",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "동사무소 근처",
+      "households": 50
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "동사무소 근처 50세대"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 588.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "Power is out on Main Street",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Main Street"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Main Street"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 295.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "A utility pole fell near the river bridge",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "the river bridge"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "near the river bridge"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 386.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "Sparks coming from the transformer by the school",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the school"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the school"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 354.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "오늘 날씨 어때요?",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "오늘"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 411.5,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "전기요금 얼마 나왔는지 알려줘",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "전기요금"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 494.5,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "정전 아니에요 잘 들어와요",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "정전"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 373.6,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "이사 가는데 전기 명의 변경하고 싶어요",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "이사 가는데"
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 518.0,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "편의점 앞 전선이 축 늘어졌어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "편의점 앞"
+     }
+    }
+   ],
+   "got": [],
+   "confidence": null,
+   "error": "RuntimeError: UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa0 in position 265: invalid start byte",
+   "latency_ms": 1145.9,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "새마을회관 주변 정전 20가구 정도",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "새마을회관 주변",
+      "households": 20
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "새마을회관 주변",
+      "households": 20
+     }
+    }
+   ],
+   "confidence": null,
+   "error": null,
+   "latency_ms": 554.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  }
+ ]
+}
