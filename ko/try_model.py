@@ -33,7 +33,9 @@ def main():
     weights = None if args.weights == "-" else args.weights
 
     def make_agent():
-        return needle.Needle(tools=TOOLS, weights=weights)
+        # Tuned weights saw no system turn in training, so skip the auto date fact
+        # (as `needle finetune` advises); the base model keeps the SDK default.
+        return needle.Needle(tools=TOOLS, weights=weights, auto_date=weights is None)
 
     agent = make_agent()
     rows = [json.loads(line) for line in open(args.data, encoding="utf-8")]
@@ -48,13 +50,15 @@ def main():
         try:
             r = agent.complete(row["query"])
             got, conf, error = r.get("function_calls") or [], r.get("confidence"), r.get("error")
+            thought = r.get("reasoning")
         except Exception as exc:  # e.g. the engine emitting invalid UTF-8 kills the worker
-            got, conf, error = [], None, f"{type(exc).__name__}: {exc}"
+            got, conf, error, thought = [], None, f"{type(exc).__name__}: {exc}", None
             agent = make_agent()
         ms = (time.perf_counter() - t0) * 1000
         w, g = first_args(want), first_args(got)
         result = {
-            "query": row["query"], "want": want, "got": got, "confidence": conf, "error": error,
+            "query": row["query"], "want": want, "got": got, "reasoning": thought,
+            "confidence": conf, "error": error,
             "latency_ms": round(ms, 1),
             "exact": got == want,
             "decision": bool(got) == bool(want),  # reported vs refused, right call either way

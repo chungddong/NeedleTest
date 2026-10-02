@@ -33,5 +33,22 @@ def report_incident(
 TOOLS = [report_incident]
 TOOLS_JSON = [t._needle_tool for t in TOOLS]
 
+
+def reasoning(evidence, answers):
+    """The one-line `reasoning` a training row carries.
+
+    The engine always opens a <think> block before the tool call, and `needle finetune`
+    trains that block only from this field; rows without it leave the tuned model
+    reasoning like the base model at inference. The label part is derived from
+    `answers` so the reasoning cannot contradict them, and it stays English because
+    every Korean character costs 3 byte tokens.
+    """
+    if not answers:
+        return f"{evidence} -> no report"
+    parts = [f"{a['arguments'].get('incident_type')}; "
+             f"households {a['arguments'].get('households', 'none')}; "
+             f"hazard {a['arguments'].get('hazard', 'none')}" for a in answers]
+    return f"{evidence} -> " + " | ".join(parts)
+
 if __name__ == "__main__":
     print(json.dumps(TOOLS_JSON, ensure_ascii=False, indent=1))

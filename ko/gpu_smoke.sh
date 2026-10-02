@@ -20,15 +20,20 @@ fi
 .venv/bin/python ko/make_test_data.py
 mkdir -p ko/out ko/results
 
-echo "== overfit the 24 smoke rows; loss should fall well below 0.1"
-.venv/bin/needle finetune ko/data/smoke.jsonl --epochs 10 --batch-size 4 --lr 1e-3 \
+# 10 epochs left incident_type unlearned (loss 0.07 is mostly easy JSON and copied bytes); 50 memorizes.
+echo "== overfit the 24 smoke rows; loss should fall below 0.01"
+.venv/bin/needle finetune ko/data/smoke.jsonl --epochs 50 --batch-size 4 --lr 1e-3 \
   --max-len 512 --val-split 0 --out ko/out/smoke_lora.safetensors 2>&1 | tee ko/results/smoke_train.log
+
+echo "== adapter in JAX with the engine's <think> prefill (should mostly pass; if it does and the engine does not, suspect export/engine)"
+.venv/bin/python ko/jax_score.py ko/out/smoke_lora.safetensors ko/data/smoke.jsonl 2>&1 \
+  | grep -v 'unauthenticated requests' | tee ko/results/smoke_jax.log | tail -1
 
 echo "== merge the adapter and export a .cact"
 .venv/bin/needle build checkpoints/needle3.safetensors --lora ko/out/smoke_lora.safetensors \
   --out ko/out/smoke-20L.cact
 
-echo "== tuned model on the rows it trained on (should mostly pass), then on the human test set"
+echo "== engine on the rows it trained on (should mostly pass), then on the human test set"
 .venv/bin/python ko/try_model.py ko/out/smoke-20L.cact ko/data/smoke.jsonl \
   --out ko/results/smoke-20L_smoke.json | tail -2
 .venv/bin/python ko/try_model.py ko/out/smoke-20L.cact ko/data/test_human.jsonl \

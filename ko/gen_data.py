@@ -5,6 +5,11 @@ queries. This prompt asks for the styles real outage reports come in: standard
 Korean, dialects, typos and speech-to-text noise, short texts, field-worker shorthand,
 non-native Korean, and some English, plus refusals.
 
+Each row also gets a `reasoning` line (see schema.reasoning): the engine always
+reasons in a <think> block before calling, so training rows must teach that block.
+The model writes only a short English evidence phrase; the label part comes from
+the answers. Rows with a missing or non-English evidence phrase are dropped.
+
 Usage (on the GPU server):
   export OPENROUTER_API_KEY=...        # your own key; generation is billed by OpenRouter
   python ko/gen_data.py --num 3000 --out ko/data/train.jsonl
@@ -13,13 +18,16 @@ import argparse
 import json
 import os
 import random
+import re
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, os.path.dirname(__file__))
 
 from needle.model.finetune import _openrouter, _parse_array, DEFAULT_MODEL
-from schema import TOOLS_JSON
+from schema import TOOLS_JSON, reasoning
+
+HANGUL = re.compile("[ㄱ-ㆎ가-힣]")
 
 STYLES = [
     "표준어로 차분하게 신고하는 주민",
@@ -42,9 +50,13 @@ PROMPT = """아래 도구 스키마로 학습 데이터를 만듭니다.
 이번 묶음의 화자: {style}
 
 각 원소는 다음 형식의 JSON 객체이고, 전체를 JSON 배열로만 출력하세요.
-{{"query": "<신고 문장>", "answers": [{{"name": "report_incident", "arguments": {{...}}}}]}}
+{{"query": "<신고 문장>", "evidence": "<영어 요약>", "answers": [{{"name": "report_incident", "arguments": {{...}}}}]}}
 
 규칙:
+- evidence는 신고 문장이 말하는 내용을 2~8단어 영어로 요약한 구절입니다. 한글을 쓰지 않습니다.
+  incident_type의 근거를 담고, households나 hazard를 넣었다면 그 근거도 담습니다.
+  예: "power is out", "pole fell, says it is dangerous", "power out, 30 households stated".
+  answers가 []이면 무엇에 대한 문장인지 씁니다. 예: "asks about the bill", "says the power is fine".
 - arguments의 키와 incident_type, hazard 값은 스키마의 영어 값만 씁니다.
 - location은 신고자가 말한 표현을 그대로 옮깁니다 (번역하거나 다듬지 않음).
 - households는 가구·세대 수를 직접 말한 경우에만 넣습니다.
@@ -58,11 +70,16 @@ def batch(style, n, model, api_key):
     text = _openrouter([{"role": "user", "content": PROMPT.format(
         tools=json.dumps(TOOLS_JSON, ensure_ascii=False, indent=1), n=n, style=style,
         refusals=max(1, n // 8))}], model, api_key)
-    rows = _parse_array(text)
-    for row in rows:
+    kept = []
+    for row in _parse_array(text):
+        evidence = str(row.pop("evidence", "") or "").strip()
+        if not evidence or HANGUL.search(evidence) or not isinstance(row.get("answers"), list):
+            continue
+        row["reasoning"] = reasoning(evidence, row["answers"])
         row["tools"] = TOOLS_JSON
         row["style"] = style
-    return rows
+        kept.append(row)
+    return kept
 
 
 def main():
