@@ -33,7 +33,7 @@ ROWS = [
      call("pole_down", "OO리", hazard="electrocution")),
     ("중앙시장 앞 전주 넘어졌습니다", "utility pole fell over", call("pole_down", "중앙시장 앞")),
     ("학교 뒤편 전선이 끊어져서 늘어져 있어요", "power line snapped and hanging",
-     call("line_down", "학교 뒤편", hazard="electrocution")),
+     call("line_down", "학교 뒤편")),
     ("다리 옆 전선 끊김", "power line cut", call("line_down", "다리 옆")),
     ("우리 집 앞 변압기에서 윙윙 소리가 엄청 나요", "transformer humming loudly",
      call("transformer_noise", "우리 집 앞")),
