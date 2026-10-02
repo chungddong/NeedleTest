@@ -1,0 +1,82 @@
+  fetch     checkpoints/needle3.safetensors  downloading from Hugging Face
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  backend   gpu  float32
+  depth     20 layers
+  fetch     tokenizer tokenizer  downloading from Hugging Face
+  data      24 examples  seq_len 512  cap 512
+  numerics  CQ W4 STE + A8 (matches export)
+  lora      rank 16  alpha 32  5 weight groups
+  schedule  60 steps  warmup 3  cosine decay  clip 1.0  (compiling...)
+  step      1/60  loss 0.9582
+  step      2/60  loss 0.6902
+  step      3/60  loss 0.7609
+  step      4/60  loss 0.8086
+  step      5/60  loss 0.6207
+  step      6/60  loss 0.4406
+  epoch     1/10  loss 0.4406
+  step      7/60  loss 0.5128
+  step      8/60  loss 0.5161
+  step      9/60  loss 0.4080
+  step      10/60  loss 0.4094
+  step      11/60  loss 0.4672
+  step      12/60  loss 0.2571
+  epoch     2/10  loss 0.2571
+  step      13/60  loss 0.2433
+  step      14/60  loss 0.2272
+  step      15/60  loss 0.2996
+  step      16/60  loss 0.2278
+  step      17/60  loss 0.2083
+  step      18/60  loss 0.3797
+  epoch     3/10  loss 0.3797
+  step      19/60  loss 0.1509
+  step      20/60  loss 0.2035
+  step      21/60  loss 0.1925
+  step      22/60  loss 0.2299
+  step      23/60  loss 0.1121
+  step      24/60  loss 0.1356
+  epoch     4/10  loss 0.1356
+  step      25/60  loss 0.2162
+  step      26/60  loss 0.1196
+  step      27/60  loss 0.0994
+  step      28/60  loss 0.1426
+  step      29/60  loss 0.0924
+  step      30/60  loss 0.1118
+  epoch     5/10  loss 0.1118
+  step      31/60  loss 0.1278
+  step      32/60  loss 0.1211
+  step      33/60  loss 0.1030
+  step      34/60  loss 0.1014
+  step      35/60  loss 0.1024
+  step      36/60  loss 0.0799
+  epoch     6/10  loss 0.0799
+  step      37/60  loss 0.0797
+  step      38/60  loss 0.0689
+  step      39/60  loss 0.0994
+  step      40/60  loss 0.0923
+  step      41/60  loss 0.1041
+  step      42/60  loss 0.0896
+  epoch     7/10  loss 0.0896
+  step      43/60  loss 0.0833
+  step      44/60  loss 0.0757
+  step      45/60  loss 0.0849
+  step      46/60  loss 0.0702
+  step      47/60  loss 0.0598
+  step      48/60  loss 0.1172
+  epoch     8/10  loss 0.1172
+  step      49/60  loss 0.1019
+  step      50/60  loss 0.0601
+  step      51/60  loss 0.0952
+  step      52/60  loss 0.0588
+  step      53/60  loss 0.1121
+  step      54/60  loss 0.0632
+  epoch     9/10  loss 0.0632
+  step      55/60  loss 0.0857
+  step      56/60  loss 0.0973
+  step      57/60  loss 0.0610
+  step      58/60  loss 0.0588
+  step      59/60  loss 0.1010
+  step      60/60  loss 0.0690
+  epoch     10/10  loss 0.0690
+  adapter   ko/out/smoke_lora.safetensors
+  next      needle build checkpoints/needle3.safetensors --lora ko/out/smoke_lora.safetensors
+  note      local tuning leaves the confidence head untrained; needle build drops it and confidence reports None
