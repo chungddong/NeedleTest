@@ -1,0 +1,82 @@
+  backend   gpu  float32
+  depth     20 layers
+  data      2700 examples  seq_len 512  cap 512
+  numerics  CQ W4 STE + A8 (matches export)
+  lora      rank 16  alpha 32  5 weight groups
+  schedule  2704 steps  warmup 135  cosine decay  clip 1.0  (compiling...)
+E1002 19:46:20.602799   31659 slow_operation_alarm.cc:73] Constant folding an instruction is taking > 1s:
+
+  %reshape.1649 = f32[110592,128]{1,0} reshape(%constant.1043)
+
+This isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.
+
+If you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+E1002 19:46:20.635210   31587 slow_operation_alarm.cc:140] The operation took 3.6224509s
+Constant folding an instruction is taking > 1s:
+
+  %reshape.1649 = f32[110592,128]{1,0} reshape(%constant.1043)
+
+This isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.
+
+If you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+  step      54/2704  loss 0.2654
+  step      108/2704  loss 0.1288
+  step      162/2704  loss 0.0715
+  step      216/2704  loss 0.0548
+  step      270/2704  loss 0.0672
+  step      324/2704  loss 0.0798
+  epoch     1/8  loss 0.0679
+  step      378/2704  loss 0.0517
+  step      432/2704  loss 0.0628
+  step      486/2704  loss 0.0378
+  step      540/2704  loss 0.0765
+  step      594/2704  loss 0.0523
+  step      648/2704  loss 0.0415
+  epoch     2/8  loss 0.0337
+  step      702/2704  loss 0.0355
+  step      756/2704  loss 0.0449
+  step      810/2704  loss 0.0251
+  step      864/2704  loss 0.0271
+  step      918/2704  loss 0.0115
+  step      972/2704  loss 0.0457
+  epoch     3/8  loss 0.0401
+  step      1026/2704  loss 0.0208
+  step      1080/2704  loss 0.0199
+  step      1134/2704  loss 0.0063
+  step      1188/2704  loss 0.0082
+  step      1242/2704  loss 0.0046
+  step      1296/2704  loss 0.0244
+  step      1350/2704  loss 0.0228
+  epoch     4/8  loss 0.0123
+  step      1404/2704  loss 0.0362
+  step      1458/2704  loss 0.0045
+  step      1512/2704  loss 0.0135
+  step      1566/2704  loss 0.0048
+  step      1620/2704  loss 0.0146
+  step      1674/2704  loss 0.0168
+  epoch     5/8  loss 0.0164
+  step      1728/2704  loss 0.0074
+  step      1782/2704  loss 0.0144
+  step      1836/2704  loss 0.0016
+  step      1890/2704  loss 0.0090
+  step      1944/2704  loss 0.0037
+  step      1998/2704  loss 0.0127
+  epoch     6/8  loss 0.0013
+  step      2052/2704  loss 0.0038
+  step      2106/2704  loss 0.0004
+  step      2160/2704  loss 0.0007
+  step      2214/2704  loss 0.0053
+  step      2268/2704  loss 0.0004
+  step      2322/2704  loss 0.0046
+  epoch     7/8  loss 0.0003
+  step      2376/2704  loss 0.0113
+  step      2430/2704  loss 0.0028
+  step      2484/2704  loss 0.0003
+  step      2538/2704  loss 0.0002
+  step      2592/2704  loss 0.0148
+  step      2646/2704  loss 0.0066
+  step      2700/2704  loss 0.0002
+  epoch     8/8  loss 0.0161
+  adapter   ko/out/exp/label_e8.safetensors
+  next      needle build checkpoints/needle3.safetensors --lora ko/out/exp/label_e8.safetensors
+  note      local tuning leaves the confidence head untrained; needle build drops it and confidence reports None

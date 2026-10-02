@@ -12,8 +12,9 @@ Two ways to get rows:
 
 Each row also gets a `reasoning` line (see schema.reasoning): the engine always
 reasons in a <think> block before calling, so training rows must teach that block.
-The generator writes only a short English evidence phrase; the label part comes from
-the answers.
+It is built from the answers alone ("outage; households 30; hazard none"); the
+generator's short English evidence phrase is checked but not trained on, since the
+label-only form scored better on held-out rows.
 
 Rows are dropped when the answers break the schema (unknown keys, enum values,
 households outside 1..100000), when a location is not copied verbatim from the query,
@@ -162,8 +163,10 @@ def assemble(raw_rows, style=None):
         if why:
             dropped[why] += 1
             continue
+        # The evidence phrase is still required (it shows the generator read the query) but
+        # the trained reasoning is the label alone; see schema.reasoning.
         kept.append({"query": row["query"], "tools": TOOLS_JSON,
-                     "reasoning": reasoning(row["evidence"].strip(), row["answers"]),
+                     "reasoning": reasoning(None, row["answers"]),
                      "answers": row["answers"], "style": row.get("style") or style})
     return kept, dropped
 

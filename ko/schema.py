@@ -39,16 +39,23 @@ def reasoning(evidence, answers):
 
     The engine always opens a <think> block before the tool call, and `needle finetune`
     trains that block only from this field; rows without it leave the tuned model
-    reasoning like the base model at inference. The label part is derived from
-    `answers` so the reasoning cannot contradict them, and it stays English because
-    every Korean character costs 3 byte tokens.
+    reasoning like the base model at inference. The text is derived from `answers` so
+    it cannot contradict them, and it stays English because every Korean character
+    costs 3 byte tokens.
+
+    With evidence=None (training data since 2026-10-02) it is the label alone, e.g.
+    "spark; households none; hazard fire" or "no report". An English evidence phrase in
+    front ("sparks, fears fire -> ...") scored worse on held-out rows: the model's
+    generated phrase drifted to frequent phrases and the call followed it (exact 167 vs
+    213 of 300 at 8 epochs; ko/results/exp_*_val.json). The smoke set keeps that form.
     """
     if not answers:
-        return f"{evidence} -> no report"
-    parts = [f"{a['arguments'].get('incident_type')}; "
-             f"households {a['arguments'].get('households', 'none')}; "
-             f"hazard {a['arguments'].get('hazard', 'none')}" for a in answers]
-    return f"{evidence} -> " + " | ".join(parts)
+        label = "no report"
+    else:
+        label = " | ".join(f"{a['arguments'].get('incident_type')}; "
+                           f"households {a['arguments'].get('households', 'none')}; "
+                           f"hazard {a['arguments'].get('hazard', 'none')}" for a in answers)
+    return f"{evidence} -> {label}" if evidence else label
 
 if __name__ == "__main__":
     print(json.dumps(TOOLS_JSON, ensure_ascii=False, indent=1))

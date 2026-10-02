@@ -1,0 +1,67 @@
+  backend   gpu  float32
+  depth     20 layers
+  data      2700 examples  seq_len 512  cap 512
+  numerics  CQ W4 STE + A8 (matches export)
+  lora      rank 16  alpha 32  5 weight groups
+  schedule  2704 steps  warmup 135  cosine decay  clip 1.0  (compiling...)
+  step      54/2704  loss 0.7716
+  step      108/2704  loss 0.3125
+  step      162/2704  loss 0.3157
+  step      216/2704  loss 0.2600
+  step      270/2704  loss 0.3419
+  step      324/2704  loss 0.3356
+  epoch     1/8  loss 0.2507
+  step      378/2704  loss 0.2670
+  step      432/2704  loss 0.2235
+  step      486/2704  loss 0.2247
+  step      540/2704  loss 0.3454
+  step      594/2704  loss 0.2676
+  step      648/2704  loss 0.2350
+  epoch     2/8  loss 0.3627
+  step      702/2704  loss 0.2494
+  step      756/2704  loss 0.2597
+  step      810/2704  loss 0.1793
+  step      864/2704  loss 0.2593
+  step      918/2704  loss 0.1542
+  step      972/2704  loss 0.2176
+  epoch     3/8  loss 0.1360
+  step      1026/2704  loss 0.1203
+  step      1080/2704  loss 0.1567
+  step      1134/2704  loss 0.1465
+  step      1188/2704  loss 0.1529
+  step      1242/2704  loss 0.1003
+  step      1296/2704  loss 0.1390
+  step      1350/2704  loss 0.1896
+  epoch     4/8  loss 0.1566
+  step      1404/2704  loss 0.1528
+  step      1458/2704  loss 0.1137
+  step      1512/2704  loss 0.1494
+  step      1566/2704  loss 0.1297
+  step      1620/2704  loss 0.1211
+  step      1674/2704  loss 0.0873
+  epoch     5/8  loss 0.1284
+  step      1728/2704  loss 0.1404
+  step      1782/2704  loss 0.1616
+  step      1836/2704  loss 0.0703
+  step      1890/2704  loss 0.1228
+  step      1944/2704  loss 0.1331
+  step      1998/2704  loss 0.1263
+  epoch     6/8  loss 0.1126
+  step      2052/2704  loss 0.1023
+  step      2106/2704  loss 0.2125
+  step      2160/2704  loss 0.0715
+  step      2214/2704  loss 0.0760
+  step      2268/2704  loss 0.0812
+  step      2322/2704  loss 0.0925
+  epoch     7/8  loss 0.0481
+  step      2376/2704  loss 0.1002
+  step      2430/2704  loss 0.1420
+  step      2484/2704  loss 0.0577
+  step      2538/2704  loss 0.1323
+  step      2592/2704  loss 0.1214
+  step      2646/2704  loss 0.1092
+  step      2700/2704  loss 0.0845
+  epoch     8/8  loss 0.1012
+  adapter   ko/out/exp/evid_e8.safetensors
+  next      needle build checkpoints/needle3.safetensors --lora ko/out/exp/evid_e8.safetensors
+  note      local tuning leaves the confidence head untrained; needle build drops it and confidence reports None

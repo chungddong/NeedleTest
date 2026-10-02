@@ -1,0 +1,8351 @@
+{
+ "weights": "ko/out/exp/evid_e8-20L.cact",
+ "data": "ko/out/split/val.jsonl",
+ "auto_date": false,
+ "scores": {
+  "n": 300,
+  "exact": 167,
+  "decision": 278,
+  "positives": 270,
+  "incident_type": 223,
+  "location": 204,
+  "errors": 2,
+  "latency_p50_ms": 541.8
+ },
+ "host": "DESKTOP-4UAUMJ7",
+ "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+ "needle_version": "3.0.6",
+ "time": "2026-10-02T19:45:55",
+ "rows": [
+  {
+   "query": "네 여기 비산동 염색공단 옆 원룸 건물인데요. 포겸에 전기가 나가서 열 가구가 에어컨도 못 켜고 이써요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "비산동 염색공단 옆 원룸 건물",
+      "households": 10
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "비산동 염색공단 옆 원룸"
+     }
+    }
+   ],
+   "reasoning": "power out, 10 households stated -> outage; households 10; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 713.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "변압기, 변압기 소리… 길음역 뒤요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "길음역 뒤"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "소리"
+     }
+    }
+   ],
+   "reasoning": "transformer noise -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 383.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "산외면 다죽리 돼지막 옆 전봇대에 불이 붙어가 연기가 시커멓다!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "산외면 다죽리 돼지막 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "산외면 다죽리 돼지막 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "pole caught fire -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 584.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "안계면 들판 양수장 옆에 우리 논이 있는데예. 폭우 오고 나서 양수기 전기가 안 들어와가 물을 몬 퍼냅니더. 이라다 벼 다 잠기겠다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "안계면 들판 양수장 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "안계면 들판 양수장 옆"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 707.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "용산면 변압기 웅웅혀요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "용산면"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "용산면"
+     }
+    }
+   ],
+   "reasoning": "transformer is noisy -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 367.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "중화산동 목련아파트 뒤편 변압기가 밤새 윙윙거려서 잠을 못 자겄소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "중화산동 목련아파트 뒤편"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "중화산동 목련아파트 뒤편"
+     }
+    }
+   ],
+   "reasoning": "transformer humming all night -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 643.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭설로 미아동 솔샘시장 뒤편 골목 전주 No.3317 기울어짐. 지지선 풀림, 보강 필요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "미아동 솔샘시장 뒤편 골목"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "미아동 솔샘시장 뒤편 골목"
+     }
+    }
+   ],
+   "reasoning": "pole leaning, line sagging -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 1084.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "저 다음 주 화산리로 이사 가요. 전기 이름 바꾸는 거 어떻게 해요?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about changing account holder -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 321.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "기계면 남계리 축사옆 변압기 지지직소리 계속나여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "기계면 남계리 축사옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "기계면 남계리 축사옆"
+     }
+    }
+   ],
+   "reasoning": "transformer sparking, power flickering -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 517.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "강풍에 전깃줄이 축 처지가 버스 지붕에 닿을라 칸다. 서대신동 동아대 병원 앞 교차로라예.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "서대신동 동아대 병원 앞 교차로"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "서대신동 동아대 병원 앞 교차로"
+     }
+    }
+   ],
+   "reasoning": "line snapped, power out -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 680.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "변압끼에서 윙윙 소리 나더니 전서니 툭 끄너져써요. 신매동 시장 주차장 입구요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "신매동 시장 주차장 입구"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "line sagging to head height -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 593.3,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "신내동 물류창고 옆 전주에서 불이나서 연기가 자욱해요 빨리 와주세여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "신내동 물류창고 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "신내동 물류창고 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "pole on fire, may spread -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 584.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태품 지나가고 나서부터 변압기 소리가 이상해요. 덕천동 로타리 은행 옆이에요 딱딱 하는 소리요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "덕천동 로타리 은행 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "덕천동 로타리 은행 옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming all night -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 1005.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "성수동2가 수제화거리 정전",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "성수동2가 수제화거리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "성수동2가"
+     }
+    }
+   ],
+   "reasoning": "power line snapped -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 394.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "밤에 변압기 소리 계속 나요. 학산리 버스 종점이에요. 태풍 오고부터 그래요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "학산리 버스 종점"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "학산리 버스 종점"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 620.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산불 연기로 송전 정지된 듯. 달동 근린공원 주변 신호등 및 상가 정전.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "달동 근린공원 주변"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "송전"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 463.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "태풍 때문에 어젯밤 열한 시쯤 정전됐습니다. 동대문 창신동 봉제골목인데 저희 포함해서 22가구가 아직 전기가 없습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "동대문 창신동 봉제골목",
+      "households": 22
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "동대문 창신동 봉제골목",
+      "households": 22
+     }
+    }
+   ],
+   "reasoning": "power out, 22 households stated -> outage; households 22; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 718.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "선생님 저 스리랑카 선원이에요. 비응항 냉동 창고 전기 없어요. 고기 다 썩어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "비응항 냉동 창고"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "비응항 냉동 창고"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 570.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산불연기 냄새나는대 창문 닫아야되나여?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the bill amount -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 183.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "신기리 양파밭 전선 끊어졌어요 어제 강풍 불었어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "신기리 양파밭"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "신기리 양파밭",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line sparking, fears electrocution -> spark; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 557.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "감풍에 전서니 끄너지면서 우리 동네 전기도 가치 나가써요. 간석동 시장 골목 입구요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "간석동 시장 골목 입구"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "간석동 시장 골목 입구"
+     }
+    }
+   ],
+   "reasoning": "power out, 11 households stated -> outage; households 11; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 606.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "강풍 낙하물로 D/L 차단, 길음뉴타운 13단지 상가동 정전.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "길음뉴타운 13단지 상가동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "강풍 낙하물로",
+      "households": 13
+     }
+    }
+   ],
+   "reasoning": "power out, 13 households stated -> outage; households 13; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 503.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "봉평 장터 근처 전봇 대 위에서 파 지직 하면서 불 꽃이 튀어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "봉평 장터 근처"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "봉평 장터 근처",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from pole, fears fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 641.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭우 와서 둔내면 버섯 농장 전기 끊겼어요 어떻게 해요?",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "둔내면 버섯 농장"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "asks about a new electricity bill -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 229.0,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "낙뢰가 친 뒤 공덕동 오거리 전선 하나가 늘어져 흔들리고 있습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "공덕동 오거리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "공덕동 오거리"
+     }
+    }
+   ],
+   "reasoning": "line sagging low over road -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 528.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Is typhoon coming tonight? I want to know if I should bring my boat in.",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the typhoon -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 149.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "문암리 해수욕장 입구 전봇대 쓰러져서 전기 흐르는거같아 위험해여 오지마세여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "문암리 해수욕장 입구",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "문암리 해수욕장 입구",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on road, dangerous -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 672.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "안양 평촌 학원가 사거리 전깃줄이 바람에 끈어저서 인도에 떨어졋어요. 학생들 만이 다니는대 감전사고 날꺼같아요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "안양 평촌 학원가 사거리",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "안양 평촌 학원가 사거리",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line snapped, fears electrocution -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 739.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭염 과부하로 D/L 차단. 신도림동 세솔 단지 약 480세대 정전 중.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신도림동 세솔 단지",
+      "households": 480
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신도림동",
+      "households": 480
+     }
+    }
+   ],
+   "reasoning": "no power, 480 households stated -> outage; households 480; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 472.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "고덕동 고덕천 산책로 전주가 강풍에 꺽여서 위험해 보여요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "고덕동 고덕천 산책로",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "고덕동 고덕천 산책로"
+     }
+    }
+   ],
+   "reasoning": "pole tilted in wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 542.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭설이 쌓이면서 이문동 한국외대 기숙사 뒤편 전선이 끊어져 바닥에 닿아 있습니다. 눈이 젖어 있어서 감전 사고가 날까 걱정됩니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "이문동 한국외대 기숙사 뒤편",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "이문동 한국외대 기숙사 뒤편"
+     }
+    }
+   ],
+   "reasoning": "line sagging to head height -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 798.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "남부면 여차 몽돌해변 민박 단지 전원 끊김, 태풍 상륙 직후.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "남부면 여차 몽돌해변 민박 단지"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "남부면 여차 몽돌해변 민박 단지"
+     }
+    }
+   ],
+   "reasoning": "shops lost power -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 595.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "청파동 숙대 입구 지중 TR 함체 불길, 연기 많음. 행인 대피시킴.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "청파동 숙대 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "청파동 숙대 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer on fire, smoke -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 485.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "금일 안전교육 일정 변경. 15시에서 16시로, 교육장 3층",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "금일 안전교육",
+      "households": 15
+     }
+    }
+   ],
+   "reasoning": "outage, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 915.1,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "치악산 황골 등산로입구 전주에 불붙엇슴니다",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "치악산 황골 등산로입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "치악산 황골 등산로입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "pole on fire, spreading to wildfire -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 712.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "가곡리 30가구 정전",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "가곡리",
+      "households": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "가곡리 30가구"
+     }
+    }
+   ],
+   "reasoning": "power outage -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 318.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "태풍 때문에 초량동 차이나타운 입구 전봇대 쓰러졌어요, 위험 위험해요 사람 많이 지나가요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "초량동 차이나타운 입구",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "초량동 차이나타운 입구",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, line on ground, electrocution risk -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 735.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태품 때 간판이 떠러지면서 전서늘 끄너서 화정동 사거리 횡단보도 위에 쭐이 느러져 이써요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "화정동 사거리 횡단보도 위"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "화정동 사거리 횡단보도 위",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line snapped, fears electrocution -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 710.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Black smoke and flames from the transformer at Hyomun Industrial Complex, the typhoon wind hit it and something exploded.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "Hyomun Industrial Complex",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "Hyomun Industrial Complex",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer fire, power flickering -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 370.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Sindorim Station blackout",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Sindorim Station"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says the lightning fell -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 125.9,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "이방면 우포늪 생태관 앞 전깃줄서 불꽃이 자꾸 튄다 카이.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "이방면 우포늪 생태관 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "이방면 우포늪 생태관 앞",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 579.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "어 여보세요 폭썰 무게 때문에 전서니 처져서 지금 땅에 다아 이써요. 주엽동 강선마을 상가 앞이고요 그 뒤로 전기도 나가써요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "주엽동 강선마을 상가 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "주엽동 강선마을 상가 앞"
+     }
+    }
+   ],
+   "reasoning": "line sagging to head height -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 737.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "No electricity at all in Sunrise Village. About 80 households are affected since yesterday afternoon.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Sunrise Village",
+      "households": 80
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Sunrise Village",
+      "households": 80
+     }
+    }
+   ],
+   "reasoning": "no electricity, 80 households stated -> outage; households 80; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 305.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "대치리 논 옆에 전깃줄 떨어져 있어요 사람 만지면 감전 돼요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "대치리 논 옆",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "대치리 논 옆"
+     }
+    }
+   ],
+   "reasoning": "line snapped and fell -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 489.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭우 때문에 다랭이마을 전기 나갔어요. 스물다섯 세대 전부 전기 없어요. 저 펜션 청소하는 사람이에요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "다랭이마을",
+      "households": 25
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "다랭이마을",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "power out, electrocution danger -> outage; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 636.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "우강면 들판 전주서 불꽃 튀더니 동네 전기가 나갔슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "우강면 들판"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "우강면 들판",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole sparking, fears electrocution -> spark; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 541.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "도암면 운주사 주차장 옆 전봇대 위에서 지지직 허고 불꽃이 튀어요. 비 그친 뒤로도 자꾸 그라요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "도암면 운주사 주차장 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "도암면 운주사 주차장 옆"
+     }
+    }
+   ],
+   "reasoning": "pole fell, line sparking -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 660.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "정전 신고 접수. 하동 한마음아파트 전체 정전, 약 150세대. 인입선 확인 필요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "하동 한마음아파트",
+      "households": 150
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "약 150세대",
+      "households": 150
+     }
+    }
+   ],
+   "reasoning": "power out, 150 households stated -> outage; households 150; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 520.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "한수면 송계리 펜션 주인이유. 손님들 있는디 아까부터 전기가 안 와유. 언제쯤 들어오는지 좀 알려줘유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "한수면 송계리 펜션"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "한수면 송계리 펜션 주"
+     }
+    }
+   ],
+   "reasoning": "power out, TV charger stopped -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 667.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "대치동 은마사거리 불꼿튐",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "대치동 은마사거리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "대치동"
+     }
+    }
+   ],
+   "reasoning": "sparks flying -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 363.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "율포 전기 나가부렀어",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "율포"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "율포"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 300.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "이천 설성면 쌀 창고 옆 변압기에서 불이 났습니다. 소방서에도 연락했습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "이천 설성면 쌀 창고 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "이천 설성면 쌀 창고 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer on fire, smoke -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 610.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "신림동 정전됬어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신림동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신림동"
+     }
+    }
+   ],
+   "reasoning": "power outage reported -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 300.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "연희동 사러가마트 뒤 전봇대 변압기에서 불이낫어요. 불똥이 떨어지구 연기 엄청나요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "연희동 사러가마트 뒤",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "연희동 사러가마트 뒤"
+     }
+    }
+   ],
+   "reasoning": "pole sparked, then power went out -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 606.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "점암면 천학리 이장이요. 우리 마을 예순세 가구가 어젯밤부텀 정전이랑께요, 노인들만 사는 디라 큰일이요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "점암면 천학리",
+      "households": 63
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "우리 마을 예순세 가구가 어젯밤부텀"
+     }
+    }
+   ],
+   "reasoning": "power out, 11 households stated -> outage; households 11; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 781.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "장호항 스노클링 체험장 전기 안들어 오는데 언제 들어와여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "장호항 스노클링 체험장"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "장호항 스노클링 체험장"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 550.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뢰 직후 고잔동 안산역 앞 전주 접지선 쪽 스파크 튐.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "고잔동 안산역 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "고잔동 안산역 앞"
+     }
+    }
+   ],
+   "reasoning": "pole tilted in wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 528.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "오신고 종결",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "오신고"
+     }
+    }
+   ],
+   "reasoning": "power line cut -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 269.5,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "산불 연기 와요 칠서공단 식당 전기도 나갔어요 밥 못 해요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "칠서공단 식당"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says only a small-voltage line came -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 269.4,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "풍각면 송서리 미나리꽝 위로 전선이 떨어졌심더. 물에 닿아 있는데 소가 들어가믄 감전될 것 같아예.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "풍각면 송서리 미나리꽝 위",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "풍각면 송서리 미나리꽝 위",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line sagging low, fears electrocution -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 757.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "P#5520 전도, 이문동",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "이문동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "이문동"
+     }
+    }
+   ],
+   "reasoning": "pole is leaning -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 338.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산사태가 났습니다. 함양 마천면 등산로 입구 쪽 전봇대가 흙에 밀려 넘어졌습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "함양 마천면 등산로 입구 쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "함양 마천면 등산로 입구 쪽",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, line on road, dangerous -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 709.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭염에 정전이 돼서 만수동 다가구주택 18세대가 냉장고를 못 쓰고 있습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "만수동 다가구주택",
+      "households": 18
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "돼서 만수동 다가구주택",
+      "households": 18
+     }
+    }
+   ],
+   "reasoning": "power out, 18 households stated -> outage; households 18; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 612.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "Snow storm cut the power to 7 households in Hwanghak Villa.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Hwanghak Villa",
+      "households": 7
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Hwanghak Villa",
+      "households": 7
+     }
+    }
+   ],
+   "reasoning": "power cut, households none -> outage; households 7; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 314.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태풍 정전, 미포 조선소 사택 단지 90가구 영향.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "미포 조선소 사택 단지",
+      "households": 90
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "미포 조선소",
+      "households": 90
+     }
+    }
+   ],
+   "reasoning": "power out, 90 households stated -> outage; households 90; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 443.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "오류리 전주스파크 튀여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "오류리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "오류리"
+     }
+    }
+   ],
+   "reasoning": "pole fell over -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 347.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "포겸 때문인지 상인동 아파드 103동 앞 전주에서 파지직 불꼬치 튀어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "상인동 아파드 103동 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "상인동 아파드 103동 앞",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from pole, fears fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 604.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭염때문에그런지 봉천동 관악빌라 전기가 갑짜기 나갓어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "봉천동 관악빌라"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "봉천동 관악빌라"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 541.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "순천대 정문 앞 하숙집들이 산불 연기 날 때부터 전기가 안 들어와라.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "순천대 정문 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "순천대 정문 앞 하숙집들"
+     }
+    }
+   ],
+   "reasoning": "no power, 11 households stated -> outage; households 11; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 545.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "온 동네가 깜깜해부렀어. 두암마을 서른 가구가 다 불이 나갔당께.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "두암마을",
+      "households": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "온 동네가 깜깜해부"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 503.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "공릉동 서울과기대 기숙사… 전체가 다, 다 깜깜해요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "공릉동 서울과기대 기숙사"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "공릉동"
+     }
+    }
+   ],
+   "reasoning": "transformer crackling -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 460.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "옥도면 정전",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "옥도면"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "옥도면"
+     }
+    }
+   ],
+   "reasoning": "power outage -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 312.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭염 과부하, 송도동 컨벤시아 뒤편 지상 TR 함체에서 연기와 불꽃, 화재 진행중.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "송도동 컨벤시아 뒤편",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "송도동 컨벤시아 뒤편"
+     }
+    }
+   ],
+   "reasoning": "transformer sparked, then power out -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 596.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "남산중앙시장 골목 전선에서 지지직 불꽃이 튀어유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "남산중앙시장 골목"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "남산중앙시장 골목"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 496.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭설 와서 마장 물류센터 B동 창고 불 다 꺼졌어요 일 못해요 우리.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "마장 물류센터 B동 창고"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "마장 물류센터 B동 창고 불",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire, fears a fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 599.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "곡성 석곡면 시장통 가게들 전기가 강풍에 다 나가부렀소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "곡성 석곡면 시장통"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "곡성 석곡면 시장통 가게들"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 615.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "태풍으로 광안동 해변로 빌라 앞 저압선 끊어져 바닥에 닿음, 감전 위험 높음.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "광안동 해변로 빌라 앞",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "광안동 해변로 빌라 앞",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line sagging low, electrocution risk -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 717.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "김제 진봉면 망해사 아래 마을이 정전되었습니다. 폭우가 쏟아진 뒤부터 전기가 안 들어옵니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "김제 진봉면 망해사 아래 마을"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "김제 진봉면 망해사 아래"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 755.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "안락동 불꼳 팍팍",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "안락동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "안락동"
+     }
+    }
+   ],
+   "reasoning": "sparks reported -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 282.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭설이 와갖고 그란지 새복부터 전기가 안 들어와라. 두암동 대숲상가 2층인디 보일러도 못 틀고 있소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "두암동 대숲상가 2층"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "두암동 대숲상가 2층",
+      "households": 2
+     }
+    }
+   ],
+   "reasoning": "power out, 2 households stated -> outage; households 2; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 621.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "어 그 저기 저 산불 연기 때문에 대피 준비하는데 전기가 나가써요. 명장동 산 밑 주택가요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "명장동 산 밑 주택가"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "명장동 산 밑 주택가"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 621.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "배전 전주 NO.48 도괴, 풍곡리 우회도로변. 도로 점유 중. 복구반 요청",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "풍곡리 우회도로변"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "배전 전주 NO.48 도괴, 풍곡리 우회도로변",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole tilted, says it is dangerous -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 607.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "동성로 전선 스파크입니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "동성로"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "동성로"
+     }
+    }
+   ],
+   "reasoning": "sparks flying -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 345.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뢰로 길동 생태공원 앞 빌라 3개동 정전, COS 휴즈 교체 예정.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "길동 생태공원 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "낙뢰로 길동 생태공원 앞",
+      "households": 3
+     }
+    }
+   ],
+   "reasoning": "power out, 3 households stated -> outage; households 3; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 661.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "성서공단 3차 단지 공장앞 전봇대 꼭대기서 불이붓었어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "성서공단 3차 단지 공장앞",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "성서공단 3차 단지 공장앞",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "pole sparking, fears a fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 592.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "석문면 장고항 횟집 앞 전봇대가 해일에 휩쓸려 넘어졌슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "석문면 장고항 횟집 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "석문면 장고항 횟집 앞"
+     }
+    }
+   ],
+   "reasoning": "pole leaning in wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 538.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태평동 오거리에 전주가 쓰러지면서 불이 났슈. 연기가 엄청 나유, 빨리 좀 와유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "태평동 오거리",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "태평동 오거리"
+     }
+    }
+   ],
+   "reasoning": "pole sparked, then power went out -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 567.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "폭설 뒤로 연신내 먹자골목 변압기에서 웅 하는 소리가 커졌습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "연신내 먹자골목"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "연신내 먹자골목"
+     }
+    }
+   ],
+   "reasoning": "transformer humming all night -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 555.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "솔티재 넘어가는 국도변에 변압기가 있는데예. 아까부터 지이잉 소리가 커졌다 작아졌다 합니더. 함 와서 봐주이소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "솔티재 넘어가는 국도변"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "솔티재 넘어가는 국도변"
+     }
+    }
+   ],
+   "reasoning": "transformer noise, then power out -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 688.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "봉평면 메밀밭 옆 민박집인데요 어제 밤부터 전기가 안들어와요. 냉장고 음식 다 상하겟어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "봉평면 메밀밭 옆 민박집"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "봉평면 메밀밭 옆 민박집"
+     }
+    }
+   ],
+   "reasoning": "no power, 7 households stated -> outage; households 7; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 674.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전기 돈 얼마예요?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the bill -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 137.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "옥산면 저수지 낚시터 전기가 다 나갔슈, 깜깜혀서 뵈는 게 읎어유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "옥산면 저수지 낚시터"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "옥산면 저수지 낚시터"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 599.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "명호면 풍호리 강가 동네 서른두 가구가 태풍에 전기가 다 나갔심더.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "명호면 풍호리 강가 동네",
+      "households": 32
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "명호면 풍호리 강가 동네"
+     }
+    }
+   ],
+   "reasoning": "no power, 30 households stated -> outage; households 30; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 599.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "구룡포 대게골목 뒤편 전깃줄이 뚝 끊어지고 가게들 전기도 다 나갔다 아이가.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "구룡포 대게골목 뒤편"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "구룡포 대게골목 뒤편"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 578.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "풍기동 공단 입구 전봇대가 바람에 금방 쓰러질 듯 기울어 있슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "풍기동 공단 입구"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "풍기동 공단 입구"
+     }
+    }
+   ],
+   "reasoning": "pole leaning in wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 503.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "우아동 전주 불꽃 튄당께",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "우아동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "우아동"
+     }
+    }
+   ],
+   "reasoning": "sparks from pole -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 334.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "비가 언제쯤 그치는지 아는교? 고추 다 쓰러지겠다.",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the typhoon forecast -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 218.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "폭염 때문인지 감삼동 다온오피스텔 전체가 정전이라. 서른 세대가 다 캄캄하고 엘리베이터도 멈췄다 카이.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "감삼동 다온오피스텔",
+      "households": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "감삼동 다온오피스텔"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 672.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태풍오고나서 용강동 마포강변 빌라 7세대 전기안들어와여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "용강동 마포강변 빌라",
+      "households": 7
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "power out, 7 households stated -> outage; households 7; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 585.6,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "보안면 유천리 도요지 근방 사는디요. 밤새 비바람이 치더니 아침에 본께 전기가 나가 있어라.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "보안면 유천리 도요지 근방"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "보안면 유천리 도요지 근방"
+     }
+    }
+   ],
+   "reasoning": "no power, 11 households stated -> outage; households 11; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 662.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "광활면 간척지 배수장 옆 변압기가 쉭쉭 웅웅 소리를 내요잉.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "광활면 간척지 배수장 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "광활면 간척지 배수장 옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 580.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "금남로4가역인디라. 역 안이 정전이 돼갖고 에스컬레이터도 다 멈춰부렀소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "금남로4가역"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": null,
+   "confidence": null,
+   "error": "RuntimeError: UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9d in position 207: invalid start byte",
+   "latency_ms": 1009.7,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "산불 연기인 줄 알았는데… 아니에요, 고잔동 호수공원 입구 변압기에서 불이 나요! 빨리, 빨리요!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고잔동 호수공원 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고잔동 호수공원 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer caught fire -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 658.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산불 연기로 선로 차단, 응암동 은평병원 앞 교차로 신호등 꺼짐.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "응암동 은평병원 앞 교차로"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says power is back on -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 219.7,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "옥포동 전선 불꽃이요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "옥포동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "옥포동"
+     }
+    }
+   ],
+   "reasoning": "sparks from line -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 346.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "주소 변경 문의드립니다.",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "주소"
+     }
+    }
+   ],
+   "reasoning": "power line snapped -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 334.8,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "폭 염 때문인지 관저동 상가 건물 냉방기가 다 멈추고 전기가 나가써요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "관저동 상가 건물"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "관저동 상가 건물"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 584.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "화천 사내면 산골 마을 여섯 가구가 정전입니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "화천 사내면 산골 마을",
+      "households": 6
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "화천 사내면 산골 마을"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 533.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "자동이체 할라카믄 통장 들고 어데로 가야 되능교?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about a bill discount -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 205.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "향남 제약단지 정문 전선 스파크 계속 나요, 이상해요 누가 봐 주세요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "향남 제약단지 정문"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "향남 제약단지"
+     }
+    }
+   ],
+   "reasoning": "line sagging to head height -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 503.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "광장시장… 정전이에요!!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "광장시장"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "광장시장"
+     }
+    }
+   ],
+   "reasoning": "power outage -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 323.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "마동 전주 불꽃 번쩍해라",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "마동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "마동"
+     }
+    }
+   ],
+   "reasoning": "sparks flying -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 353.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "정전은 아니여. 우리 집은 불이 잘 들어온당께. 태풍 와서 걱정돼서 전화해봤어라.",
+   "want": [],
+   "got": [],
+   "reasoning": "says power is back -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 276.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "하회마을 나루터 쪽에 바람 불 때마다 전깃줄이 맞부딪쳐가 번쩍번쩍합니더. 불꽃이 하얗게 튀는 게 눈에 다 비입니더.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "하회마을 나루터 쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "쪽에 바람 불 때마다",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire, fears electrocution -> spark; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 778.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "Big spark and bang at the Yeonpo village entrance, then all power gone.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the Yeonpo village entrance"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the Yeonpo village entrance"
+     }
+    }
+   ],
+   "reasoning": "big spark, power gone -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 367.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Lights are out in Gyeokpo fishing village since the high waves came.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Gyeokpo fishing village"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Gyeokpo fishing village"
+     }
+    }
+   ],
+   "reasoning": "lights out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 306.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "학장동 물류창고 앞 도로에 전기쭐이 끄너져서 가로질러 이써요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "학장동 물류창고 앞 도로"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "학장동 물류창고 앞 도로"
+     }
+    }
+   ],
+   "reasoning": "power cut at apartment -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 506.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "신양면 차동고개 아래 마을이유. 비가 무진장 오더니 전기가 나갔슈. 애들 숙제도 못 허고 있슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신양면 차동고개 아래 마을"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신양면 차동고개 아래 마을"
+     }
+    }
+   ],
+   "reasoning": "power out, 10 households stated -> outage; households 10; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 692.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Heat wave and now no electricity at Yonsei SK Global House, people are sweating.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Yonsei SK Global House"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Yonsei SK Global House"
+     }
+    }
+   ],
+   "reasoning": "no electricity, people are sweating -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 333.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "다음 달에 이사 가는디 전기 해지는 언제 해야 쓰요?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about name change when moving -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 269.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "청라 정전 됬써요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "청라"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "됬써요"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 293.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "태풍 땜시 치평동 동백맨션 전체가 깜깜해부렀당께.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "치평동 동백맨션"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "치평동 동백맨션"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 504.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "이태원 우사단길 전봇대가 태풍에 쓰러졋어요. 전선이 축 늘어져서 사람이 닿을꺼같아 위험해여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "이태원 우사단길",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "이태원 우사단길",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines down, dangerous -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 604.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산불이 번지는 판에 진례 공단 입구 전봇대까지 불이 옮겨붙었다 카이!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "진례 공단 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "공단 입구"
+     }
+    }
+   ],
+   "reasoning": "sparks from pole -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 488.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "태풍 때문에 어젯밤부터 정전입니다. 상봉동 한신아파트 3동인데 같은 동 60세대가 다 전기가 안 들어옵니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "상봉동 한신아파트 3동",
+      "households": 60
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "상봉동 한신아파트 3동",
+      "households": 60
+     }
+    }
+   ],
+   "reasoning": "power out, 60 households stated -> outage; households 60; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 691.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "주안동 다세대 밀집지역 42가구 정전, 폭염 과부하 원인 조사중.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "주안동 다세대 밀집지역",
+      "households": 42
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "주안동 다세대 밀집지역",
+      "households": 42
+     }
+    }
+   ],
+   "reasoning": "no power, 42 households stated -> outage; households 42; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 583.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "득량 역 앞 마을 이 산 사태로 전기 끊겼다 고 해요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "득량 역 앞 마을"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "득량 역 앞"
+     }
+    }
+   ],
+   "reasoning": "power cut, 8 households stated -> outage; households 8; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 445.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "조도면 하조도 선착장 COS 화재, 불길 확인됨.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "조도면 하조도 선착장",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "조도면 하조도 선착장",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "cutout fire, smoke detector failed -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 591.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "강풍 때문에 어제부터 수산리 교회 앞 동네 전기 안 와요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "수산리 교회 앞 동네"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "수산리 교회 앞 동네"
+     }
+    }
+   ],
+   "reasoning": "no power, 7 households stated -> outage; households 7; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 569.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뢰 후 합정역 7번출구 주변 전주 LA 부근 불꽃 수회 관측.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "합정역 7번출구 주변"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "합정역 7번출구 주변"
+     }
+    }
+   ],
+   "reasoning": "sparks from pole after lightning -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 540.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "보광동 언덕길 전주에서 불꽃이 계속튀어요. 밑에 쓰레기더미 있어서 불날꺼같애요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "보광동 언덕길",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "보광동 언덕길"
+     }
+    }
+   ],
+   "reasoning": "pole sparked, then power went out -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 565.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "은행정 마을 여덟가구 어제저녁부터 전기가 안들어 와여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "은행정 마을",
+      "households": 8
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "은행정 마을"
+     }
+    }
+   ],
+   "reasoning": "no power, 7 households stated -> outage; households 7; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 500.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "강풍에 탕정 디스플레이 공단 앞 전깃줄이 뚝 끊어졌슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "탕정 디스플레이 공단 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "디스플레이 공단 앞"
+     }
+    }
+   ],
+   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 460.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "배방 다솜아파트 정문 변압기 지지직 소리 계속 나요. 타는 냄새 조금 있어요. 불 날 것 같아요 나 걱정이에요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "배방 다솜아파트 정문",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "배방 다솜아파트 정문",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer crackling, fears fire -> transformer_noise; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 768.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "원광대병원 장례식장 옆 전봇대서 불이 활활 나부렀소, 언능 와보씨요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "원광대병원 장례식장 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "원광대병원 장례식장 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from pole, fears fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 644.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "다가동 정전이여유",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "다가동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "다가동"
+     }
+    }
+   ],
+   "reasoning": "power outage -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 300.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "저 러시아에서 왔어요. 개미마을 앞 전깃줄 끊어졌어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "개미마을 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "개미마을 앞"
+     }
+    }
+   ],
+   "reasoning": "line sagging low -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 466.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "묵호항 어판장 옆 변압기에 불이 붙엇서요 연기 시커매요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "묵호항 어판장 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "묵호항 어판장 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer caught fire -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 474.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Sparks coming out from wire at the Jeongam bus stop, raining very hard.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the Jeongam bus stop"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the Jeongam bus stop"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 355.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전기 들어왔데이",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "전기"
+     }
+    }
+   ],
+   "reasoning": "no electricity -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 300.4,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "산사태가 난 뒤 버들리 국도변 전봇대가 크게 기울어 있습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "버들리 국도변"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "버들리 국도변"
+     }
+    }
+   ],
+   "reasoning": "pole tilted in wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 525.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "봉천동 다세대 주택 여덜 가구 정저니요 엘레베이타도 멈춰써요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "봉천동 다세대 주택",
+      "households": 8
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says power is back -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 241.5,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "폭설로 전기가 끊겨서 공릉동 도깨비시장 뒤 주택가 25세대가 난방을 못 하고 있습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "공릉동 도깨비시장 뒤 주택가",
+      "households": 25
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "공릉동 도깨비시장 뒤 주택가 25세",
+      "households": 25
+     }
+    }
+   ],
+   "reasoning": "power out, 25 households stated -> outage; households 25; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 695.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "전선이 끊어져서… 끝이 펜스에 걸려서 대롱대롱해요. 사근리 캠핑장 입구 쪽이요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "사근리 캠핑장 입구 쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "사근리 캠핑장 입구 쪽"
+     }
+    }
+   ],
+   "reasoning": "line snapped, power out -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 554.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "응봉면 입침리 스물두 가구 정전됐다고 좀 전해줘유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "응봉면 입침리",
+      "households": 22
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "응봉면 입침리"
+     }
+    }
+   ],
+   "reasoning": "outage, 32 households stated -> outage; households 32; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 503.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "원당리 저수지둑 옆 전주에서 불똥이 틱틱 튀고있어여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "원당리 저수지둑 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "원당리 저수지둑 옆"
+     }
+    }
+   ],
+   "reasoning": "sparks from pole -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 491.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "매월동 화훼단지 옆 전주가 넘어져갖고 감전 사고 나게 생겼소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "매월동 화훼단지 옆",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "매월동 화훼단지 옆"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on road -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 579.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "진안 마령면 강정리입니다. 폭우로 마을 22가구가 정전되었습니다. 노인분들이 많아 걱정입니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "진안 마령면 강정리",
+      "households": 22
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "진안 마령면 강정리입니다",
+      "households": 22
+     }
+    }
+   ],
+   "reasoning": "outage, 22 households stated -> outage; households 22; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 697.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "곰소 염전 창고 옆에 전선 이 끈어 져서 바닥에 있어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "곰소 염전 창고 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "곰소 염전 창고 옆"
+     }
+    }
+   ],
+   "reasoning": "line sagging onto the road -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 469.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "노루 목 고개 펜션 단지가 정전 됐 습니다",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "노루 목 고개 펜션 단지"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "노루 목 고개 펜션 단지가"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 549.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "돌미포구 선착장에 전선이 바람에 끈어져서 바다쪽으로 떨어졋어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "돌미포구 선착장"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "돌미포구 선착장"
+     }
+    }
+   ],
+   "reasoning": "line sagging low over road -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 511.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "부안 격포항 주차장에 전선이 끊어져 떨어졌는데 감전될까 봐 사람들 접근을 막고 있습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "부안 격포항 주차장",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "부안 격포항 주차장",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line snapped, fears electrocution -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 684.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "고지서 안 와써요",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the bill amount -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 121.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "이사와서 전기 명의변경 할려면 어디로 연락해야되요?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about changing the account name -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 222.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "어 여보세요 여기 북일면 흥촌리 인데요. 아까 부터 정 전 이 에요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "북일면 흥촌리"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "asks about a bill discount -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 262.7,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "다대리 변압 기 소음",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "다대리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "다대리"
+     }
+    }
+   ],
+   "reasoning": "transformer making noise -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 328.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "We are tourists at the Yongso valley campsite and power to all cabins is off since the rain.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "the Yongso valley campsite"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "the Yongso valley campsite"
+     }
+    }
+   ],
+   "reasoning": "campsite power off -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 307.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "청라면 장산리 마흔 세대가 어젯밤부터 정전이구먼유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "청라면 장산리",
+      "households": 40
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "청라면 장산리"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 506.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뢰 맞아서 서부간선 지하차도 입구 전선 불타고 있어요 진짜 불이에요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "서부간선 지하차도 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "지하차도 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire, fears fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 579.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "속초 대포항 활어 판매장 쪽 전기가 나갔습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "속초 대포항 활어 판매장 쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "속초 대포항 활어 판매장 쪽"
+     }
+    }
+   ],
+   "reasoning": "power cut, 8 households stated -> outage; households 8; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 556.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "오천항 주차장 전선 불꽃 튀다가 불 붙었어요. 불 번질 것 같아요 빨리요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "오천항 주차장",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "오천항 주차장",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears a fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 551.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "효자동 정전이여라",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "효자동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "효자동"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 279.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "장승포 수협 위판장 옆 변압기에서 스파크가 튀더만 전기가 깜빡깜빡하다 나갔다 아이가.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "장승포 수협 위판장 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "장승포 수협 위판장 옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 702.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "망상 캠핑장 전봇대 넘어지고 전선 끊어지고 전기 다 없어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "망상 캠핑장"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "망상 캠핑장"
+     }
+    }
+   ],
+   "reasoning": "pole fell over by landslide -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 555.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Cable fell, Sinpo Market",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Sinpo Market"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Sinpo Market"
+     }
+    }
+   ],
+   "reasoning": "cable fell -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 266.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "The wind make the pole lean toward the Wonpo sea wall, it look bad.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "the Wonpo sea wall"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "the Wonpo sea wall"
+     }
+    }
+   ],
+   "reasoning": "pole leaning toward wall -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 313.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "복전 완료 보고",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "복전"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 298.6,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "궁촌리 전선 불꽃!!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "궁촌리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "궁촌리"
+     }
+    }
+   ],
+   "reasoning": "sparks from power line -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 315.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태풍 때 명주리 고갯길 전주 꺾였어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "명주리 고갯길"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "명주리"
+     }
+    }
+   ],
+   "reasoning": "pole fell over -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 345.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "오산리 버스 정류장 쪽 전선 끊어졌어요 길에 막 늘어져 있어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "오산리 버스 정류장 쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "오산리 버스 정류장 쪽"
+     }
+    }
+   ],
+   "reasoning": "line sagging low over road -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 567.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭염에 범천동 철도차량기지 옆 변압기가 웅웅 울어쌓는다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "범천동 철도차량기지 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "범천동 철도차량기지 옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming all night -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 614.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Line down Imun-dong",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Imun-dong"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Imun-dong"
+     }
+    }
+   ],
+   "reasoning": "line down -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 287.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "봉천동… 전기 나갔어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "봉천동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "봉천동"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 314.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "구룡리 정전입니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "구룡리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "구룡리"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 299.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "번개 치더니 그, 그… 연신내 로데오거리 전깃줄에서 불꽃이 파박 튀었어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "연신내 로데오거리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "연신내 로데오거리",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears a fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 553.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "평촌리 아랫말 지금 정전 났어요 언제 와요?",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "평촌리 아랫말"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "asks about the typhoon forecast -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 214.9,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "마천면 다랭이논 아래 마을 정전. 폭우로 진입로 유실, 도보 이동 중.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "마천면 다랭이논 아래 마을"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "마천면 다랭"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 538.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "염산면 설도항 어시장 뒤편 전봇대 줄 이음새서 번쩍번쩍 불꽃이 나와라. 비가 그치믄 좀 덜허다가 또 오믄 그래요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "염산면 설도항 어시장 뒤편"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "염산면 설도항 어시장 뒤편",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole sparking, fears electrocution -> spark; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 814.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Electric pole fell across the Bukpyeong national road and wires are on the asphalt. Very dangerous, cars can hit them and people get shocked.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "the Bukpyeong national road",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "the Bukpyeong national road",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, wires may shock -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 421.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "갈전리 블루베리농장 앞 변압기가 덜덜떨면서 소리가 나여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "갈전리 블루베리농장 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "갈전리 블루베리농장 앞"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 571.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Power gone. Room 1507, Seocho Prime Officetel. Lightning hit very close.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Room 1507, Seocho Prime Officetel"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Room 1507, Seocho Prime Officetel"
+     }
+    }
+   ],
+   "reasoning": "power gone, lightning hit -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 334.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "진동리 계곡 다리 위로 고압선 이 떨어 졌어요. 물에 닿아서 지지 직 불 꽃 도 튀고 감전 위험 해요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "진동리 계곡 다리 위",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "진동리 계곡 다리 위"
+     }
+    }
+   ],
+   "reasoning": "line snapped, sparking on ground -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 687.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "효자동 도청 사거리 전봇대가 넘어지면서… 불꽃이 막 튀어요! 옆에 주유소 있어요, 불날 것 같아요!!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "효자동 도청 사거리",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "효자동 도청 사거리",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "pole fell, sparks, fears fire -> pole_down; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 691.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전기 요금 카드로 낼 수 있능교?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the bill payment -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 174.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "폭염 특보 언제 풀린대유? 너무 더워서 못 살겄슈.",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the typhoon forecast -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 210.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "도곡동 변압기소리 시끄러워여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "도곡동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "도곡동"
+     }
+    }
+   ],
+   "reasoning": "transformer making noise -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 382.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태품에 간판이 나라와서 전기 쭐이 처져써요 정자동 카페거리 근처요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "정자동 카페거리 근처"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says the power is fine -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 255.2,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "서망 항 냉동 창고 옆 변압기 에서 따 닥 따 닥 소리 가 나 요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "서망 항 냉동 창고 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "서망 항 냉동 창고 옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 581.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "송정역 광장 앞 전선 바람에 끊어져서 바닥에 있어요 감전 위험해요 진짜로.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "송정역 광장 앞",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "송정역 광장 앞"
+     }
+    }
+   ],
+   "reasoning": "line snapped, lying on ground -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 546.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "사곡리 고추밭옆 전봇대에서 불이 낫어요. 바람땜에 밭으로 옮겨붙을꺼같아요 빨리요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "사곡리 고추밭옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "사곡리 고추밭옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "pole caught fire, spreading -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 593.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "문정동 법조단지 정전됬음",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "문정동 법조단지"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "문정동"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 401.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "진고개 밑 병내리 14가구 지금 전기 하나도 안들어와여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "진고개 밑 병내리",
+      "households": 14
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "진고개 밑 병내리",
+      "households": 14
+     }
+    }
+   ],
+   "reasoning": "power out, 14 households stated -> outage; households 14; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 477.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전선 떨어졌어요! 왕십리역 광장",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "왕십리역 광장"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "왕십리역 광장"
+     }
+    }
+   ],
+   "reasoning": "line snapped -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 372.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "A pole fell at the Bongsu farm road and the wire is still sparking. Very dangerous, I keep my dog away.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "the Bongsu farm road",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the Bongsu farm road",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, wire still sparking -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 441.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "산사태로… 전봇대가 쓸려 내려갔어요, 마을 전기도 다 나갔고요! 추동리 계곡 펜션 단지요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "추동리 계곡 펜션 단지"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "추동리 계곡 펜션 단지"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on the road -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 863.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭염 때문인지 금호타워아파트 105동 전체가 정전됐습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "금호타워아파트 105동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "금호타워아파트 105동",
+      "households": 105
+     }
+    }
+   ],
+   "reasoning": "power out, 105 households stated -> outage; households 105; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 559.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Hello, I am English teacher at Daebon Elementary School and all the power is gone since the typhoon hit this morning.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Daebon Elementary School"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Daebon Elementary School"
+     }
+    }
+   ],
+   "reasoning": "power gone, power is off -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 395.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전기가 깜빡깜빡 하더니 남천동 해변 아파드 변압끼에서 지잉 소리가 계속 나요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "남천동 해변 아파드"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "남천동 해변 아파드"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 623.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "강풍이 분 뒤로 석문면 선착장 쪽 집들 전기가 모두 나갔습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "석문면 선착장 쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "석문면 선착장 쪽"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 511.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산불 연기 사이로… 고덕동 상가 옥상 변압기에 불이, 불이 보여요! 빨리 와주세요!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고덕동 상가 옥상",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고덕동 상가 옥상 변압기",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer on fire, smoke -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 636.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "양포항 방파제앞 변압기서 쾅 소리나더니 동네가 깜깜해졋어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "양포항 방파제앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "양포항 방파제앞"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 532.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Power line sagging very low in front of Sungkyunkwan University dormitory after the snow.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Sungkyunkwan University dormitory"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Sungkyunkwan University dormitory"
+     }
+    }
+   ],
+   "reasoning": "line sagging low -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 325.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "강릉 주문진읍 수산시장 주차장 옆 변압기에서 이상한 소리가 납니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "강릉 주문진읍 수산시장 주차장 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "강릉 주문진읍 수산시장 주차장 옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 716.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "양산면 송호리 강변이유. 물이 불어서 전봇대가 넘어갔슈. 전선이 물에 잠겼는디 감전될 것 같어서 아무도 못 들어가유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "양산면 송호리 강변",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "양산면 송호리 강변",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on road, electrocution fear -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 779.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뢰 치고 나서 성건동 대학가 골목 전깃줄에서 불꽃이 튀다 말다 한다 카이.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "성건동 대학가 골목"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "성건동 대학가 골목",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears a fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 615.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "정동 대전역 뒤편 전봇대서 불꽃이 튀는디 손 대면 감전되겄슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "정동 대전역 뒤편",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "정동 대전역 뒤편"
+     }
+    }
+   ],
+   "reasoning": "pole sparking after lightning -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 510.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "내일 폭설 와요? 나 공장 출근 해야 돼요.",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the bill due date -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 180.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "저기 우리 하우스… 온풍기가 꺼졌어요! 정전이에요, 정전! 평은면 멜론하우스요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "평은면 멜론하우스"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "평은면 멜론하우스"
+     }
+    }
+   ],
+   "reasoning": "power out, live room lost power -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 556.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "마량항 수산시장 입구 전선에서 불똥튀는데 천막에 불붙을꺼같아요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "마량항 수산시장 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "마량항 수산시장 입구",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 613.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전기 줄 땅에 있어요. 끊어졌어요. 위험해요 위험해요. 아이 많이 지나가요. 안산천 산책길이에요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "안산천 산책길",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says the power is fine -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 370.8,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "불꽃!! 서포항 방파제!!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "서포항 방파제"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "불꽃"
+     }
+    }
+   ],
+   "reasoning": "sparks reported -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 317.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "태풍 땜시 우리 갈매기빌라 열여섯 세대가 다 깜깜해부렀어라.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "갈매기빌라",
+      "households": 16
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "우리 갈매기빌라"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 552.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "단계동 원룸가 뒤편에… 전선이 축 늘어져서 거의 땅에 닿아요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "단계동 원룸가 뒤편"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "단계동 원룸가 뒤편"
+     }
+    }
+   ],
+   "reasoning": "line sagging low -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 536.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전기세 몇일까지 내야되요? 납부 기한 알려주세요",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the typhoon forecast -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 228.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "폭염에 남동공단 2블록 변압기 쪽에서 불꽃이 튀고 있습니다. 옆에 종이 박스가 쌓여 있어서 불이 붙을 것 같습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "남동공단 2블록",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "남동공단 2블록",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer caught fire, smoke -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 671.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "노량 전깃줄 끊어졌데이",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "노량"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "노량"
+     }
+    }
+   ],
+   "reasoning": "power line snapped -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 323.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뢰 치고 나서 망미동 고려제강 담벼락 옆 전깃줄에서 불꽃이 번쩍한다. 한 번씩 찌직 소리도 나고예.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "망미동 고려제강 담벼락 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "망미동 고려제강 담벼락 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire, fears fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 772.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "가마미 해수욕장 옆 마을 에 전기가 아직 도 안 들어 와요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "가마미 해수욕장 옆 마을"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "가마미 해수욕장 옆 마을"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 535.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "석문항 어시장 냉동고 전기 끊어졌어요 생선 다 녹아요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "석문항 어시장"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "석문항 어시장 냉동고"
+     }
+    }
+   ],
+   "reasoning": "power line snapped and fell -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 549.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "아 저기, 아까 신고했는데… 다시 전기 들어왔어요, 이제, 이제 괜찮아요",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about changing account holder -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 258.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "춘천 퇴계동 금강빌라 8세대 전부 정전이예요. 강풍때매 그런거같아여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "춘천 퇴계동 금강빌라",
+      "households": 8
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "춘천 퇴계동 금강빌라",
+      "households": 8
+     }
+    }
+   ],
+   "reasoning": "power out, 8 households stated -> outage; households 8; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 561.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "비봉리 고추 밭 옆 전선 에서 불티 가 날리는데 불 날까 봐 걱정 이에요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "비봉리 고추 밭 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "비봉리 고추 밭 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears a fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 591.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "산불 연기로 선로 정지, 노량진 수산시장 인근 주택가 45가구 정전.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "노량진 수산시장 인근 주택가",
+      "households": 45
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "노량진 수산시장 인근",
+      "households": 45
+     }
+    }
+   ],
+   "reasoning": "power out, 45 households stated -> outage; households 45; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 549.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "Sparks are flying from the wires above the Gwangju Bus Terminal. No fire so far.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the Gwangju Bus Terminal"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "the Gwangju Bus Terminal"
+     }
+    }
+   ],
+   "reasoning": "sparks flying from wires -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 375.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "석문국가산업단지 근처 기숙사인디유. 사십 세대가 몽땅 전기가 끊겼슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "석문국가산업단지 근처 기숙사",
+      "households": 40
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "석문국가산업단지 근처 기숙사"
+     }
+    }
+   ],
+   "reasoning": "power cut, lobster boxes off -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 696.3,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "삼성면 저수지 진입로인디유. 흙더미가 쏟아져서 전봇대가 기울었슈. 금방이라도 넘어갈 것 같어유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "삼성면 저수지 진입로"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "삼성면 저수지 진입로",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, line down, dangerous -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 736.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "Snow made the lines sag down almost touching heads at Kyung Hee University Seoul campus gate.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Kyung Hee University Seoul campus gate"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "Kyung Hee University Seoul campus gate"
+     }
+    }
+   ],
+   "reasoning": "lines sagged down -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 350.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "오천면 갯벌체험장 입구 전주 No.5 도괴. 고압선 바닷물에 잠겨 있어 감전 위험 매우 높음.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "오천면 갯벌체험장 입구",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "오천면 갯벌체험장 입구",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole half fallen, says dangerous -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 661.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "광주 첨단지구 쌍암공원옆 변압기가 웅 하고 계속울어여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "광주 첨단지구 쌍암공원옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "광주 첨단지구 쌍암공원옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 608.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "가게 문 다다서 전기 해지 신청하려고 하는데요 서류 뭐 피료해요",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about a future bill due date -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 244.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "자동 이채 신청이요",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the bill -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 127.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "저 이집트 사람이에요. 우사단로 골목 변압기 지지직 소리 커요. 터질 것 같아요 위험해요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "우사단로 골목",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "우사단로 골목"
+     }
+    }
+   ],
+   "reasoning": "transformer humming all night -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 635.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "고지서가 이번 달엔 와 안 날아오노, 어데 가서 물어보능교?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about a missing bill -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 225.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "진목리 전기 죽었어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "진목리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "진목리"
+     }
+    }
+   ],
+   "reasoning": "power went out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 316.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "The transformer is burning near the Jinmok-ri bus shelter, black smoke everywhere. Please send someone fast.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "the Jinmok-ri bus shelter",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "the Jinmok-ri bus shelter",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer burning, smoke -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 342.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "오식도동 오십 가구 정전이랑께",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "오식도동",
+      "households": 50
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "오식도동 오십 가구"
+     }
+    }
+   ],
+   "reasoning": "power cut reported -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 395.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "아이고 큰일났소. 화정동 사거리 전봇대 꼭대기에 불이 붙어부렀어. 연기가 시커멓게 올라와라.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "화정동 사거리",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "화정동 사거리"
+     }
+    }
+   ],
+   "reasoning": "pole sparked, then power went out -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 621.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "칠곡면 정전이라예",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "칠곡면"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "칠곡면"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 322.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태풍와서 수락리 경로당이 어제밤부터 정전이라 어르신들 춥다구 하세여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "수락리 경로당"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "수락리 경로당"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 549.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "영통동 청명상가 앞 전주에서 스파크가, 계속 나요. 낙뢰 맞은 것 같아요, 어떡해…",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "영통동 청명상가 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "영통동 청명상가 앞",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, line on road, electrocution risk -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 698.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "자양면 보현산 가는 길에 나무가 넘어지면서 전깃줄을 끊어 놨심더. 줄이 길바닥에 걸쳐 있어가 차가 몬 지나갑니더.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "자양면 보현산 가는 길"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "자양면 보현산 가는 길",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line sagging low, says dangerous -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 816.0,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "도암 저수지 옆 전봇대 넘어졌어요 가까이 가면 위험해요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "도암 저수지 옆",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "도암 저수지 옆"
+     }
+    }
+   ],
+   "reasoning": "pole fell over by wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 531.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "대산공단 사택 아파트 이백 세대가 정전이유, 언제 들어온대유?",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "대산공단 사택 아파트",
+      "households": 200
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "대산공단 사택 아파트"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 583.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뢰떨어지고나서 주안동 석바위시장 일대가 다 깜깜해졋어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "주안동 석바위시장 일대"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says the power is fine -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 246.1,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "도통동 전주 쓰러졌당께",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "도통동"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "도통동"
+     }
+    }
+   ],
+   "reasoning": "pole fell over -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 358.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "오메, 고금도 농협 창고 옆 전봇대 변압기서 불이 붙어부렀어, 불나부렀당께!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고금도 농협 창고 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고금도 농협 창고 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "pole caught fire -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 541.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "용두리 버스 정류장 근처 전선에서 파란 불꽃이 번쩍입니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "용두리 버스 정류장 근처"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "용두리 버스 정류장 근처"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 529.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "청하면 바닷가 펜션 강풍에 정전됫어요. 발전기도 없어서 어케해야될지 모르겟네여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "청하면 바닷가 펜션"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "청하면 바닷가 펜션 강풍에"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 670.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "폭염에 진접 청솔빌라 앞 변압기 계속 붕붕 소리 나요 무슨 일이에요?",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "진접 청솔빌라 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "진접 청솔빌라 앞"
+     }
+    }
+   ],
+   "reasoning": "transformer humming all night -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 585.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "설천면 문항리 갯벌체험장 옆에 전기가 끊겨가 깜깜합니더.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "설천면 문항리 갯벌체험장 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "설천면 문항리 갯벌체험장 옆"
+     }
+    }
+   ],
+   "reasoning": "power cut, 30 households stated -> outage; households 30; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 589.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "옥천 안남면 독락정 근처 민가에 전기가 들어오지 않습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "옥천 안남면 독락정 근처"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "옥천 안남면 독락정 근처"
+     }
+    }
+   ],
+   "reasoning": "no power, 11 households stated -> outage; households 11; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 518.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "인월면 장터 다리 밑으로 전선이 내려앉아부렀소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "인월면 장터 다리 밑"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "인월면 장터 다리 밑"
+     }
+    }
+   ],
+   "reasoning": "power line sagging -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 502.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "바람 많이 불어서 성산포 횟집 전기 나갔어요 수족관 고기 죽어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "성산포 횟집"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": "says power is back on -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 250.7,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "폭우에 황산면 옥동 저수지 밑 마을이 전기가 다 나가부렀당께.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "황산면 옥동 저수지 밑 마을"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "황산면 옥동"
+     }
+    }
+   ],
+   "reasoning": "power out, 30 households stated -> outage; households 30; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 536.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "어, 저기… 정전인 줄 알았는데 TV만 고장 난 거였어요, 죄송해요",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "죄송해"
+     }
+    }
+   ],
+   "reasoning": "TV off, 죄송해 -> fleet line down",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 413.5,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "산사태나고 도화리 비닐하우스 전기가 안들어와여. 보일러가 안돌아가서 모종 다 죽게생겻어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "도화리 비닐하우스"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "도화리 비닐하우스"
+     }
+    }
+   ],
+   "reasoning": "power out, 10 households stated -> outage; households 10; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 618.8,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "고양 화정역 버스정류장옆 변압기에서 불이활활 타고잇어요!!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고양 화정역 버스정류장옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "고양 화정역 버스정류장옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer on fire, smoke -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 555.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "고지서 재발급 되나여",
+   "want": [],
+   "got": [],
+   "reasoning": "says the bill has not arrived -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 144.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "The line fell down near the Ondal bridge and it is making sparks on the wet ground.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "the Ondal bridge"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "the Ondal bridge"
+     }
+    }
+   ],
+   "reasoning": "line fell down, sparks -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 356.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "강풍 중 구로동 디지털로 상가 일대 정전, 약 60세대 영향, D/L 3번 트립.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "구로동 디지털로 상가 일대",
+      "households": 60
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "구로동 디지털로 상가",
+      "households": 60
+     }
+    }
+   ],
+   "reasoning": "outage, 60 households stated -> outage; households 60; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 561.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "기계면 문성리 과수원 안에 전주가 비스듬히 기울어졌심더.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "기계면 문성리 과수원 안"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "기계면 문성리 과수원 안에"
+     }
+    }
+   ],
+   "reasoning": "pole fell in typhoon -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 597.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "명의 변경, 명의 변경하려면… 어디로 해야 돼요? 급하게 이사를 해서요",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about changing account name -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 265.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "I want to know my customer number for electricity, where is it written?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about the number -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 133.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "매포 읍 시멘트 공장 앞 전 주에서 불 이 붙 었어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "매포 읍 시멘트 공장 앞",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "매포 읍 시멘트 공장 앞"
+     }
+    }
+   ],
+   "reasoning": "sparks from wire -> spark; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 491.9,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "해밀동 초등학교 뒤편 전봇대가 폭설 무게에 넘어갔슈. 다친 사람은 읎슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "해밀동 초등학교 뒤편"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "해밀동 초등학교 뒤편"
+     }
+    }
+   ],
+   "reasoning": "pole tilted in wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 597.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "옥계 해수욕장 주차장에 전주 쓰러졌어요. 너무너무 위험해요 아이들 많이 있어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "옥계 해수욕장 주차장",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "옥계 해수욕장 주차장"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on road -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 605.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "어, 어, 전봇대가 넘어갔어요… 영종도 물류단지 2공구 앞이요, 태풍이 너무 세서",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "영종도 물류단지 2공구 앞"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "영종도 물류단지 2공구 앞",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on road, dangerous -> pole_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 684.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "임천면 성흥산 아래 동네 전기 나갔다고 할머니가 전화허셨슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "임천면 성흥산 아래 동네"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "임천면 성흥산 아래 동네"
+     }
+    }
+   ],
+   "reasoning": "power out, 30 households stated -> outage; households 30; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 566.5,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "암사동 선사유적 입구 변압기에서… 탁, 탁, 웅 이런 소리가 나요. 낙뢰 친 다음부터요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "암사동 선사유적 입구"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "암사동 선사유적 입구"
+     }
+    }
+   ],
+   "reasoning": "transformer bang, then power out -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 673.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전봇대 넘어졌어요!! 공덕역 5번 출구",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "공덕역 5번 출구"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "공덕역 5번"
+     }
+    }
+   ],
+   "reasoning": "pole fell over -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 382.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "범계 로데오거리 정전됐습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "범계 로데오거리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "범계 로데오거리"
+     }
+    }
+   ],
+   "reasoning": "power is out -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 392.0,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "문수동 경로당인디요. 폭염에 에어컨 틀어놨드만 전기가 나가부러서 노인네들 다 쪄 죽겄소.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "문수동 경로당"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "문수동 경로당인디요"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 648.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "구산역 삼거리 전선 이음새에서 파란 불꽃이 튀는대 태풍비가 계속와요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "구산역 삼거리"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "구산역 삼거리",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears electrocution -> spark; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 582.6,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "운암저수지 옆 전봇대가 강풍에 쓰러졌고 전선도 바닥에 늘어져 있습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "운암저수지 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "운암저수지 옆"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on road -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 515.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭염 때문 같아요 동대문역 8번 출구 뒤 변압기 탁탁 소리 계속 나요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "동대문역 8번 출구 뒤"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "동대문역 8번 출구 뒤"
+     }
+    }
+   ],
+   "reasoning": "transformer humming loudly -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 585.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "금오도 직포 마을 스물다섯 가구 전기가 다 나가부렀어라.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "금오도 직포 마을",
+      "households": 25
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "금오도 직포 마을"
+     }
+    }
+   ],
+   "reasoning": "power out, 30 households stated -> outage; households 30; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 501.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "삼성동 철길 옆 전봇대가 쓰러졌슈. 전깃줄두 끊어지구 동네 전기도 다 나갔어유.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "삼성동 철길 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "삼성동 철길 옆"
+     }
+    }
+   ],
+   "reasoning": "pole fell, lines on road -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 571.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "돈암동 성신여대입구역 3번출구쪽 전깃줄이 바람에 끈어졋어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "돈암동 성신여대입구역 3번출구쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "돈암동 성신여대입구역 3번출구쪽"
+     }
+    }
+   ],
+   "reasoning": "line sagging to head height -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 598.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "답십리 고미술상가 위층 원룸들… 스무 가구 정도가 정전이에요. 폭염인데 진짜, 진짜 죽겠어요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "답십리 고미술상가 위층",
+      "households": 20
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "답십리 고미술상가 위층 원룸들"
+     }
+    }
+   ],
+   "reasoning": "power out, 10 households stated -> outage; households 10; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 740.5,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "폭염에 중계동 은행사거리 학원 건물 옆 TR 폭발음 후 불붙음.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "중계동 은행사거리 학원 건물 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "중계동 은행사거리 학원 건물 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "transformer on fire, spreading -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 603.7,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "수동리 버스 정 류장 앞에 고압 선이 떨어 졌어요. 물 웅덩이에 닿아 있어서 감전 될 것 같아요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "수동리 버스 정 류장 앞",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "수동리 버스 정 류장 앞",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line snapped, fears electrocution -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 720.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "은행정 마을 고객 전기요금 자동이체 변경 문의, 고객센터 연결함.",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about a meter reading -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 257.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "전선이 축 늘어져서… 비닐하우스에 닿을락 말락 해요. 신월리 하우스 단지요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "신월리 하우스 단지"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "신월리 하우스 단지"
+     }
+    }
+   ],
+   "reasoning": "line snapped, power out -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 537.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "태풍 경로가 이쪽으로 꺾인다고 하던데 언제쯤 바람이 가장 셀지 알 수 있을까요?",
+   "want": [],
+   "got": [],
+   "reasoning": "asks about changing account holder -> no report",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 303.9,
+   "exact": true,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "금암동 아파트 후문 전선이 강풍에 끊어져 바닥에 떨어졌슈.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "금암동 아파트 후문"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "금암동 아파트 후문"
+     }
+    }
+   ],
+   "reasoning": "line snapped, fell in water -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 568.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "춘장대 해수욕장 상가 쪽 폭우 로 정전 됐어요 냉장고 가 다 꺼졌 어요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "춘장대 해수욕장 상가 쪽"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "춘장대 해수욕장 상가 쪽"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 602.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "폭설 이후 신촌 연세로 상가 일대가 정전입니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신촌 연세로 상가 일대"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "신촌 연세로 상가"
+     }
+    }
+   ],
+   "reasoning": "power out, 8 households stated -> outage; households 8; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 493.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "Our village Seoha-ri, 15 households, all dark now after landslide on the hill behind.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Seoha-ri",
+      "households": 15
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "Our village Seoha-ri, 15",
+      "households": 15
+     }
+    }
+   ],
+   "reasoning": "dark after landslide, all stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 364.4,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "강풍 불더니… 계산동 송학빌라 여섯 가구가 다 정전이에요. 할머니 혼자 사시는 집도 있어요, 빨리…",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "계산동 송학빌라",
+      "households": 6
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "계산동 송학빌라"
+     }
+    }
+   ],
+   "reasoning": "power out, 12 households stated -> outage; households 12; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 578.2,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "우리 집만 불이 안 켜져서 봤더니 차단끼가 내려가 있더라고요. 올리니까 되네요 정전 아니에요.",
+   "want": [],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "우리 집만 불이 안 켜져",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "sparks, fears electrocution -> spark; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 719.8,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "전선이 끊어졌어요… 끊어져서 등산로를 막고 있어요. 등산객들이… 칠보산 등산로 입구요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "칠보산 등산로 입구"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "칠보산 등산로 입구"
+     }
+    }
+   ],
+   "reasoning": "line snapped, power out -> line_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 603.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "하늘에 번개 쳐서 명지 국제신도시 상가 1층 편의점 불 다 나갔어요 저 일하는 곳이에요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "명지 국제신도시 상가 1층 편의점"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "spark",
+      "location": "국제신도시 상가 1층",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "sparks from line, fears a fire -> spark; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 602.1,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "금곡리 배밭 진입로 OW선 단선. 복구반 투입 필요.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "금곡리 배밭 진입로"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "pole_down",
+      "location": "금곡리 배밭 진입로"
+     }
+    }
+   ],
+   "reasoning": "pole leaning in wind -> pole_down; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 501.8,
+   "exact": false,
+   "decision": true,
+   "incident_type": false,
+   "location": true
+  },
+  {
+   "query": "온산공단 정전ㅠㅠ 어떻해요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "온산공단"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "온산공단"
+     }
+    }
+   ],
+   "reasoning": "power is on -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 350.2,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "전선이 끊어져서 공장 지붕에, 지붕에 걸쳐 있어요… 여천동 석유화학공단 2문 옆이요. 불날 것 같아요!",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "여천동 석유화학공단 2문 옆",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "line_down",
+      "location": "불날 것 같아요",
+      "hazard": "electrocution"
+     }
+    }
+   ],
+   "reasoning": "line snapped, sparking, fears electrocution -> line_down; households none; hazard electrocution",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 788.7,
+   "exact": false,
+   "decision": true,
+   "incident_type": true,
+   "location": false
+  },
+  {
+   "query": "마석가구공단 전기 없다",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "마석가구공단"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "마석가구공단"
+     }
+    }
+   ],
+   "reasoning": "power is cut -> outage; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 381.4,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "서석면 수하리 경로당 정전이라 어르신들 선풍기도 못틀어여",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "서석면 수하리 경로당"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "outage",
+      "location": "서석면 수하리 경로당"
+     }
+    }
+   ],
+   "reasoning": "power out, 15 households stated -> outage; households 15; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 546.3,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "송학면 소재지 농협 창고 옆에 있는 변압기에서 어제부터 지지직하는 소리가 납니다. 강풍이 분 뒤부터 그렇습니다.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "송학면 소재지 농협 창고 옆"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "transformer_noise",
+      "location": "송학면 소재지 농협 창고 옆"
+     }
+    }
+   ],
+   "reasoning": "transformer humming, then power out -> transformer_noise; households none; hazard none",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 750.1,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  },
+  {
+   "query": "낙뇌 맞고 대연동 대학가 원룸촌 전봇대 위에 불이 부터써요",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "대연동 대학가 원룸촌",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [],
+   "reasoning": null,
+   "confidence": null,
+   "error": "RuntimeError: UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa0 in position 206: invalid start byte",
+   "latency_ms": 1130.5,
+   "exact": false,
+   "decision": false,
+   "incident_type": false,
+   "location": false
+  },
+  {
+   "query": "Help, I am at the Daejin port. The electric box on the pole is burning and making smoke.",
+   "want": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "the Daejin port",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "report_incident",
+     "arguments": {
+      "incident_type": "fire",
+      "location": "the Daejin port",
+      "hazard": "fire"
+     }
+    }
+   ],
+   "reasoning": "electric box burning -> fire; households none; hazard fire",
+   "confidence": null,
+   "error": null,
+   "latency_ms": 342.6,
+   "exact": true,
+   "decision": true,
+   "incident_type": true,
+   "location": true
+  }
+ ]
+}

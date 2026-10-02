@@ -1,0 +1,92 @@
+  backend   gpu  float32
+  depth     20 layers
+  data      2700 examples  seq_len 512  cap 512
+  numerics  CQ W4 STE + A8 (matches export)
+  lora      rank 16  alpha 32  5 weight groups
+  schedule  1014 steps  warmup 50  cosine decay  clip 1.0  (compiling...)
+E1002 18:49:34.817572   26637 slow_operation_alarm.cc:73] Constant folding an instruction is taking > 1s:
+
+  %dot.144 = f32[110592,128]{1,0} dot(%constant.1999, %constant.1103), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_name="jit(train_step)/jvp()/dot_general" stack_frame_id=633}
+
+This isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.
+
+If you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+E1002 18:49:34.864288   26572 slow_operation_alarm.cc:140] The operation took 4.005346681s
+Constant folding an instruction is taking > 1s:
+
+  %dot.144 = f32[110592,128]{1,0} dot(%constant.1999, %constant.1103), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_name="jit(train_step)/jvp()/dot_general" stack_frame_id=633}
+
+This isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.
+
+If you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+  step      20/1014  loss 0.6151
+  step      40/1014  loss 0.1959
+  step      60/1014  loss 0.1270
+  step      80/1014  loss 0.1027
+  step      100/1014  loss 0.0715
+  step      120/1014  loss 0.0794
+  step      140/1014  loss 0.0916
+  step      160/1014  loss 0.0629
+  step      180/1014  loss 0.0849
+  step      200/1014  loss 0.0770
+  step      220/1014  loss 0.1206
+  step      240/1014  loss 0.0940
+  step      260/1014  loss 0.0592
+  step      280/1014  loss 0.0500
+  step      300/1014  loss 0.0762
+  step      320/1014  loss 0.0495
+E1002 18:54:57.360561   26637 slow_operation_alarm.cc:73] Constant folding an instruction is taking > 2s:
+
+  %select_n.1193 = f32[14155776]{0} select(%constant.2920, %broadcast.1361, %constant.1844..sunk.1), metadata={op_name="jit(train_step)/jvp(jit(searchsorted))/jit(_searchsorted_scan_impl)/vmap(jit(_searchsorted_scan_impl))/while/body/eval_jaxpr/select_n" stack_frame_id=640}
+
+This isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.
+
+If you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+E1002 18:54:57.462268   26572 slow_operation_alarm.cc:140] The operation took 3.712478039s
+Constant folding an instruction is taking > 2s:
+
+  %select_n.1193 = f32[14155776]{0} select(%constant.2920, %broadcast.1361, %constant.1844..sunk.1), metadata={op_name="jit(train_step)/jvp(jit(searchsorted))/jit(_searchsorted_scan_impl)/vmap(jit(_searchsorted_scan_impl))/while/body/eval_jaxpr/select_n" stack_frame_id=640}
+
+This isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.
+
+If you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+  epoch     1/3  loss 0.0658
+  step      340/1014  loss 0.0509
+  step      360/1014  loss 0.0830
+  step      380/1014  loss 0.0703
+  step      400/1014  loss 0.0472
+  step      420/1014  loss 0.0743
+  step      440/1014  loss 0.0460
+  step      460/1014  loss 0.0467
+  step      480/1014  loss 0.0504
+  step      500/1014  loss 0.0477
+  step      520/1014  loss 0.0291
+  step      540/1014  loss 0.0714
+  step      560/1014  loss 0.0662
+  step      580/1014  loss 0.0577
+  step      600/1014  loss 0.0518
+  step      620/1014  loss 0.0398
+  step      640/1014  loss 0.0440
+  step      660/1014  loss 0.0432
+  epoch     2/3  loss 0.0525
+  step      680/1014  loss 0.0302
+  step      700/1014  loss 0.0454
+  step      720/1014  loss 0.0408
+  step      740/1014  loss 0.0249
+  step      760/1014  loss 0.0141
+  step      780/1014  loss 0.0506
+  step      800/1014  loss 0.0224
+  step      820/1014  loss 0.0475
+  step      840/1014  loss 0.0419
+  step      860/1014  loss 0.0305
+  step      880/1014  loss 0.0351
+  step      900/1014  loss 0.0238
+  step      920/1014  loss 0.0432
+  step      940/1014  loss 0.0326
+  step      960/1014  loss 0.0463
+  step      980/1014  loss 0.0271
+  step      1000/1014  loss 0.0482
+  epoch     3/3  loss 0.0497
+  adapter   ko/out/exp/label_e3.safetensors
+  next      needle build checkpoints/needle3.safetensors --lora ko/out/exp/label_e3.safetensors
+  note      local tuning leaves the confidence head untrained; needle build drops it and confidence reports None
