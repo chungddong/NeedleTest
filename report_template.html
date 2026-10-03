@@ -119,7 +119,7 @@ footer { font-size: 12.5px; color: var(--muted); }
   </div>
   <div class="panel">
     <div class="tbl"><table id="depthTable"></table></div>
-    <p class="cap">prefill/decode는 엔진이 응답마다 보고한 tok/s의 중앙값. <code>--depth</code>는 전체 가중치를 그대로 올리므로 메모리는 깊이와 상관없이 73.6MB로 같았습니다. depth 2~6에서 refusal 세트가 100%인 건 모든 요청을 거절했기 때문입니다.</p>
+    <p class="cap">prefill/decode는 엔진이 응답마다 보고한 tok/s의 중앙값. <code>--depth</code>는 전체 가중치를 그대로 올리므로 메모리는 깊이와 상관없이 73.6MB로 같았습니다. depth 2~6에서 refusal 세트가 100%인 건 모든 요청을 거절했기 때문입니다. <b>정정(2026-10-03)</b>: 이 측정에서는 측정 코드가 한글을 JSON <code>\uXXXX</code> 이스케이프로 보냈고 C 서버가 이를 풀지 못해 한국어 12문장이 깨진 채 들어갔습니다. 정확도는 한국어가 사실상 0점 처리된 값이라 실제보다 최대 약 2%p 낮을 수 있습니다. 영어 결과와 지연·메모리는 영향이 없습니다.</p>
   </div>
 </section>
 
@@ -176,7 +176,7 @@ footer { font-size: 12.5px; color: var(--muted); }
     <li><h3><span class="pill bad">주의</span>시간 형식 정규식이 5초 지연을 만듭니다</h3>
       <p>“Set the alarm for 5:45”, “plz set alarm 8:00”에서 모델은 <code>5:45</code>를 쓰려 하는데 스키마의 <code>HH:MM</code> 정규식은 앞자리 0을 요구합니다. 문법 제약 디코딩이 512토큰을 다 쓰고 4.4~5.1초 뒤 빈 결과(<code>token budget exhausted</code>)를 냅니다. 패턴을 <code>H:MM</code>도 허용하게 바꾸거나 설명으로 형식을 안내하는 편이 낫습니다.</p></li>
     <li><h3><span class="pill bad">미지원</span>한국어는 사실상 안 됩니다</h3>
-      <p>한국어 12개 중 맞춘 건 “10분 타이머”와 “피자 주문해줘”(거절) 2개뿐입니다(C 런타임에서는 0~1개). 대부분 confidence 0.1 미만으로 거절했고, “재즈 틀어줘”는 <code>get_weather(city="틀어줘")</code>, “아침 7시 알람”은 7분 타이머로 바뀌었습니다. 한국어 서비스라면 앞단에서 영어로 번역하거나 파인튜닝이 필요합니다.</p></li>
+      <p>한국어 12개 중 맞춘 건 “10분 타이머”와 “피자 주문해줘”(거절) 2개뿐입니다(Python SDK 기준). 대부분 confidence 0.1 미만으로 거절했고, “재즈 틀어줘”는 <code>get_weather(city="틀어줘")</code>, “아침 7시 알람”은 7분 타이머로 바뀌었습니다. 한국어 서비스라면 앞단에서 영어로 번역하거나 파인튜닝이 필요합니다.</p></li>
     <li><h3><span class="pill warn">약점</span>없는 기기를 비슷한 툴로 처리합니다</h3>
       <p>“침실 선풍기 켜줘”를 조명 켜기로 실행했고 confidence가 0.79라 게이트로도 걸러지지 않습니다. 툴 설명에 “조명 외에는 사용 금지”라고 적었는데도 그랬습니다. 툴 목록을 확장할수록 이런 오매핑이 늘었습니다(툴 51개에서 “버스로 박물관 가는 길” → 버스 도착 조회, “기차역까지 걸어서” → 교통정보 조회).</p></li>
     <li><h3><span class="pill warn">약점</span>얕은 모델은 불안정합니다</h3>
@@ -314,9 +314,9 @@ line($('depthAcc'), D.depth.map(r => ({x: r.depth, y: r.conf, tip: dt(r)})),
 const latMax = niceMax(Math.max(...D.depth.map(r => r.p50)));
 line($('depthLat'), D.depth.map(r => ({x: r.depth, y: r.p50, tip: dt(r)})),
   {yMax: latMax, yTicks: [0, latMax / 4, latMax / 2, latMax * 3 / 4, latMax], yFmt: v => ms(v), xTicks: [2, 6, 10, 14, 20], xLabel: 'depth (레이어)', endLabel: p => ms(p.y) + ' ms'});
-table($('depthTable'), ['depth', '정확도', 'raw', '영어 basic', '한국어', 'p50 ms', 'p90 ms', 'prefill tok/s', 'decode tok/s', '엔진 오류'],
-  D.depth.map(r => ({hl: r.depth === 20, cells: [r.depth, pct(r.conf), pct(r.raw), pct(r.suites.basic), pct(r.suites.korean), ms(r.p50), ms(r.p90), ms(r.prefill), ms(r.decode), r.errors]})),
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+table($('depthTable'), ['depth', '정확도', 'raw', '영어 basic', 'p50 ms', 'p90 ms', 'prefill tok/s', 'decode tok/s', '엔진 오류'],
+  D.depth.map(r => ({hl: r.depth === 20, cells: [r.depth, pct(r.conf), pct(r.raw), pct(r.suites.basic), ms(r.p50), ms(r.p90), ms(r.prefill), ms(r.decode), r.errors]})),
+  [1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
 // 03 threads, concurrency, scaling
 table($('threadTable'), ['스레드', 'p50 ms', 'p90 ms', 'prefill', 'decode'],

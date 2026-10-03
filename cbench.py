@@ -31,18 +31,22 @@ def free_port():
 
 def post(port, path, body=None):
     req = urllib.request.Request(f"http://127.0.0.1:{port}{path}",
-                                 data=json.dumps(body or {}).encode(),
+                                 # raw UTF-8: the server does not decode \uXXXX escapes, so
+                                 # json.dumps defaults would turn Hangul into "ub0a8..." text
+                                 data=json.dumps(body or {}, ensure_ascii=False).encode("utf-8"),
                                  headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=120) as resp:
-        raw = resp.read().decode()
+        raw = resp.read().decode("utf-8", errors="replace")  # base models can emit broken UTF-8 bytes
     return json.loads(raw) if raw.strip() else {}
 
 
 class Server:
-    def __init__(self, depth, threads, tools_path, system_path):
+    def __init__(self, depth, threads, tools_path, system_path, model=MODEL):
         self.port = free_port()
-        cmd = [BIN, "--model", MODEL, "--tools", tools_path, "--system", system_path,
+        cmd = [BIN, "--model", model, "--tools", tools_path,
                "--serve", "--port", str(self.port), "--threads", str(threads)]
+        if system_path:
+            cmd += ["--system", system_path]
         if depth:
             cmd += ["--depth", str(depth)]
         self.t0 = time.perf_counter()
