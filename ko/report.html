@@ -1,0 +1,354 @@
+<title>정전 신고 모델 v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: an incident-desk notebook. Headline numbers, how we got there, then every test report side by side. */
+:root {
+  --bg: #f2f4f3; --surface: #ffffff; --sunk: #f7f8f7; --ink: #111a1d; --ink-2: #47555b; --muted: #7d898e;
+  --line: #dce2e1; --axis: #c2cbca;
+  --accent: #b3530a;                         /* signal amber for structure, never data */
+  --v2: #2a78d6; --v2-wash: rgba(42,120,214,.10); --base: #9aa3a6;
+  --good: #0a7d0a; --good-bg: #e4f3e4; --bad: #c43333; --bad-bg: #fbe7e7; --warn-bg: #fff2d4;
+  --font: "IBM Plex Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #101415; --surface: #181e20; --sunk: #14191a; --ink: #eef2f2; --ink-2: #b9c4c6; --muted: #84919a;
+  --line: #2a3235; --axis: #3a4447; --accent: #f0a050;
+  --v2: #3987e5; --v2-wash: rgba(57,135,229,.16); --base: #6b7578;
+  --good: #3fc13f; --good-bg: #17301a; --bad: #ec6b6b; --bad-bg: #3a1e1e; --warn-bg: #3a3017;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #101415; --surface: #181e20; --sunk: #14191a; --ink: #eef2f2; --ink-2: #b9c4c6; --muted: #84919a;
+  --line: #2a3235; --axis: #3a4447; --accent: #f0a050;
+  --v2: #3987e5; --v2-wash: rgba(57,135,229,.16); --base: #6b7578;
+  --good: #3fc13f; --good-bg: #17301a; --bad: #ec6b6b; --bad-bg: #3a1e1e; --warn-bg: #3a3017;
+  color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.65 var(--font); margin: 0; }
+.wrap { max-width: 1000px; margin: 0 auto; padding-inline: 20px; padding-block: 36px 64px; display: grid; gap: 44px; }
+h1, h2, h3 { margin: 0; line-height: 1.25; text-wrap: balance; }
+h1 { font-size: clamp(26px, 4.4vw, 38px); font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: 21px; font-weight: 700; display: flex; gap: 10px; align-items: baseline; }
+h2 .tag { font: 500 12px var(--mono); color: var(--accent); letter-spacing: .04em; }
+h3 { font-size: 15px; font-weight: 600; }
+p { margin: 0; max-width: 68ch; color: var(--ink-2); }
+p strong { color: var(--ink); }
+code { font-family: var(--mono); font-size: .9em; }
+section { display: grid; gap: 16px; min-width: 0; }
+header { display: grid; gap: 14px; }
+.eyebrow { font: 500 12.5px var(--mono); color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.eyebrow b { color: var(--ink-2); font-weight: 500; }
+.lead { font-size: 16.5px; color: var(--ink-2); max-width: 72ch; }
+
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.tile .k { font-size: 12.5px; color: var(--muted); }
+.tile .ba { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.tile .from { font-size: 16px; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--axis); }
+.tile .arrow { color: var(--muted); font-size: 14px; }
+.tile .to { font-size: 30px; font-weight: 600; letter-spacing: -.01em; }
+.tile .to small { font-size: 15px; font-weight: 500; color: var(--ink-2); margin-left: 2px; }
+.tile .d { font-size: 12.5px; color: var(--ink-2); }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 780px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.cap { font-size: 12.5px; color: var(--muted); max-width: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--ink-2); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; font-size: 12px; color: var(--muted); white-space: nowrap; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+tr.hl td { background: var(--v2-wash); }
+
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+svg .lbl { fill: var(--ink-2); font-family: var(--font); font-size: 12px; }
+svg .grp { fill: var(--ink); font-family: var(--font); font-size: 12px; font-weight: 600; }
+svg .val { fill: var(--ink); font-size: 11.5px; }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .base { stroke: var(--axis); stroke-width: 1; }
+svg .hit { fill: transparent; }
+.tip { position: fixed; pointer-events: none; z-index: 9; background: var(--ink); color: var(--bg); font: 12px/1.45 var(--font); padding: 6px 9px; border-radius: 6px; max-width: 280px; }
+
+/* sentence explorer */
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { font: 500 13px var(--font); padding: 5px 12px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:focus-visible, .toggle input:focus-visible { outline: 2px solid var(--v2); outline-offset: 2px; }
+.toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-2); margin-left: auto; cursor: pointer; }
+.count { font: 12.5px var(--mono); color: var(--muted); }
+.reports { display: grid; gap: 10px; }
+.report { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 10px; }
+.report .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.report .no { font: 12px var(--mono); color: var(--muted); }
+.report .q { font-size: 16.5px; font-weight: 600; color: var(--ink); flex: 1 1 280px; min-width: 0; }
+.report .cat { font-size: 12px; color: var(--accent); font-weight: 600; white-space: nowrap; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 760px) { .trio { grid-template-columns: minmax(0, 1fr); } }
+.out { background: var(--sunk); border-radius: 6px; padding: 9px 11px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.out .who { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+.out .who b { font-weight: 600; color: var(--ink-2); }
+.out.v2 { box-shadow: inset 3px 0 0 var(--v2); }
+.fields { display: flex; flex-wrap: wrap; gap: 4px 6px; font-size: 13px; }
+.f { display: inline-flex; gap: 4px; align-items: baseline; padding: 1px 7px; border-radius: 4px; background: var(--surface); border: 1px solid var(--line); max-width: 100%; overflow-wrap: anywhere; }
+.f .k { font-size: 11px; color: var(--muted); }
+.f.wrong { border-color: var(--bad); background: var(--bad-bg); }
+.none { font-size: 13px; color: var(--ink-2); }
+.err { font-size: 12px; color: var(--bad); }
+.pill { font-size: 11.5px; font-weight: 600; padding: 0 8px; border-radius: 99px; white-space: nowrap; }
+.pill.ok { background: var(--good-bg); color: var(--good); }
+.pill.no { background: var(--bad-bg); color: var(--bad); }
+.empty { padding: 24px; text-align: center; color: var(--muted); font-size: 14px; }
+
+.samples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 760px) { .samples { grid-template-columns: minmax(0, 1fr); } }
+.sample { background: var(--sunk); border-radius: 6px; padding: 10px 12px; display: grid; gap: 6px; min-width: 0; }
+.sample .style { font-size: 12px; color: var(--accent); font-weight: 600; }
+.sample .q { font-size: 14.5px; color: var(--ink); }
+
+.notes { display: grid; gap: 10px; padding: 0; margin: 0; list-style: none; }
+.notes li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; }
+.notes li p { font-size: 14px; }
+footer { font-size: 12.5px; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { .report { transition: border-color .15s; } .report:hover { border-color: var(--axis); } }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow"><span><b>모델</b> Needle 3 + LoRA (v2)</span><span><b>학습</b> RTX 3070 · 3,000행 · 8에폭</span><span><b>측정</b> Raspberry Pi 5 · C 런타임</span><span><b>평가</b> 사람이 쓴 문장 32개</span></div>
+  <h1>원본이 놓치던 한국어 신고, 이제 24건 중 21건의 유형을 맞힙니다</h1>
+  <p class="lead" id="lead"></p>
+</header>
+
+<section aria-label="요약">
+  <div class="tiles" id="tiles"></div>
+</section>
+
+<section>
+  <h2><span class="tag">01</span>평가 문장 전체</h2>
+  <p>학습에 쓰지 않은, 사람이 직접 쓴 신고 문장 32개입니다. 각 문장마다 정답, 원본 모델(공식 2비트), 파인튜닝 v2(20레이어)의 출력을 나란히 놓았습니다. 틀린 항목은 빨간 테두리로 표시했습니다. 두 모델 모두 Pi 5의 C 런타임에서 실행한 결과입니다.</p>
+  <div class="controls" role="toolbar" aria-label="문장 거르기">
+    <div class="controls" id="chips"></div>
+    <label class="toggle"><input type="checkbox" id="onlyWrong"> v2가 틀린 문장만</label>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="reports" id="reports"></div>
+</section>
+
+<section>
+  <h2><span class="tag">02</span>어떻게 여기까지 왔나</h2>
+  <div class="cols">
+    <div class="panel">
+      <h3>단계별 평가셋 정답 (32문장)</h3>
+      <div id="stageChart"></div>
+      <p class="cap">원본은 Pi, 나머지는 RTX 3070의 Python SDK 결과입니다. v2는 Pi에서도 출력이 32문장 모두 같았습니다.</p>
+    </div>
+    <div class="panel">
+      <h3>검증 실험 (학습 데이터에서 떼어 둔 300행, 정답 수)</h3>
+      <div id="expChart"></div>
+      <p class="cap">평가셋을 보지 않고 설정을 고르기 위한 실험입니다. 학습률은 1e-3, 추론 형식은 “라벨만”, 에폭은 8이 가장 좋았습니다.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="tbl"><table id="stageTable"></table></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="tag">03</span>Pi 5에서의 속도와 메모리</h2>
+  <p>실제 쓰임새대로 <code>report_incident</code> 툴 하나만 등록한 C 런타임 서버로 측정했습니다(문장당 3회, 중앙값). <strong>파인튜닝 모델이 원본보다 빠릅니다.</strong> 원본은 한국어를 이해하지 못해 길게 헤매다 거절하고, v2는 추론을 라벨 한 줄로 짧게 씁니다.</p>
+  <div class="cols">
+    <div class="panel"><h3>평가셋 정답</h3><div id="depthAcc"></div></div>
+    <div class="panel"><h3>응답 지연 중앙값 (ms)</h3><div id="depthLat"></div></div>
+  </div>
+  <div class="panel"><div class="tbl"><table id="depthTable"></table></div>
+    <p class="cap">파인튜닝 모델은 공개 도구의 한계로 4비트로 내보내져 공식 2비트(35MB)보다 큽니다. 12·16레이어는 빠르지만 정확도가 크게 떨어져, 실사용은 20레이어입니다.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="tag">04</span>영어 능력은 유지됐나</h2>
+  <p>한국어를 가르치는 동안 원래의 영어 명령 처리 능력이 무너지지 않았는지, 처음 만든 영어 11툴 벤치마크(92문항)로 확인했습니다. 같은 4비트 20레이어 원본과 비교합니다.</p>
+  <div class="panel">
+    <div class="legend"><span><i style="background:var(--base)"></i>원본 4비트 20L</span><span><i style="background:var(--v2)"></i>v2 20L</span></div>
+    <div id="engChart"></div>
+    <p class="cap" id="engCap"></p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="tag">05</span>학습 데이터 예시</h2>
+  <p id="trainText"></p>
+  <div class="samples" id="samples"></div>
+</section>
+
+<section>
+  <h2><span class="tag">06</span>알아둘 점</h2>
+  <ul class="notes">
+    <li><h3>학습 데이터에 추론 한 줄이 꼭 필요했습니다</h3><p>엔진은 도구를 호출하기 전에 항상 짧은 추론(<code>&lt;think&gt;</code>)을 먼저 씁니다. 처음에는 학습 데이터에 이 부분이 없어서, 학습 환경에서는 24/24를 맞히던 모델이 엔진에서는 11/24로 떨어졌습니다. 추론 칸에 라벨을 넣자 해결됐습니다.</p></li>
+    <li><h3>남은 약점은 위치 자르기입니다</h3><p>유형은 거의 맞히지만(한국어 신고 24건 중 21건), 위치를 넓게 자르는 경우가 많습니다. 예: “시청 사거리 신호등이랑”, “대촌동 변압기 소음 민원 현장 확인”. 학습 데이터의 위치 규칙을 보강할 계획입니다.</p></li>
+    <li><h3 id="calibTitle"></h3><p id="calibText"></p></li>
+    <li><h3>서버에는 한글을 UTF-8 그대로 보내야 합니다</h3><p>Needle C 서버는 JSON의 <code>\uXXXX</code> 이스케이프를 풀지 못해, “남산동”이 “ub0a8uc0b0ub3d9”로 들어갑니다. Python <code>json.dumps</code> 기본값이 이 방식이라 처음 측정에서 v2가 4/32로 나왔습니다. <code>ensure_ascii=False</code>로 보내면 정상입니다.</p></li>
+    <li><h3>평가셋이 아직 작습니다</h3><p>32문장이라 19/32(59%)는 표본 오차를 감안하면 대략 40~75% 범위입니다. 대회 자료로 쓰려면 100~200문장으로 늘려야 합니다.</p></li>
+  </ul>
+</section>
+
+<footer>원본 데이터: <code>ko/results/</code> · 생성 스크립트 <code>ko/make_report.py</code> · 저장소 github.com/chungddong/NeedleTest</footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D = {"sentences": [{"i": 0, "cat": "표준어", "query": "남산동 3통 지금 정전이에요", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "남산동 3통"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 629.8}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "남산동 3통"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 303.6}}, {"i": 1, "cat": "표준어", "query": "푸른마을 아파트 전체가 정전됐습니다 300세대쯤 돼요", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "푸른마을 아파트", "households": 300}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 700.4}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "푸른마을 아파트", "households": 300}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 405.1}}, {"i": 2, "cat": "표준어", "query": "시청 사거리 신호등이랑 상가 전부 전기가 나갔어요", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "시청 사거리"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 789.5}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "시청 사거리 신호등이랑"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 408.6}}, {"i": 3, "cat": "표준어", "query": "교회 옆 전봇대가 바람에 쓰러졌어요", "want": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "교회 옆"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 824.5}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "교회 옆"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 330.4}}, {"i": 4, "cat": "표준어", "query": "저수지 가는 길에 전주가 기울어서 넘어갔어요 전선이 길에 떨어져 있어요", "want": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "저수지 가는 길"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 1847.9}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "저수지 가는 길"}}], "exact": false, "type": false, "loc": true, "decision": true, "error": null, "ms": 413.5}}, {"i": 5, "cat": "표준어", "query": "농협 창고 앞 전선이 끊어졌어요", "want": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "농협 창고 앞"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 886.9}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "농협 창고 앞"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 556.1}}, {"i": 6, "cat": "표준어", "query": "마을회관 뒤 변압기에서 이상한 소리가 계속 나요", "want": [{"name": "report_incident", "arguments": {"incident_type": "transformer_noise", "location": "마을회관 뒤"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 1060.7}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "transformer_noise", "location": "마을회관 뒤"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 393.6}}, {"i": 7, "cat": "표준어", "query": "초등학교 정문 앞 전선에서 파란 불꽃이 튀어요", "want": [{"name": "report_incident", "arguments": {"incident_type": "spark", "location": "초등학교 정문 앞"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 906.7}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "spark", "location": "초등학교 정문 앞"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 410.5}}, {"i": 8, "cat": "표준어", "query": "야산 쪽 전주에 불이 났어요 연기가 많이 나요", "want": [{"name": "report_incident", "arguments": {"incident_type": "fire", "location": "야산 쪽", "hazard": "fire"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": "tool call truncated: token budget exhausted", "ms": 821.5}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "fire", "location": "야산 쪽", "hazard": "fire"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 350.4}}, {"i": 9, "cat": "표준어", "query": "한빛빌라 가동 나동 정전 12가구", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "한빛빌라 가동 나동", "households": 12}}], "base": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "가동", "households": 12}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 613.5}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "가동 나동", "households": 12}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 307.5}}, {"i": 10, "cat": "사투리", "query": "우리 동네 전기가 싹 다 나가부렀어라", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "우리 동네"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 751.9}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "우리 동네"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 316.1}}, {"i": 11, "cat": "사투리", "query": "저 아래 전봇대가 넘어져뿟다 퍼뜩 와보이소", "want": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "저 아래"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 921.4}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "저 아래 전봇대가"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 457.9}}, {"i": 12, "cat": "사투리", "query": "밭 옆에 전깃줄이 끊어져가 늘어져 있어유 위험혀유", "want": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "밭 옆", "hazard": "electrocution"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 982.4}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "밭 옆에 전깃줄이 끊어져"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 454.3}}, {"i": 13, "cat": "사투리", "query": "회관 앞 변압기가 웽웽 울어쌓는다", "want": [{"name": "report_incident", "arguments": {"incident_type": "transformer_noise", "location": "회관 앞"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 629.6}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "transformer_noise", "location": "회관 앞"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 329.8}}, {"i": 14, "cat": "오타·짧은 문자", "query": "정전요 행복빌라", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "행복빌라"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 680.0}, "v2": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 75.9}}, {"i": 15, "cat": "오타·짧은 문자", "query": "새싹유치원 앞 전봇데 쓰러짐", "want": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "새싹유치원 앞"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 626.1}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "새싹유치원 앞"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 595.0}}, {"i": 16, "cat": "오타·짧은 문자", "query": "전선 끈어짐 은행나무길", "want": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "은행나무길"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 702.6}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "은행나무길"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 394.8}}, {"i": 17, "cat": "오타·짧은 문자", "query": "시장 입구에 스파크 나요 빨리요", "want": [{"name": "report_incident", "arguments": {"incident_type": "spark", "location": "시장 입구"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 619.8}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "spark", "location": "시장 입구"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 325.1}}, {"i": 18, "cat": "오타·짧은 문자", "query": "햇빛 마을 정전 이 십 가구", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "햇빛 마을", "households": 20}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 542.0}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "이 십 가구"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 326.2}}, {"i": 19, "cat": "현장 보고", "query": "현장보고 송정리 2번 전주 도괴 확인", "want": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "송정리 2번 전주"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 1006.1}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "현장보고 송정리 2번"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 385.6}}, {"i": 20, "cat": "현장 보고", "query": "대촌동 변압기 소음 민원 현장 확인 완료", "want": [{"name": "report_incident", "arguments": {"incident_type": "transformer_noise", "location": "대촌동"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 944.2}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "transformer_noise", "location": "대촌동 변압기 소음 민원 현장 확인"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 530.7}}, {"i": 21, "cat": "현장 보고", "query": "배전선로 단선 금곡교 인근 감전 주의 필요", "want": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "금곡교 인근", "hazard": "electrocution"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 942.6}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "단선 금곡교 인근", "hazard": "electrocution"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 426.9}}, {"i": 22, "cat": "외국인·영어", "query": "여기 공장 전기 없어요 아파요 일 못해요 산업단지 3로", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "산업단지 3로"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 1735.5}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "일 못해요 산업단지 3로"}}], "exact": false, "type": true, "loc": false, "decision": true, "error": null, "ms": 423.3}}, {"i": 23, "cat": "외국인·영어", "query": "기숙사 전기 안 와요 불 다 꺼졌어요", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "기숙사"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 786.7}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "fire", "location": "기숙사", "hazard": "fire"}}], "exact": false, "type": false, "loc": true, "decision": true, "error": null, "ms": 316.7}}, {"i": 24, "cat": "외국인·영어", "query": "The power went out in Green Valley apartments", "want": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "Green Valley apartments"}}], "base": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "Green Valley apartments"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 431.5}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "Green Valley apartments"}}], "exact": true, "type": true, "loc": true, "decision": true, "error": null, "ms": 636.4}}, {"i": 25, "cat": "외국인·영어", "query": "A power line is down on Harbor Road, someone could get shocked", "want": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "Harbor Road", "hazard": "electrocution"}}], "base": {"got": [], "exact": false, "type": false, "loc": false, "decision": false, "error": null, "ms": 475.5}, "v2": {"got": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "Harbor Road"}}], "exact": false, "type": true, "loc": true, "decision": true, "error": null, "ms": 259.7}}, {"i": 26, "cat": "거절 대상", "query": "이번 달 전기요금 왜 이렇게 많이 나왔어요?", "want": [], "base": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 224.7}, "v2": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 115.5}}, {"i": 27, "cat": "거절 대상", "query": "태풍 언제 지나가요?", "want": [], "base": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 622.0}, "v2": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 85.2}}, {"i": 28, "cat": "거절 대상", "query": "아까 정전됐다가 지금은 다시 들어왔어요 괜찮아요", "want": [], "base": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 1694.7}, "v2": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 126.4}}, {"i": 29, "cat": "거절 대상", "query": "전기차 충전소 어디 있어요?", "want": [], "base": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 162.4}, "v2": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 91.2}}, {"i": 30, "cat": "거절 대상", "query": "한전 고객센터 운영시간 알려주세요", "want": [], "base": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 677.5}, "v2": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 103.6}}, {"i": 31, "cat": "거절 대상", "query": "정전인 줄 알았는데 우리 집 차단기가 내려간 거였어요", "want": [], "base": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 1416.5}, "v2": {"got": [], "exact": true, "type": false, "loc": false, "decision": true, "error": null, "ms": 131.1}}], "categories": ["표준어", "사투리", "오타·짧은 문자", "현장 보고", "외국인·영어", "거절 대상"], "stages": [{"name": "원본", "note": "공식 2비트, 학습 없음", "exact": 7, "n": 32, "decision": 8, "type": 2, "loc": 1, "positives": 26, "ko_n": 24, "ko_exact": 0, "ko_type": 1, "ko_loc": 0, "refusals": 6, "refusal_n": 6}, {"name": "스모크", "note": "24문장만 학습", "exact": 9, "n": 32, "decision": 30, "type": 11, "loc": 12, "positives": 26, "ko_n": 24, "ko_exact": 3, "ko_type": 9, "ko_loc": 10, "refusals": 5, "refusal_n": 6}, {"name": "v1", "note": "3,000행 · 3에폭 · 근거+라벨", "exact": 8, "n": 32, "decision": 28, "type": 8, "loc": 18, "positives": 26, "ko_n": 24, "ko_exact": 4, "ko_type": 6, "ko_loc": 16, "refusals": 3, "refusal_n": 6}, {"name": "v2", "note": "3,000행 · 8에폭 · 라벨만", "exact": 19, "n": 32, "decision": 31, "type": 23, "loc": 16, "positives": 26, "ko_n": 24, "ko_exact": 12, "ko_type": 21, "ko_loc": 14, "refusals": 6, "refusal_n": 6}], "experiments": [{"label": "1e-4", "group": "학습률 (3에폭)", "exact": 27, "n": 300, "type": 87, "loc": 69, "positives": 270}, {"label": "3e-4", "group": "학습률 (3에폭)", "exact": 58, "n": 300, "type": 116, "loc": 119, "positives": 270}, {"label": "1e-3", "group": "학습률 (3에폭)", "exact": 90, "n": 300, "type": 133, "loc": 174, "positives": 270}, {"label": "라벨만 · 3에폭", "group": "추론 형식 (1e-3)", "exact": 108, "n": 300, "type": 154, "loc": 178, "positives": 270}, {"label": "근거+라벨 · 8에폭", "group": "추론 형식 (1e-3)", "exact": 167, "n": 300, "type": 223, "loc": 204, "positives": 270}, {"label": "라벨만 · 8에폭", "group": "추론 형식 (1e-3)", "exact": 213, "n": 300, "type": 250, "loc": 211, "positives": 270}], "depth": [{"label": "원본 2비트 20L", "mb": 35.3, "exact": 7, "n": 32, "p50": 769.3, "p90": 1380.9, "max": 1847.9, "rss": 73.6, "ko_exact": 0}, {"label": "v2 12L", "mb": 39.4, "exact": 3, "n": 32, "p50": 255.2, "p90": 350.2, "max": 537.4, "rss": 78.5, "ko_exact": 1}, {"label": "v2 16L", "mb": 51.4, "exact": 8, "n": 32, "p50": 302.8, "p90": 489.6, "max": 602.5, "rss": 103.6, "ko_exact": 2}, {"label": "v2 20L", "mb": 63.4, "exact": 19, "n": 32, "p50": 340.4, "p90": 523.4, "max": 636.4, "rss": 127.1, "ko_exact": 12}], "english": {"base": {"basic": 1.0, "args": 0.95, "casual": 0.8666666666666667, "multi": 1.0, "refusal": 0.5333333333333333, "korean": 0.08333333333333333, "ALL": 0.7717391304347826, "p50": 422.4996459670365}, "v2": {"basic": 0.9, "args": 0.85, "casual": 0.8666666666666667, "multi": 1.0, "refusal": 0.6, "korean": 0.08333333333333333, "ALL": 0.7391304347826086, "p50": 323.3155105044716}}, "train_examples": [{"style": "전라도 사투리를 쓰는 어르신", "query": "효덕동 불꽃 튀어부러", "answers": [{"name": "report_incident", "arguments": {"incident_type": "spark", "location": "효덕동"}}]}, {"style": "음성 인식(STT) 오류가 섞인 문장", "query": "위도 파장금 항 근처 전봇대가 쓰러 지면서 불이 붙었어요. 옆에 그물 창고 까지 탈 것 같아요", "answers": [{"name": "report_incident", "arguments": {"incident_type": "fire", "location": "위도 파장금 항 근처", "hazard": "fire"}}]}, {"style": "급하고 당황해서 문장이 끊기는 주민", "query": "산사태로 흙이 밀려와서… 전봇대가 넘어졌어요. 다행히 사람은… 사람은 없어요. 매봉리 비탈길이요.", "answers": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "매봉리 비탈길"}}]}, {"style": "한국어가 서툰 외국인 주민", "query": "선생님 빨리 와요. 구의역 1번 출구 앞 전선 끊어졌어요 길에 있어요. 위험해요 감전 될 거예요.", "answers": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "구의역 1번 출구 앞", "hazard": "electrocution"}}]}, {"style": "충청도 사투리를 쓰는 주민", "query": "시초면 전주 쓰러졌어유", "answers": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "시초면"}}]}, {"style": "경상도 사투리를 쓰는 어르신", "query": "산불 연기가 내려오디만 반여동 농산물시장 뒤 전봇대에 불이 붙었심더!", "answers": [{"name": "report_incident", "arguments": {"incident_type": "fire", "location": "반여동 농산물시장 뒤", "hazard": "fire"}}]}, {"style": "영어로 신고하는 외국인 주민", "query": "Snow is very heavy on the lines near Daerim Station. One wire already broke and touch the ground, and our shop has no power.", "answers": [{"name": "report_incident", "arguments": {"incident_type": "line_down", "location": "Daerim Station"}}]}, {"style": "현장 작업자의 짧은 업무용 보고 (약어, 설비 번호 포함)", "query": "산내면 정전", "answers": [{"name": "report_incident", "arguments": {"incident_type": "outage", "location": "산내면"}}]}, {"style": "표준어로 차분하게 신고하는 주민", "query": "완주 동상면 밤나무 숲 옆 전봇대에 불이 붙어 타고 있습니다.", "answers": [{"name": "report_incident", "arguments": {"incident_type": "fire", "location": "완주 동상면 밤나무 숲 옆", "hazard": "fire"}}]}, {"style": "맞춤법과 띄어쓰기가 틀린 문자 메시지", "query": "수비면 송하리 고갯길에 전봇대 기울어서 거의 누워잇어요. 비가 계속와서 더 넘어갈꺼같아여", "answers": [{"name": "report_incident", "arguments": {"incident_type": "pole_down", "location": "수비면 송하리 고갯길"}}]}], "train_n": 3000, "label_counts": {"spark": 349, "fire": 260, "outage": 951, "pole_down": 354, "none": 358, "line_down": 461, "transformer_noise": 267}, "calib": {"mean_conf": 0.8451744205650915, "ece": 0.30546298464176264, "share_ge_095": 0.5625, "acc_ge_095": 0.8888888888888888, "acc_050_095": 0.2727272727272727, "exact": 0.59375}, "v2_scores": {"n": 32, "exact": 19, "decision": 31, "positives": 26, "incident_type": 23, "location": 16, "errors": 0, "unstable": 0, "latency_p50_ms": 340.4, "latency_p90_ms": 523.4, "latency_max_ms": 636.4, "prefill_tps_median": 944.25, "decode_tps_median": 210.35000000000002, "peak_rss_mb": 127.1, "ready_s": 0.45, "first_query_s": 0.24}, "base_scores": {"n": 32, "exact": 7, "decision": 8, "positives": 26, "incident_type": 2, "location": 1, "errors": 1, "unstable": 0, "latency_p50_ms": 769.3, "latency_p90_ms": 1380.9, "latency_max_ms": 1847.9, "prefill_tps_median": 645.15, "decode_tps_median": 184.6, "peak_rss_mb": 73.6, "ready_s": 0.44, "first_query_s": 0.32}};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pct = (x, d = 0) => (x * 100).toFixed(d) + '%';
+const ms = x => Math.round(x).toLocaleString('en-US');
+const NS = 'http://www.w3.org/2000/svg';
+const TYPE_KO = {outage: '정전', pole_down: '전주 도괴', line_down: '전선 단선', transformer_noise: '변압기 소음', spark: '스파크', fire: '화재'};
+const HAZ_KO = {electrocution: '감전', fire: '화재'};
+
+const tip = $('tip');
+document.addEventListener('pointermove', e => {
+  const t = e.target.closest && e.target.closest('[data-tip]');
+  if (!t) { tip.hidden = true; return; }
+  tip.innerHTML = t.getAttribute('data-tip'); tip.hidden = false;
+  tip.style.left = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 8) + 'px';
+  tip.style.top = (e.clientY + 14) + 'px';
+});
+function el(tag, attrs, parent) { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; }
+function text(p, x, y, s, a = {}) { const t = el('text', {x, y, ...a}, p); t.textContent = s; return t; }
+function barPath(x, y, w, h) { const r = Math.min(4, w / 2, h / 2); return w <= 0 ? '' : `M${x},${y} h${w - r} a${r},${r} 0 0 1 ${r},${r} v${h - 2 * r} a${r},${r} 0 0 1 -${r},${r} h-${w - r} z`; }
+
+// horizontal bars; rows [{label, value, text, tip, color, group}]
+function hbars(host, rows, {max, ticks, fmt, labelW = 120, W = 420}) {
+  const rowH = 28, groupH = 22, top = 6;
+  let y = top; const layout = []; let lastGroup = null;
+  for (const r of rows) { if (r.group && r.group !== lastGroup) { layout.push({g: r.group, y}); y += groupH; lastGroup = r.group; } layout.push({r, y}); y += rowH; }
+  const H = y + 22, x0 = labelW, x1 = W - 60, sx = v => x0 + (x1 - x0) * v / max;
+  const s = el('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img'});
+  for (const t of ticks) { el('line', {x1: sx(t), x2: sx(t), y1: top, y2: H - 20, class: 'grid'}, s); text(s, sx(t), H - 6, fmt(t), {'text-anchor': 'middle'}); }
+  el('line', {x1: x0, x2: x0, y1: top, y2: H - 20, class: 'base'}, s);
+  for (const it of layout) {
+    if (it.g) { text(s, 0, it.y + 15, it.g, {class: 'grp'}); continue; }
+    const r = it.r, by = it.y + 6, h = 16, w = sx(r.value) - x0;
+    text(s, x0 - 8, by + 12, r.label, {'text-anchor': 'end', class: 'lbl'});
+    el('path', {d: barPath(x0, by, w, h), fill: r.color || 'var(--v2)'}, s);
+    text(s, x0 + w + 6, by + 12, r.text, {class: 'val'});
+    el('rect', {x: 0, y: it.y, width: W, height: rowH, class: 'hit', 'data-tip': r.tip}, s);
+  }
+  host.appendChild(s);
+}
+
+// grouped vertical bars for two series; cats [{label, a, b, tip}]
+function gbars(host, cats, {max, ticks, fmt, names}) {
+  const W = 640, H = 230, L = 40, R = 10, T = 10, B = 40, band = (W - L - R) / cats.length, bw = Math.min(24, band / 3);
+  const sy = v => T + (H - T - B) * (1 - v / max);
+  const s = el('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img'});
+  for (const t of ticks) { el('line', {x1: L, x2: W - R, y1: sy(t), y2: sy(t), class: t === 0 ? 'base' : 'grid'}, s); text(s, L - 6, sy(t) + 4, fmt(t), {'text-anchor': 'end'}); }
+  cats.forEach((c, i) => {
+    const cx = L + band * i + band / 2;
+    [['a', 'var(--base)', -bw - 1], ['b', 'var(--v2)', 1]].forEach(([k, color, dx]) => {
+      const v = c[k], y = sy(v), h = sy(0) - y, x = cx + dx;
+      const r = Math.min(4, bw / 2, h);
+      el('path', {d: h > 0 ? `M${x},${sy(0)} v${-(h - r)} a${r},${r} 0 0 1 ${r},${-r} h${bw - 2 * r} a${r},${r} 0 0 1 ${r},${r} v${h - r} z` : '', fill: color}, s);
+    });
+    text(s, cx, H - B + 16, c.label, {'text-anchor': 'middle', class: 'lbl'});
+    el('rect', {x: cx - band / 2, y: T, width: band, height: H - T - B, class: 'hit', 'data-tip': c.tip}, s);
+  });
+  host.appendChild(s);
+}
+
+function table(host, head, rows, num) {
+  host.innerHTML = '<thead><tr>' + head.map((h, i) => `<th class="${num[i] ? 'n' : ''}">${h}</th>`).join('') + '</tr></thead><tbody>' +
+    rows.map(r => `<tr class="${r.hl ? 'hl' : ''}">` + r.cells.map((c, i) => `<td class="${num[i] ? 'n' : ''}">${c}</td>`).join('') + '</tr>').join('') + '</tbody>';
+}
+
+// ---------- header + tiles
+const base = D.stages[0], v2 = D.stages[3], dBase = D.depth[0], dV2 = D.depth[3];
+$('lead').innerHTML = `영어 전용으로 만들어진 35MB 툴콜링 모델 Needle 3에 한국어 재난 신고를 가르쳤습니다. 사투리, 오타, 현장 약어가 섞인 신고 문장 ${D.train_n.toLocaleString()}행으로 LoRA 파인튜닝한 결과, 원본이 하나도 처리하지 못하던 한국어 신고를 <strong>24건 중 ${v2.ko_type}건은 유형까지, ${v2.ko_exact}건은 모든 항목까지</strong> 맞히게 됐습니다. 라즈베리파이 5에서 인터넷 없이 0.34초 만에 답합니다.`;
+$('tiles').innerHTML = [
+  ['평가셋 정답', `${base.exact}`, `${v2.exact}<small>/32</small>`, `거절해야 할 문의 ${v2.refusals}/${v2.refusal_n} 정확히 거절`],
+  ['한국어 신고 유형', `${base.ko_type}`, `${v2.ko_type}<small>/24</small>`, `모든 항목 정답 ${base.ko_exact} → ${v2.ko_exact}건`],
+  ['응답 지연 중앙값', `${ms(dBase.p50)}`, `${ms(dV2.p50)}<small>ms</small>`, `최대 ${ms(dBase.max)} → ${ms(dV2.max)}ms (Pi 5)`],
+  ['모델 크기 · 메모리', `${dBase.mb}MB`, `${Math.round(dV2.mb)}<small>MB</small>`, `메모리 ${Math.round(dBase.rss)} → ${Math.round(dV2.rss)}MB · 4비트`],
+].map(([k, a, b, d]) => `<div class="tile"><span class="k">${k}</span><span class="ba"><span class="from">${a}</span><span class="arrow" aria-label="에서">→</span><span class="to">${b}</span></span><span class="d">${d}</span></div>`).join('');
+
+// ---------- sentence explorer
+function call(o) { return (o && o[0]) || null; }
+function fieldsHTML(c, want, marks) {
+  if (!c) return '<span class="none">신고 아님 (거절)</span>';
+  const a = c.arguments || {}, w = (want && want[0] && want[0].arguments) || null;
+  const bad = k => marks && w ? JSON.stringify(a[k] ?? null) !== JSON.stringify(w[k] ?? null) : false;
+  const items = [['유형', a.incident_type ? (TYPE_KO[a.incident_type] || a.incident_type) : '—', 'incident_type'],
+                 ['위치', a.location ? `“${a.location}”` : '—', 'location']];
+  if (a.households != null || (w && w.households != null)) items.push(['가구', a.households ?? '—', 'households']);
+  if (a.hazard || (w && w.hazard)) items.push(['위험', a.hazard ? HAZ_KO[a.hazard] || a.hazard : '—', 'hazard']);
+  return '<div class="fields">' + items.map(([k, v, key]) => `<span class="f${bad(key) ? ' wrong' : ''}"><span class="k">${k}</span>${esc(v)}</span>`).join('') + '</div>';
+}
+function outBox(label, o, want, cls) {
+  const ok = o.exact;
+  const wrongDecision = !o.decision && !(o.got && o.got.length);
+  return `<div class="out ${cls}"><div class="who"><b>${label}</b><span>${ms(o.ms)}ms <span class="pill ${ok ? 'ok' : 'no'}">${ok ? '✓ 정답' : '✗ 오답'}</span></span></div>` +
+    (wrongDecision && want.length ? '<span class="none" style="color:var(--bad)">신고를 놓침 (거절)</span>' : fieldsHTML(call(o.got), want, true)) +
+    (!want.length && o.got && o.got.length ? '<span class="err">신고가 아닌데 접수함</span>' : '') +
+    (o.error ? `<span class="err">엔진 오류: ${esc(o.error)}</span>` : '') + '</div>';
+}
+let cat = '전체';
+const cats = ['전체', ...D.categories];
+$('chips').innerHTML = cats.map(c => `<button type="button" class="chip" data-cat="${c}" aria-pressed="${c === cat}">${c}</button>`).join('');
+$('chips').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; cat = b.dataset.cat; document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); });
+$('onlyWrong').addEventListener('change', render);
+function render() {
+  const only = $('onlyWrong').checked;
+  const list = D.sentences.filter(s => (cat === '전체' || s.cat === cat) && (!only || !s.v2.exact));
+  const v2ok = list.filter(s => s.v2.exact).length, bok = list.filter(s => s.base.exact).length;
+  $('count').textContent = `${list.length}문장 · 원본 정답 ${bok} · v2 정답 ${v2ok}`;
+  $('reports').innerHTML = list.length ? list.map(s => `<article class="report"><div class="head"><span class="no">#${String(s.i + 1).padStart(2, '0')}</span><span class="q">${esc(s.query)}</span><span class="cat">${s.cat}</span></div>
+    <div class="trio"><div class="out"><div class="who"><b>정답</b></div>${fieldsHTML(call(s.want), null, false)}</div>${outBox('원본', s.base, s.want, '')}${outBox('v2', s.v2, s.want, 'v2')}</div></article>`).join('')
+    : '<div class="empty">조건에 맞는 문장이 없습니다.</div>';
+}
+render();
+
+// ---------- stages + experiments
+hbars($('stageChart'), D.stages.map(s => ({label: s.name, value: s.exact, text: `${s.exact}/32`, color: s.name === 'v2' ? 'var(--v2)' : 'var(--base)',
+  tip: `<b>${s.name}</b> · ${s.note}<br>정답 ${s.exact}/32 · 한국어 신고 유형 ${s.ko_type}/24 · 위치 ${s.ko_loc}/24`})),
+  {max: 32, ticks: [0, 8, 16, 24, 32], fmt: v => v, labelW: 70});
+hbars($('expChart'), D.experiments.map(e => ({label: e.label, value: e.exact, text: `${e.exact}`, group: e.group,
+  color: e.label === '라벨만 · 8에폭' ? 'var(--v2)' : 'var(--base)',
+  tip: `<b>${e.group} · ${e.label}</b><br>정답 ${e.exact}/${e.n} · 유형 ${e.type}/${e.positives} · 위치 ${e.loc}/${e.positives}`})),
+  {max: 300, ticks: [0, 100, 200, 300], fmt: v => v, labelW: 130});
+table($('stageTable'), ['단계', '설명', '정답 /32', '판단 /32', '한국어 신고 정답 /24', '유형 /24', '위치 /24', '거절 /6'],
+  D.stages.map(s => ({hl: s.name === 'v2', cells: [s.name, s.note, s.exact, s.decision, s.ko_exact, s.ko_type, s.ko_loc, s.refusals]})), [0, 0, 1, 1, 1, 1, 1, 1]);
+
+// ---------- depth on the Pi
+hbars($('depthAcc'), D.depth.map(d => ({label: d.label, value: d.exact, text: `${d.exact}/32`, color: d.label === 'v2 20L' ? 'var(--v2)' : 'var(--base)',
+  tip: `<b>${d.label}</b><br>정답 ${d.exact}/32 · 한국어 신고 정답 ${d.ko_exact}/24`})), {max: 32, ticks: [0, 8, 16, 24, 32], fmt: v => v, labelW: 110});
+hbars($('depthLat'), D.depth.map(d => ({label: d.label, value: d.p50, text: `${ms(d.p50)}ms`, color: d.label === 'v2 20L' ? 'var(--v2)' : 'var(--base)',
+  tip: `<b>${d.label}</b><br>p50 ${ms(d.p50)} · p90 ${ms(d.p90)} · 최대 ${ms(d.max)}ms`})), {max: 1000, ticks: [0, 250, 500, 750, 1000], fmt: v => v, labelW: 110});
+table($('depthTable'), ['모델', '파일', '정답 /32', '지연 p50', 'p90', '최대', '메모리'],
+  D.depth.map(d => ({hl: d.label === 'v2 20L', cells: [d.label, `${d.mb}MB`, d.exact, `${ms(d.p50)}ms`, `${ms(d.p90)}ms`, `${ms(d.max)}ms`, `${Math.round(d.rss)}MB`]})), [0, 1, 1, 1, 1, 1, 1]);
+
+// ---------- English regression
+const SUITES = [['basic', '기본'], ['args', '인자'], ['casual', '구어체'], ['multi', '다중 호출'], ['refusal', '거절'], ['ALL', '전체']];
+gbars($('engChart'), SUITES.map(([k, l]) => ({label: l, a: D.english.base[k], b: D.english.v2[k],
+  tip: `<b>${l}</b><br>원본 4비트 ${pct(D.english.base[k])} · v2 ${pct(D.english.v2[k])}`})), {max: 1, ticks: [0, .25, .5, .75, 1], fmt: v => pct(v)});
+$('engCap').textContent = `전체 ${pct(D.english.base.ALL, 1)} → ${pct(D.english.v2.ALL, 1)}. 기본·인자 명령이 조금 떨어졌고, 거절은 오히려 좋아졌습니다. 응답 지연 중앙값은 ${ms(D.english.base.p50)} → ${ms(D.english.v2.p50)}ms. 막대의 분류별 수치에서는 신고 도메인이 아닌 한국어 12문항을 뺐고, ‘전체’는 92문항 모두를 기준으로 합니다.`;
+
+// ---------- training data
+const lc = D.label_counts;
+$('trainText').innerHTML = `Claude 에이전트로 화자 스타일 10가지 × 상황 2가지를 조합해 3,500행을 만들고, 묶음마다 독립 검수 두 번을 거쳐 ${D.train_n.toLocaleString()}행을 골랐습니다. 평가 문장과 겹치거나 비슷한 문장은 자동으로 걸렀습니다. 유형별로 정전 ${lc.outage}, 전선 단선 ${lc.line_down}, 전주 도괴 ${lc.pole_down}, 스파크 ${lc.spark}, 변압기 소음 ${lc.transformer_noise}, 화재 ${lc.fire}, 거절 ${lc.none}행입니다. 스타일마다 하나씩 보여드립니다.`;
+$('samples').innerHTML = D.train_examples.map(e => `<div class="sample"><span class="style">${esc(e.style)}</span><span class="q">${esc(e.query)}</span>${fieldsHTML(call(e.answers), null, false)}</div>`).join('');
+
+// ---------- calibration note
+const C = D.calib;
+$('calibTitle').textContent = '모델이 자기 답을 과신합니다';
+$('calibText').innerHTML = `파인튜닝하면 확신도 헤드가 빠져서, 학습 환경(JAX)에서 출력 확률로 따로 계산했습니다. 평균 확신도 ${pct(C.mean_conf)}인데 실제 정확도는 ${pct(C.exact)}입니다. 다만 확신도 0.95 이상인 답(${pct(C.share_ge_095)})은 ${pct(C.acc_ge_095)}가 맞았고, 0.5~0.95 구간은 ${pct(C.acc_050_095)}만 맞았습니다. 0.95 이상만 자동 접수하고 나머지는 사람이 확인하는 방식이 가능하지만, 현재 단말 엔진은 이 확률을 내주지 않습니다.`;
+</script>
