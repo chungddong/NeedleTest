@@ -29,7 +29,7 @@
 
 ## 1단계. 학습 데이터 생성 (Claude Code 에이전트)
 
-**분량**: 원시 문장 약 3,600개 → 검사 후 약 3,000개 (검증 300 포함).
+**분량**: 원시 문장 약 2,400개 → 검사 후 약 2,000개 (검증 300 포함). 오늘 제출 일정에 맞춘 양이다. 에폭은 줄이지 않는다(정전 신고 실험에서 3에폭 108 대 8에폭 213).
 
 **구성**
 - 한국어 약 80%, 영어 약 20% (영어 능력 유지용, 영어 평가셋 문장과 다르게)
@@ -66,20 +66,17 @@ export XLA_PYTHON_CLIENT_PREALLOCATE=false
 
 설정은 정전 신고 실험에서 가장 좋았던 값(학습률 1e-3, 8에폭, 라벨만 쓰는 추론)이다. 메모리가 부족하면 `--batch-size 4`.
 
-## 3단계. 내보내기
+## 3단계. 내보내기 (20층만, 16층은 시간이 남으면)
 
 ```bash
-for L in 16 20; do
-  .venv/bin/needle build checkpoints/needle3.safetensors --lora ko/out/iot_ko_lora.safetensors \
-    --layers $L --out ko/out/needle3-iot-ko-${L}L.cact
-done
+.venv/bin/needle build checkpoints/needle3.safetensors --lora ko/out/iot_ko_lora.safetensors \
+  --layers 20 --out ko/out/needle3-iot-ko-20L.cact
 ```
 
 ## 4단계. 5080에서 평가
 
 ```bash
 .venv/bin/python ko_iot_eval.py --weights ko/out/needle3-iot-ko-20L.cact --label iot-ko-20L-pc5080
-.venv/bin/python ko_iot_eval.py --weights ko/out/needle3-iot-ko-16L.cact --label iot-ko-16L-pc5080
 .venv/bin/python ko_iot_eval.py --weights - --label base-pc5080
 .venv/bin/python bench.py --weights ko/out/needle3-iot-ko-20L.cact --label pc5080-iot-ko-20L   # 영어 유지 확인
 ```
@@ -95,7 +92,7 @@ Needle 엔진은 CPU에서 돈다. 그래서 5080 PC의 결과는 "x86 데스크
 
 ## 5단계. Pi로 옮겨 측정
 
-`.cact` 두 개를 Pi로 복사한다(`scp ko/out/needle3-iot-ko-*.cact chungman@<Pi 주소>:~/Develop/NeedleTest/models/`). Pi에서는 같은 `ko_iot_eval.py`와 `bench.py`로 지연·메모리를 잰다.
+`.cact`를 Pi로 복사한다(`scp ko/out/needle3-iot-ko-*.cact chungman@<Pi 주소>:~/Develop/NeedleTest/models/`). Pi에서는 같은 `ko_iot_eval.py`와 `bench.py`로 지연·메모리를 잰다.
 
 ## 커밋할 것
 
