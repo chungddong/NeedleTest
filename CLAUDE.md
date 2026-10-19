@@ -42,10 +42,17 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
   - 결과: `ko/results/pi-c-*_test_human.json`, `ko/results/pi-ko-v2-*_test_human.json`.
 - **C 서버 UTF-8 버그 발견**: `needle --serve`는 JSON의 `\uXXXX` 이스케이프를 풀지 못해 한글이 "ub0a8uc0b0…" 글자로 들어감. Python `json.dumps` 기본값이 이 이스케이프를 써서, 처음 측정에서 v2가 4/32로 나왔음. `cbench.py`를 UTF-8 그대로 보내도록 고침. 이전 Pi 벤치마크(RESULTS.md)의 C 런타임 한국어 수치도 이 버그의 영향을 받았음(영어는 무관).
 
+- **평가셋 출처 정정**: `test_human.jsonl`(32)은 사람이 아니라 Claude가 이 프로젝트 초기에 작성했다(학습 데이터 생성 전, 별도로). 문서의 "사람이 쓴 평가셋"은 "기본 평가셋"으로 읽는다. 논문에도 그렇게 적었다.
+- **확장 평가셋** `ko/data/test_extra.jsonl` (112, Claude 작성, 10개 범주, `ko/make_test_extra.py`): v2 20L 정답 61/112, 유형 76/92, 장소 56/92 (Pi C 런타임, `ko/results/pi-c-*_test_extra.json`, 분석 `ko/analyze.py`). 약점: 문장 끝 장소, 고유어 수사 가구 수, 위험 부정문, 키워드 함정 거절 5/20.
+- **규칙 기반 비교** (`ko/rule_baseline.py`): 규칙이 평가셋을 보고 작성돼 기본·확장 평가셋에서는 v2보다 높음(23/32, 76/112). 처음 보는 검증 300행에서는 정답 117(v2 설정 213), 장소 92/270(211).
+- **의사결정 모델 조사** (2026-10-19): Jev, Laya, OpenAI Decisions API, Microsoft-Decision-1은 정해진 보기 중 고르기만 하고 값 생성은 못 함. Laya 다국어판을 Pi 5에서 실측: 2.1GB, 명령당 1.4~2.6초, 학습 없이 7/14 (`~/Develop/edge-ko-command`).
+- **Needle 판단 헤드 실험 준비**: 내장 임베딩은 한국어를 구분 못 하고(코사인 0.987~0.988), 파인튜닝 `.cact`에는 임베딩 헤드가 없음. JAX 은닉 상태 위에 판단 헤드를 학습하는 `ko/decision_head.py`와 순서 문서 [DECISION_HEAD.md](DECISION_HEAD.md)를 만듦.
+
 다음 할 일
-1. 장소 범위 자르기 개선(학습 데이터 장소 규칙 점검, 장소가 길게 잘린 실패 유형 보강).
-2. 평가셋을 100~200문장으로 확대(32문장은 구간이 넓음).
-3. 확신도 게이트를 단말에서 쓰려면 엔진이 토큰 확률을 내줘야 함(현재 JAX에서만 계산).
+1. **RTX 5080에서 판단 헤드 실험** ([DECISION_HEAD.md](DECISION_HEAD.md)): v2·base 은닉 상태 추출 → 헤드 학습 → 생성 방식(유형 0.906 / 0.812)과 비교.
+2. 장소 범위 자르기 개선(학습 데이터 장소 규칙 점검, 장소가 길게 잘린 실패 유형 보강).
+3. 사람이 직접 쓴 평가셋 구축(지금 평가셋은 모두 Claude 작성).
+4. 확신도 게이트를 단말에서 쓰려면 엔진이 토큰 확률을 내줘야 함(현재 JAX에서만 계산).
 
 데이터 생성은 OpenRouter 대신 이 세션의 Claude 에이전트로 합니다(사용자 결정). 외부 유료 서비스나 API 키가 필요하면 먼저 이유를 설명합니다.
 
@@ -97,5 +104,6 @@ bash ko/gpu_smoke.sh                                              # 첫 실행: 
 
 - [FINETUNE.md](FINETUNE.md): 파인튜닝 확인 사항, 제약, WSL2 설치, 단계별 명령, 데이터 원칙, 라이선스(Apache 2.0)와 명명
 - [RESULTS.md](RESULTS.md): Pi 5 원본 모델 벤치마크 결과와 진행 기록
+- [DECISION_HEAD.md](DECISION_HEAD.md): Needle을 의사결정 모델로 쓰는 판단 헤드 실험 순서 (RTX 5080)
 - [RUNPOD.md](RUNPOD.md): 클라우드 GPU 대안 (RunPod 서버에서 GitHub 차단 이력 있음)
 - `ko/schema.py`: 신고 스키마. `ko/gen_data.py`: 학습 데이터 생성 프롬프트(화자 스타일 목록 포함)
