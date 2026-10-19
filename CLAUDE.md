@@ -48,7 +48,10 @@ Cactus Compute의 온디바이스 툴콜링 모델 **Needle 3**(1.21억 파라�
 - **의사결정 모델 조사** (2026-10-19): Jev, Laya, OpenAI Decisions API, Microsoft-Decision-1은 정해진 보기 중 고르기만 하고 값 생성은 못 함. Laya 다국어판을 Pi 5에서 실측: 2.1GB, 명령당 1.4~2.6초, 학습 없이 7/14 (`~/Develop/edge-ko-command`).
 - **Needle 판단 헤드 실험 준비**: 내장 임베딩은 한국어를 구분 못 하고(코사인 0.987~0.988), 파인튜닝 `.cact`에는 임베딩 헤드가 없음. JAX 은닉 상태 위에 판단 헤드를 학습하는 `ko/decision_head.py`와 순서 문서 [DECISION_HEAD.md](DECISION_HEAD.md)를 만듦.
 
+- **논문 방향 변경 (2026-10-19, 오늘 제출)**: "Needle 모델을 써 본 결과"로 다시 쓴다. 툴콜링 모델 동향 → 여러 장비(Pi 5, PC)에서 영어 IoT 명령(`testsets.py`) 성능 → **한국어 IoT 명령 파인튜닝** 전후 비교. 한국어 IoT 평가셋 `testsets_ko.py`(55문항, Claude 작성, 학습 금지), 원본 기준점 21.8% (`results/ko_iot_base-pi5.json`). 순서는 [IOT_KO.md](IOT_KO.md). 정전 신고 hwpx 초안은 `~/Documents/typst-docs/projects/kiot-2026-needle-ko/`.
+
 다음 할 일
+0. **RTX 5080에서 한국어 IoT 명령 파인튜닝** ([IOT_KO.md](IOT_KO.md)): 데이터 생성(평가셋 비공개) → `iot_ko/assemble.py` → 학습(`--max-len 1024`) → 16·20L 내보내기 → `ko_iot_eval.py`·`bench.py` 평가.
 1. **RTX 5080에서 판단 헤드 실험** ([DECISION_HEAD.md](DECISION_HEAD.md)): v2·base 은닉 상태 추출 → 헤드 학습 → 생성 방식(유형 0.906 / 0.812)과 비교.
 2. 장소 범위 자르기 개선(학습 데이터 장소 규칙 점검, 장소가 길게 잘린 실패 유형 보강).
 3. 사람이 직접 쓴 평가셋 구축(지금 평가셋은 모두 Claude 작성).
@@ -104,6 +107,7 @@ bash ko/gpu_smoke.sh                                              # 첫 실행: 
 
 - [FINETUNE.md](FINETUNE.md): 파인튜닝 확인 사항, 제약, WSL2 설치, 단계별 명령, 데이터 원칙, 라이선스(Apache 2.0)와 명명
 - [RESULTS.md](RESULTS.md): Pi 5 원본 모델 벤치마크 결과와 진행 기록
+- [IOT_KO.md](IOT_KO.md): 한국어 IoT 명령 파인튜닝 순서 (RTX 5080, 논문 본 실험)
 - [DECISION_HEAD.md](DECISION_HEAD.md): Needle을 의사결정 모델로 쓰는 판단 헤드 실험 순서 (RTX 5080)
 - [RUNPOD.md](RUNPOD.md): 클라우드 GPU 대안 (RunPod 서버에서 GitHub 차단 이력 있음)
 - `ko/schema.py`: 신고 스키마. `ko/gen_data.py`: 학습 데이터 생성 프롬프트(화자 스타일 목록 포함)

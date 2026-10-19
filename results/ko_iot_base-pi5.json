@@ -1,0 +1,2279 @@
+{
+ "label": "base-pi5",
+ "weights": "-",
+ "host": "chungserver",
+ "platform": "Linux-6.12.47+rpt-rpi-2712-aarch64-with-glibc2.41",
+ "needle_version": "3.0.6",
+ "worker_mem_mb": {
+  "VmHWM": 97.5,
+  "VmRSS": 90.5625
+ },
+ "scores": {
+  "basic": {
+   "n": 15,
+   "raw_tool_acc": 0.06666666666666667,
+   "raw_exact_acc": 0.06666666666666667,
+   "conf_tool_acc": 0.06666666666666667,
+   "conf_exact_acc": 0.06666666666666667,
+   "gated_tool_acc": 0.06666666666666667,
+   "gated_exact_acc": 0.06666666666666667,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 15,
+    "mean": 551.168790863206,
+    "p50": 490.84183503873646,
+    "p90": 883.5205688141285,
+    "p99": 1090.7077290304005,
+    "min": 284.9287751596421,
+    "max": 1107.2657899931073
+   }
+  },
+  "args": {
+   "n": 12,
+   "raw_tool_acc": 0.25,
+   "raw_exact_acc": 0.16666666666666666,
+   "conf_tool_acc": 0.0,
+   "conf_exact_acc": 0.0,
+   "gated_tool_acc": 0.0,
+   "gated_exact_acc": 0.0,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 12,
+    "mean": 600.4549800224291,
+    "p50": 542.9454816039652,
+    "p90": 850.4077326739207,
+    "p99": 986.649705595337,
+    "min": 326.42118306830525,
+    "max": 1003.269623965025
+   }
+  },
+  "casual": {
+   "n": 10,
+   "raw_tool_acc": 0.1,
+   "raw_exact_acc": 0.1,
+   "conf_tool_acc": 0.1,
+   "conf_exact_acc": 0.1,
+   "gated_tool_acc": 0.1,
+   "gated_exact_acc": 0.1,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 10,
+    "mean": 619.2507522879168,
+    "p50": 554.9944295780733,
+    "p90": 881.5280638867988,
+    "p99": 1186.770406991709,
+    "min": 331.70628105290234,
+    "max": 1220.6862228922546
+   }
+  },
+  "multi": {
+   "n": 6,
+   "raw_tool_acc": 0.0,
+   "raw_exact_acc": 0.0,
+   "conf_tool_acc": 0.0,
+   "conf_exact_acc": 0.0,
+   "gated_tool_acc": 0.0,
+   "gated_exact_acc": 0.0,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 6,
+    "mean": 693.0186173412949,
+    "p50": 662.2197905089706,
+    "p90": 1058.1612115493044,
+    "p99": 1144.8279396514408,
+    "min": 315.8224408980459,
+    "max": 1154.4575761072338
+   }
+  },
+  "refusal": {
+   "n": 12,
+   "raw_tool_acc": 0.6666666666666666,
+   "raw_exact_acc": 0.6666666666666666,
+   "conf_tool_acc": 1.0,
+   "conf_exact_acc": 1.0,
+   "gated_tool_acc": 1.0,
+   "gated_exact_acc": 1.0,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 12,
+    "mean": 562.429768149741,
+    "p50": 530.5051024770364,
+    "p90": 736.5539432503283,
+    "p99": 887.5814791070298,
+    "min": 377.6003560051322,
+    "max": 905.1626650616527
+   }
+  },
+  "ALL": {
+   "n": 55,
+   "raw_tool_acc": 0.23636363636363636,
+   "raw_exact_acc": 0.21818181818181817,
+   "conf_tool_acc": 0.2545454545454545,
+   "conf_exact_acc": 0.2545454545454545,
+   "gated_tool_acc": 0.2545454545454545,
+   "gated_exact_acc": 0.2545454545454545,
+   "unstable": 0,
+   "errors": 0,
+   "latency": {
+    "n": 55,
+    "mean": 592.2321466898376,
+    "p50": 532.7500170096755,
+    "p90": 939.1839742194862,
+    "p99": 1184.9227536283433,
+    "min": 284.9287751596421,
+    "max": 1220.6862228922546
+   }
+  }
+ },
+ "rows": [
+  {
+   "suite": "basic",
+   "query": "서울 날씨 어때?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "서울",
+        "Seoul"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 470.52825218997896,
+   "latency_all_ms": [
+    470.52825218997896
+   ],
+   "prefill_tps": 531.4,
+   "decode_tps": 160.0,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0482,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'서울 날씨' -> get_weather; '어때' -> city '어때'; unit omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "부산 지금 비 와?",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "부산",
+        "Busan"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 478.2128499355167,
+   "latency_all_ms": [
+    478.2128499355167
+   ],
+   "prefill_tps": 491.5,
+   "decode_tps": 145.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0597,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'부산 지금' -> get_weather; '비' -> city '비'; no unit specified so omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "15분 타이머 맞춰 줘",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 15
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 15
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 284.9287751596421,
+   "latency_all_ms": [
+    284.9287751596421
+   ],
+   "prefill_tps": 502.3,
+   "decode_tps": 161.9,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.402,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'15분' -> 15 minutes; set_timer with minutes 15",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "basic",
+   "query": "아침 6시 반에 깨워 줘",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:30"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 6
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 376.9288270268589,
+   "latency_all_ms": [
+    376.9288270268589
+   ],
+   "prefill_tps": 459.6,
+   "decode_tps": 162.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.2167,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'아침' -> set_timer; '6' -> minutes 6; '줘' -> set_timer",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "오후 7시에 알람 맞춰",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "19:00"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 7
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 358.38793916627765,
+   "latency_all_ms": [
+    358.38793916627765
+   ],
+   "prefill_tps": 457.5,
+   "decode_tps": 157.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.4049,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'오후 7시에' -> 7 minutes; set_timer with minutes 7",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "엄마한테 늦는다고 문자 보내",
+   "want": [
+    {
+     "name": "send_message",
+     "arguments": {
+      "recipient": {
+       "one_of": [
+        "엄마",
+        "Mom"
+       ]
+      },
+      "message": {
+       "text~": "늦"
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 725.3105330746621,
+   "latency_all_ms": [
+    725.3105330746621
+   ],
+   "prefill_tps": 283.9,
+   "decode_tps": 132.5,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0524,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'늦는다고 문자' -> get_weather; '보내' -> city '보내'; no unit specified so omitted",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "지수한테 전화해",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": {
+       "one_of": [
+        "지수",
+        "Jisu"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 532.32766315341,
+   "latency_all_ms": [
+    532.32766315341
+   ],
+   "prefill_tps": 514.1,
+   "decode_tps": 157.3,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0992,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'지수한테' -> get_weather; '전화해' -> city '전화해'; unit omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "재즈 틀어 줘",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "one_of": [
+        "재즈",
+        "jazz"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 490.84183503873646,
+   "latency_all_ms": [
+    490.84183503873646
+   ],
+   "prefill_tps": 508.2,
+   "decode_tps": 159.8,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0483,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'재즈' -> get_weather; '재즈' -> city '재즈'; '줘' -> unit 'celsius'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "공항으로 길 안내해 줘",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "one_of": [
+        "공항",
+        "airport"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 1107.2657899931073,
+   "latency_all_ms": [
+    1107.2657899931073
+   ],
+   "prefill_tps": 492.6,
+   "decode_tps": 57.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0414,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'공항으로' -> get_weather; '줘' -> city '줘'; no unit specified so omitted",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "주방 불 켜",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 462.8874028567225,
+   "latency_all_ms": [
+    462.8874028567225
+   ],
+   "prefill_tps": 488.7,
+   "decode_tps": 147.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0586,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'주방' -> get_weather; '불' -> city '불'; '켜' -> unit 'celsius'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "침실 불 꺼 줘",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 590.0396171491593,
+   "latency_all_ms": [
+    590.0396171491593
+   ],
+   "prefill_tps": 528.4,
+   "decode_tps": 114.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0607,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'침실' -> get_weather; '불' -> city '불'; '꺼' -> unit 'fahrenheit'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "거실 불 좀 켜 줄래",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 543.1719210464507,
+   "latency_all_ms": [
+    543.1719210464507
+   ],
+   "prefill_tps": 311.2,
+   "decode_tps": 149.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.08,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'거실' -> get_weather; '좀 켜' -> city '좀 켜'; no unit specified -> omit",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "온도 22도로 맞춰",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 22
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 22
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 337.40786206908524,
+   "latency_all_ms": [
+    337.40786206908524
+   ],
+   "prefill_tps": 520.2,
+   "decode_tps": 157.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.5244,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'온도' -> set_timer; '22도로' -> minutes 22",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "볼륨 40으로 해",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 40
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 520.2986691147089,
+   "latency_all_ms": [
+    520.2986691147089
+   ],
+   "prefill_tps": 487.1,
+   "decode_tps": 103.9,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0005,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_thermostat.temperature"
+    ],
+    "negation": false
+   },
+   "reasoning": "'볼륨' -> set_thermostat temperature 40. '볼륨' -> temperature 40.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "basic",
+   "query": "2026년 10월 14일에 치과 예약 일정 추가해 줘",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "치과"
+      },
+      "date": "2026-10-14"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 988.993925973773,
+   "latency_all_ms": [
+    988.993925973773
+   ],
+   "prefill_tps": 472.1,
+   "decode_tps": 155.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0478,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "navigate_to.destination"
+    ],
+    "negation": false
+   },
+   "reasoning": "'치과 예약 일정 추가해 줘' -> destination '초약 일정 추가해 줘'; date '2026년' -> '2026-11-10'; mode omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "대구 날씨 섭씨로 알려 줘",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "대구",
+        "Daegu"
+       ]
+      },
+      "unit": "celsius"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 536.3576270174235,
+   "latency_all_ms": [
+    536.3576270174235
+   ],
+   "prefill_tps": 493.7,
+   "decode_tps": 158.5,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0086,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_timer.minutes",
+     "set_timer.minutes"
+    ],
+    "negation": false
+   },
+   "reasoning": "'날씨' -> set_timer minutes=30; '알려' -> set_timer minutes=20; '줘' -> set_timer",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "2시간 타이머 맞춰",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 120
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 120
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 326.42118306830525,
+   "latency_all_ms": [
+    326.42118306830525
+   ],
+   "prefill_tps": 481.9,
+   "decode_tps": 167.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.3766,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_timer.minutes"
+    ],
+    "negation": false
+   },
+   "reasoning": "'2시간' -> 2 minutes = 120 seconds; set_timer with minutes=120",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "1시간 반 타이머 맞춰 줘",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 90
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "반 타이머"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 694.8187148664147,
+   "latency_all_ms": [
+    694.8187148664147
+   ],
+   "prefill_tps": 481.3,
+   "decode_tps": 130.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.1099,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'1시간' -> 1; '반 타이머' -> query '반 타이머'; play_music tool",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "거실 조명 30%로 어둡게 해",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "living_room",
+      "action": "dim",
+      "brightness_percent": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 30
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 1003.269623965025,
+   "latency_all_ms": [
+    1003.269623965025
+   ],
+   "prefill_tps": 172.2,
+   "decode_tps": 58.8,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.3554,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'거실' -> temperature 30; '조명' -> set_thermostat.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "침실 불 밝기 10퍼센트로 줄여",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "dim",
+      "brightness_percent": 10
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 549.5333361905068,
+   "latency_all_ms": [
+    549.5333361905068
+   ],
+   "prefill_tps": 430.5,
+   "decode_tps": 167.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0127,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_timer.minutes"
+    ],
+    "negation": false
+   },
+   "reasoning": "'침실' -> set_timer minutes 10; '밝기' -> set_timer minutes 10; '줄여' -> set_timer minutes 10",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "밤 11시 15분에 알람",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "23:15"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "11:00"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 401.88611508347094,
+   "latency_all_ms": [
+    401.88611508347094
+   ],
+   "prefill_tps": 428.0,
+   "decode_tps": 168.5,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.1639,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'밤 11시 15분에' -> time '11:00'; '알람' -> set_alarm.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "기차역까지 걸어서 가는 길 알려 줘",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "text~": "역"
+      },
+      "mode": "walking"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 834.4622140284628,
+   "latency_all_ms": [
+    834.4622140284628
+   ],
+   "prefill_tps": 431.1,
+   "decode_tps": 163.3,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0768,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'기차역까지 걸어서 가는 길 알려' -> get_weather with city '가는 길 알려' and unit 'fahrenheit'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "버스로 박물관 가는 길 알려 줘",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "one_of": [
+        "박물관",
+        "museum"
+       ]
+      },
+      "mode": "transit"
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "박물관",
+      "unit": "fahrenheit"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 721.3925418909639,
+   "latency_all_ms": [
+    721.3925418909639
+   ],
+   "prefill_tps": 488.2,
+   "decode_tps": 150.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.1046,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'버스로 박물관 가는 길 알려' -> get_weather with city '박물관' and unit 'fahrenheit'.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "자전거로 해변 가는 길",
+   "want": [
+    {
+     "name": "navigate_to",
+     "arguments": {
+      "destination": {
+       "one_of": [
+        "해변",
+        "beach"
+       ]
+      },
+      "mode": "cycling"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 444.6220980025828,
+   "latency_all_ms": [
+    444.6220980025828
+   ],
+   "prefill_tps": 430.6,
+   "decode_tps": 155.6,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0537,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'자전거로' -> get_weather; '길' -> unit 'celsius'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "볼륨 0으로 해",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 0
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 0
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 428.60388406552374,
+   "latency_all_ms": [
+    428.60388406552374
+   ],
+   "prefill_tps": 502.8,
+   "decode_tps": 159.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.2428,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'볼륨 0으로' -> set_volume level 0; '볼륨' is typo for '볼륨'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "2026년 11월 3일 오전 9시에 팀 회의 일정 넣어 줘",
+   "want": [
+    {
+     "name": "create_event",
+     "arguments": {
+      "title": {
+       "text~": "팀 회의"
+      },
+      "date": "2026-11-03",
+      "time": "09:00"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 852.1794569678605,
+   "latency_all_ms": [
+    852.1794569678605
+   ],
+   "prefill_tps": 492.2,
+   "decode_tps": 142.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0542,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'11월' -> time '11:00'; '오전' -> label; '일정' -> message; '일정' -> recipient",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "args",
+   "query": "온도 19도로 낮춰 줘",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 19
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 411.91296512261033,
+   "latency_all_ms": [
+    411.91296512261033
+   ],
+   "prefill_tps": 485.0,
+   "decode_tps": 166.3,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0435,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_alarm.time"
+    ],
+    "negation": false
+   },
+   "reasoning": "'온도' -> time '19:00'; '낮춰' -> label '낮춰'; set_alarm tool.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "부엌 불 꺼라",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 843.8438239973038,
+   "latency_all_ms": [
+    843.8438239973038
+   ],
+   "prefill_tps": 444.0,
+   "decode_tps": 84.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0664,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'부엌 불' -> get_weather; '꺼라' -> city '꺼라'; no unit specified so omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "화장실 불 좀 꺼줘요",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "off"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 1220.6862228922546,
+   "latency_all_ms": [
+    1220.6862228922546
+   ],
+   "prefill_tps": 179.3,
+   "decode_tps": 72.4,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.096,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "get_weather.city"
+    ],
+    "negation": false
+   },
+   "reasoning": "'좀 요장실' -> get_weather with city '좀 요장실'; no unit specified so omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "볼륨 80까지 올려",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 80
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 540.6254311092198,
+   "latency_all_ms": [
+    540.6254311092198
+   ],
+   "prefill_tps": 216.5,
+   "decode_tps": 90.6,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.001,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_thermostat.temperature"
+    ],
+    "negation": false
+   },
+   "reasoning": "'볼륨 80' -> set_thermostat temperature 80.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "타이머 20분 ㄱㄱ",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 20
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 20
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 331.70628105290234,
+   "latency_all_ms": [
+    331.70628105290234
+   ],
+   "prefill_tps": 448.9,
+   "decode_tps": 168.8,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.4035,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'타이머 20분' -> 20 minutes. set_timer with minutes 20.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "casual",
+   "query": "내일 아침 5시에 깨워줘",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "05:00"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 669.414505828172,
+   "latency_all_ms": [
+    669.414505828172
+   ],
+   "prefill_tps": 501.4,
+   "decode_tps": 130.8,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0078,
+   "type": "call",
+   "validation": {
+    "ungrounded": [
+     "set_timer.minutes"
+    ],
+    "negation": false
+   },
+   "reasoning": "'내일' -> set_timer minutes 5; '아침' -> set_timer minutes 5; '깨워줘' -> set_timer minutes 5",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "날씨 어때 제주",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "제주",
+        "Jeju"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 584.2650819104165,
+   "latency_all_ms": [
+    584.2650819104165
+   ],
+   "prefill_tps": 459.2,
+   "decode_tps": 132.9,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0448,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'날씨 어때' -> get_weather; '제주' -> city '제주'; no unit specified so omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "민수한테 전화 걸어",
+   "want": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": {
+       "one_of": [
+        "민수",
+        "Minsu"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "전화",
+      "unit": "celsius"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 569.3634280469269,
+   "latency_all_ms": [
+    569.3634280469269
+   ],
+   "prefill_tps": 499.8,
+   "decode_tps": 158.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.1364,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'민수한테' -> get_weather; '전화' -> city '전화'; '전화' -> unit 'celsius'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "아이유 노래 틀어",
+   "want": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "text~": "아이유"
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 509.60733904503286,
+   "latency_all_ms": [
+    509.60733904503286
+   ],
+   "prefill_tps": 455.9,
+   "decode_tps": 164.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0596,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'아이유' -> get_weather; '노래' -> unit 'fahrenheit'; '노래' is typo for '노'",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "너무 추워 난방 24도로",
+   "want": [
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 24
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 491.581137990579,
+   "latency_all_ms": [
+    491.581137990579
+   ],
+   "prefill_tps": 404.6,
+   "decode_tps": 156.5,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0572,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'너무' -> get_weather; '난방' -> unit 'fahrenheit'; '24도' -> 24",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "casual",
+   "query": "주방 조명 켜줭",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 431.41427100636065,
+   "latency_all_ms": [
+    431.41427100636065
+   ],
+   "prefill_tps": 510.9,
+   "decode_tps": 160.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0772,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'주방 조명' -> get_weather with city '주방'; no unit specified so omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "주방 불 끄고 온도 20도로 맞춰",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "kitchen",
+      "action": "off"
+     }
+    },
+    {
+     "name": "set_thermostat",
+     "arguments": {
+      "temperature": 20
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 1154.4575761072338,
+   "latency_all_ms": [
+    1154.4575761072338
+   ],
+   "prefill_tps": 494.7,
+   "decode_tps": 64.8,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.1129,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'불' -> room 'living_room'; '끄고 불' -> action 'dim'; '20' -> brightness_percent 20",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "10분 타이머 맞추고 클래식 틀어 줘",
+   "want": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 10
+     }
+    },
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": {
+       "one_of": [
+        "클래식",
+        "classical"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 10
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 315.8224408980459,
+   "latency_all_ms": [
+    315.8224408980459
+   ],
+   "prefill_tps": 495.0,
+   "decode_tps": 165.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.6419,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'10분' -> 10 minutes; set_timer with minutes 10",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "서울이랑 부산 날씨 알려 줘",
+   "want": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "서울",
+        "Seoul"
+       ]
+      }
+     }
+    },
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": {
+       "one_of": [
+        "부산",
+        "Busan"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 961.8648469913751,
+   "latency_all_ms": [
+    961.8648469913751
+   ],
+   "prefill_tps": 368.9,
+   "decode_tps": 156.3,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0381,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'서울이랑 부산 날씨 알려' -> get_weather with city '서울이랑 부산 날씨 알려'; unit omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "침실이랑 화장실 불 켜",
+   "want": [
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bedroom",
+      "action": "on"
+     }
+    },
+    {
+     "name": "control_lights",
+     "arguments": {
+      "room": "bathroom",
+      "action": "on"
+     }
+    }
+   ],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 772.1182908862829,
+   "latency_all_ms": [
+    772.1182908862829
+   ],
+   "prefill_tps": 467.8,
+   "decode_tps": 142.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0765,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'침실이랑 화장실' -> get_weather with city '침실이랑 화장실'; unit omitted.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "볼륨 20으로 하고 엄마한테 전화해",
+   "want": [
+    {
+     "name": "set_volume",
+     "arguments": {
+      "level": 20
+     }
+    },
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": {
+       "one_of": [
+        "엄마",
+        "Mom"
+       ]
+      }
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 20
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 552.3212901316583,
+   "latency_all_ms": [
+    552.3212901316583
+   ],
+   "prefill_tps": 478.6,
+   "decode_tps": 160.4,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.5619,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'볼륨 20으로 하고 엄마한테 전화해' -> set_timer minutes 20.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "multi",
+   "query": "6시에 알람 맞추고 30분 타이머도",
+   "want": [
+    {
+     "name": "set_alarm",
+     "arguments": {
+      "time": "06:00"
+     }
+    },
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 30
+     }
+    }
+   ],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 30
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 401.5272590331733,
+   "latency_all_ms": [
+    401.5272590331733
+   ],
+   "prefill_tps": 486.8,
+   "decode_tps": 164.4,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.5011,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'알람 맞추고 30분' -> minutes 30; set_timer tool.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 0.0,
+   "conf_exact_ok": 0.0,
+   "gated_tool_ok": 0.0,
+   "gated_exact_ok": 0.0
+  },
+  {
+   "suite": "refusal",
+   "query": "선풍기 켜 줘",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 557.4648808687925,
+   "latency_all_ms": [
+    557.4648808687925
+   ],
+   "prefill_tps": 453.4,
+   "decode_tps": 152.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0612,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'선풍기' -> get_weather; '켜' -> unit 'celsius'; '줘' -> city '선풍기'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "피자 주문해 줘",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 515.2741430792958,
+   "latency_all_ms": [
+    515.2741430792958
+   ],
+   "prefill_tps": 465.5,
+   "decode_tps": 152.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0595,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'피자 주문해' -> get_weather with city '주문해'; no unit specified so omitted.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "현관문 잠가",
+   "want": [],
+   "got": [
+    {
+     "name": "call_contact",
+     "arguments": {
+      "name": "현관문"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 384.23659605905414,
+   "latency_all_ms": [
+    384.23659605905414
+   ],
+   "prefill_tps": 484.2,
+   "decode_tps": 165.7,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.2036,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'현관문' -> name '현관문'; call_contact tool",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "프랑스 수도가 어디야?",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 905.1626650616527,
+   "latency_all_ms": [
+    905.1626650616527
+   ],
+   "prefill_tps": 422.3,
+   "decode_tps": 87.9,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0699,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'어디야' -> get_weather; '어디야' -> city '어디야'; unit omitted.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "TV 켜",
+   "want": [],
+   "got": [
+    {
+     "name": "play_music",
+     "arguments": {
+      "query": "TV 켜"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 657.536115963012,
+   "latency_all_ms": [
+    657.536115963012
+   ],
+   "prefill_tps": 146.3,
+   "decode_tps": 80.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.2292,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'TV 켜' -> play_music query 'TV 켜'.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "세탁기 돌려 줘",
+   "want": [],
+   "got": [
+    {
+     "name": "get_weather",
+     "arguments": {
+      "city": "세탁기",
+      "unit": "fahrenheit"
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 505.6220788974315,
+   "latency_all_ms": [
+    505.6220788974315
+   ],
+   "prefill_tps": 481.2,
+   "decode_tps": 166.6,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.1003,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'세탁기' -> city '세탁기'; '돌려' -> unit 'fahrenheit'; get_weather tool.",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "15 곱하기 23은?",
+   "want": [],
+   "got": [
+    {
+     "name": "set_timer",
+     "arguments": {
+      "minutes": 23
+     }
+    }
+   ],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 377.6003560051322,
+   "latency_all_ms": [
+    377.6003560051322
+   ],
+   "prefill_tps": 445.1,
+   "decode_tps": 155.9,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.2351,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'15' -> minutes 15; '곱하기 23은?' -> set_timer with minutes=23",
+   "raw_tool_ok": 0.0,
+   "raw_exact_ok": 0.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "농담 하나 해 줘",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 745.3337018378079,
+   "latency_all_ms": [
+    745.3337018378079
+   ],
+   "prefill_tps": 259.6,
+   "decode_tps": 156.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0198,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'농담 하나 해 줘' -> request for navigation to a destination. destination '농담 하나 해 줘'. mode omitted.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "주방 불 켜지 마",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 487.36474895849824,
+   "latency_all_ms": [
+    487.36474895849824
+   ],
+   "prefill_tps": 400.6,
+   "decode_tps": 155.1,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0853,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'주방 불' -> name '주방 불'; '마' -> call_contact tool",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "로봇청소기 돌려",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 528.2601879443973,
+   "latency_all_ms": [
+    528.2601879443973
+   ],
+   "prefill_tps": 496.5,
+   "decode_tps": 157.2,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0482,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'로봇청소기' -> get_weather; '돌려' -> unit 'celsius'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "사진 찍어 줘",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 532.7500170096755,
+   "latency_all_ms": [
+    532.7500170096755
+   ],
+   "prefill_tps": 507.9,
+   "decode_tps": 141.8,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0685,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'사진 찍어' -> get_weather with city '사진 찍어'.",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  },
+  {
+   "suite": "refusal",
+   "query": "차고 문 열어",
+   "want": [],
+   "got": [],
+   "error": null,
+   "distinct_outputs": 1,
+   "latency_ms": 552.5517261121422,
+   "latency_all_ms": [
+    552.5517261121422
+   ],
+   "prefill_tps": 452.3,
+   "decode_tps": 149.8,
+   "peak_ram_mb": 97.5,
+   "confidence": 0.0772,
+   "type": "call",
+   "validation": {
+    "ungrounded": [],
+    "negation": false
+   },
+   "reasoning": "'차고 문' -> get_weather; '문' -> unit 'celsius'; '열어' -> city '열어'",
+   "raw_tool_ok": 1.0,
+   "raw_exact_ok": 1.0,
+   "conf_tool_ok": 1.0,
+   "conf_exact_ok": 1.0,
+   "gated_tool_ok": 1.0,
+   "gated_exact_ok": 1.0
+  }
+ ],
+ "prefill_tps_median": 478.6,
+ "decode_tps_median": 155.9
+}
